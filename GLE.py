@@ -1,5 +1,6 @@
 from subprocess import call
 from os import remove,access,F_OK,mkdir,rename
+from math import floor
 
 class GLE:
 
@@ -7,14 +8,28 @@ class GLE:
         self.format = 'eps'
         self.width = 8
         self.height = 5
+        self.resolution = 500.0
 
 
     def waveform(self, filename, wavfile, framerate, minX=None,maxX=None,minY=None,maxY=None):
 
+        numPoints = len(wavfile)
+        rawResolution = numPoints/self.width
+        skip = 1
+        if rawResolution > self.resolution:
+            skip = int(floor(float(rawResolution) / self.resolution))
+        skip = 1
+
+
         FILE = open(filename+'_data', 'w')
+        count = 0
         for i in wavfile:
-            FILE.write(str(i)+"\n")
+            if count % skip == 0:
+                FILE.write(str(count/float(framerate))+",")
+                FILE.write(str(i)+"\n")
+            count = count + 1
         FILE.close()
+
 
         
         s = ['size '+str(self.width)+' '+str(self.height)]
@@ -25,7 +40,7 @@ class GLE:
         s.append('x2axis off')
         s.append('y2axis off')
         s.append('scale auto')
-        s.append('xtitle "Time (ms)"')
+        s.append('xtitle "Time (s)"')
 
         s.append('xticks length -0.1')
         s.append('yticks length -0.1')
