@@ -21,11 +21,12 @@ class GLE:
     def waveform(self, filename, wavfile, framerate, minX=None,maxX=None,minY=None,maxY=None):
 
         numPoints = len(wavfile)
-        rawResolution = numPoints/self.width
+        rawResolution = 0.1*numPoints/self.width
         skip = 1
         if rawResolution > self.resolution:
-            skip = int(floor(float(rawResolution) / self.resolution))
-        skip = 1
+            skip = int(floor(float(rawResolution)/self.resolution))
+	if skip < 1:
+	    skip = 1
 
 
         FILE = open(filename+'_SA_.dat', 'w')
@@ -37,7 +38,14 @@ class GLE:
             count = count + 1
         FILE.close()
 
+        if minX != None and maxX != None: 
+            if minX >= maxX:
+                maxX = minX+1
 
+	if minX == None:
+	    minX = 0
+	if maxX == None:
+	    maxX = float(len(wavfile))/framerate
         
         s = ['size '+str(self.width)+' '+str(self.height)]
         s.append('set font psh')
@@ -53,10 +61,7 @@ class GLE:
         s.append('yticks length -0.1')
         s.append('title ""')
 
-        if minX != None and maxX != None: 
-            if minX >= maxX:
-                maxX = minX+1
-            s.append('xaxis min '+str(minX)+' max '+str(maxX))
+	s.append('xaxis min '+str(minX)+' max '+str(maxX))
 
 
         s.append('data "'+filename.rsplit('/')[-1]+'_SA_.dat"')
@@ -121,6 +126,15 @@ class GLE:
         FILE.close()
 
 
+	if minX == None:
+	    minX = 0
+	if maxX == None:
+	    maxX = float(len(wavfile))/framerate
+
+	if minY == None:
+	    minY = 0
+	if maxY == None:
+	    maxY = float(framerate)/2
         
         s = ['size '+str(self.width)+' '+str(self.height)]
         s.append('include "color.gle"')
@@ -135,12 +149,8 @@ class GLE:
         s.append('xticks length -0.1')
         s.append('yticks length -0.1')
         s.append('title ""')
-
-        if minX != None and maxX != None: 
-            if minX >= maxX:
-                maxX = minX+1
-            s.append('xaxis min '+str(minX)+' max '+str(maxX))
-
+	s.append('xaxis min '+str(minX)+' max '+str(maxX))
+	s.append('yaxis min '+str(minY)+' max '+str(maxY))
         s.append('colormap "'+filename.rsplit('/')[-1]+'_SA_.z" 300 200 color')
         s.append('end graph')
 
