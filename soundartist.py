@@ -9,8 +9,11 @@ from glib import child_watch_add
 class SoundArtist:
 
     def on_window_destroy(self, widget, data=None):
+        cleantemp()
         gtk.main_quit()
 
+    def cleantemp(self):
+        folder = tempfile.gettempdir()
 
     def quit(self, widget, data=None):
         gtk.main_quit()
@@ -62,10 +65,10 @@ class SoundArtist:
         print "Save Spectrogram"
 
     def updateWaveFormImage(self, pid, condition, data=None):
-        self.builder.get_object("WaveFormImage").set_from_file(data+".png")
+        self.builder.get_object("WaveFormImage").set_from_file(data+"_SA_.png")
 
     def updateSpectrogramImage(self, pid, condition, data=None):
-        self.builder.get_object("SpectrogramImage").set_from_file(data+".png")
+        self.builder.get_object("SpectrogramImage").set_from_file(data+"_SA_.png")
 
     def refreshWaveForm(self, widget=None, data=None):
         self.builder.get_object("WaveFormImage").set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_LARGE_TOOLBAR)
@@ -79,7 +82,7 @@ class SoundArtist:
         self.builder.get_object("SpectrogramImage").set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_LARGE_TOOLBAR)
         self.clearEvents()
         tmpname = tempfile.mkstemp()
-        pid = self.GLE.waveform(tmpname[1], self.wavfile, self.framerate)
+        pid = self.GLE.spectrogram(tmpname[1], self.wavfile, self.framerate)
         watch = child_watch_add(pid, self.updateSpectrogramImage, data=tmpname[1])
         self.clearEvents()
 
