@@ -51,6 +51,8 @@ class SoundArtist:
             self.builder.get_object("lblSampleRate").set_label("Sampling Rate: "+str(self.framerate)+" Hz")
             self.builder.get_object("lblDuration").set_label("Duration: "+str(float(len(self.wavfile))/self.framerate)+" s")
             chooser.destroy()
+            self.builder.get_object("txtStart").set_text("0")
+            self.builder.get_object("txtEnd").set_text(str(1000*float(len(self.wavfile))/self.framerate))
             self.clearEvents()
             self.refreshWaveForm()
             self.refreshSpectrogram()
@@ -74,7 +76,16 @@ class SoundArtist:
         self.builder.get_object("WaveFormImage").set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_LARGE_TOOLBAR)
         self.clearEvents()
         tmpname = tempfile.mkstemp()
-        pid = self.GLE.waveform(tmpname[1], self.wavfile, self.framerate)
+	starttime = float(self.builder.get_object("txtStart").get_text())
+	endtime = float(self.builder.get_object("txtEnd").get_text())
+
+	msmode = True
+	if self.cbTimeAxis.get_active() == 0:
+	    starttime = starttime / 1000.0
+	    endtime = endtime / 1000.0
+	    msmode = False
+
+        pid = self.GLE.waveform(tmpname[1], self.wavfile, self.framerate, msmode=msmode, minX=starttime, maxX=endtime)
         watch = child_watch_add(pid, self.updateWaveFormImage, data=tmpname[1])
         self.clearEvents()
 
@@ -82,7 +93,16 @@ class SoundArtist:
         self.builder.get_object("SpectrogramImage").set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_LARGE_TOOLBAR)
         self.clearEvents()
         tmpname = tempfile.mkstemp()
-        pid = self.GLE.spectrogram(tmpname[1], self.wavfile, self.framerate)
+	starttime = float(self.builder.get_object("txtStart").get_text())
+	endtime = float(self.builder.get_object("txtEnd").get_text())
+
+	msmode = True
+	if self.cbTimeAxis.get_active() == 0:
+	    starttime = starttime / 1000.0
+	    endtime = endtime / 1000.0
+	    msmode = False
+
+        pid = self.GLE.spectrogram(tmpname[1], self.wavfile, self.framerate, msmode=msmode, minX=starttime, maxX=endtime)
         watch = child_watch_add(pid, self.updateSpectrogramImage, data=tmpname[1])
         self.clearEvents()
 
@@ -99,6 +119,12 @@ class SoundArtist:
 
         self.builder.get_object("WaveFormImage").clear()
         self.builder.get_object("SpectrogramImage").clear()
+	self.cbTimeAxis = gtk.combo_box_new_text()
+        self.builder.get_object("boxTimeAxis").pack_start(self.cbTimeAxis)
+        self.cbTimeAxis.append_text("Seconds (s)")
+        self.cbTimeAxis.append_text("Milliseconds (ms)")
+	self.cbTimeAxis.set_active(0)
+	self.cbTimeAxis.show()
 
 
 if __name__ == "__main__":

@@ -18,22 +18,25 @@ class GLE:
 
     
 
-    def waveform(self, filename, wavfile, framerate, minX=None,maxX=None,minY=None,maxY=None):
+    def waveform(self, filename, wavfile, framerate, msmode=False, minX=None,maxX=None,minY=None,maxY=None):
 
         numPoints = len(wavfile)
-        rawResolution = 0.1*numPoints/self.width
+        rawResolution = 0.2*numPoints/self.width
         skip = 1
         if rawResolution > self.resolution:
             skip = int(floor(float(rawResolution)/self.resolution))
 	if skip < 1:
 	    skip = 1
 
+	timescale = 1
+	if msmode:
+	    timescale = 1000
 
         FILE = open(filename+'_SA_.dat', 'w')
         count = 0
         for i in wavfile:
             if count % skip == 0:
-                FILE.write(str(count/float(framerate))+",")
+                FILE.write(str(timescale*count/float(framerate))+",")
                 FILE.write(str(i)+"\n")
             count = count + 1
         FILE.close()
@@ -55,7 +58,13 @@ class GLE:
         s.append('x2axis off')
         s.append('y2axis off')
         s.append('scale auto')
-        s.append('xtitle "Time (s)"')
+
+	if msmode:
+	    s.append('xtitle "Time (ms)"')
+	else:
+	    s.append('xtitle "Time (s)"')
+
+	s.append('ytitle " "')
 
         s.append('xticks length -0.1')
         s.append('yticks length -0.1')
@@ -79,7 +88,7 @@ class GLE:
     # Window := Number of samples per window
     # Increment := Distance to slide window
     # Coeff := 128
-    def spectrogram(self, filename, wavfile, framerate, minX=None,maxX=None,minY=None,maxY=None):
+    def spectrogram(self, filename, wavfile, framerate, msmode=False, hzmode=False, minX=None,maxX=None,minY=None,maxY=None):
 
         increment = 128
         nwindow =  256
@@ -105,11 +114,15 @@ class GLE:
             Nout = N/2 + 1
 	    spec.append(X[Nout:])
 
+	timescale = 1
+	if msmode:
+	    timescale = 1000
+
 	scale = 1
 	spec = transposed(spec)
 
         FILE = open(filename+'_SA_.z', 'w')
-	FILE.write('! nx '+str(len(spec[0]))+' ny '+str(len(spec)/scale)+' xmin 0 xmax '+str(len(wavfile_array)/float(framerate))+' ymin 0 ymax '+str(framerate/2.0)+"\n")
+	FILE.write('! nx '+str(len(spec[0]))+' ny '+str(len(spec)/scale)+' xmin 0 xmax '+str(timescale*len(wavfile_array)/float(framerate))+' ymin 0 ymax '+str(framerate/2.0)+"\n")
 
 	maxval = -100
 	for y in range(0,len(spec),scale):
@@ -145,7 +158,17 @@ class GLE:
         s.append('x2axis off')
         s.append('y2axis off')
         s.append('scale auto')
-        s.append('xtitle "Time (s)"')
+	if msmode:
+	    s.append('xtitle "Time (ms)"')
+	else:
+	    s.append('xtitle "Time (s)"')
+
+
+	if hzmode:
+	    s.append('ytitle "Frequency (Hz)"')
+	else:
+	    s.append('ytitle "Frequency (kHz)"')
+
         s.append('xticks length -0.1')
         s.append('yticks length -0.1')
         s.append('title ""')
