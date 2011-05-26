@@ -1,14 +1,14 @@
-from subprocess import call
 from os import remove,access,F_OK,mkdir,rename
 from math import floor
+from glib import spawn_async, SPAWN_DO_NOT_REAP_CHILD
 
 class GLE:
 
     def __init__(self):
-        self.format = 'eps'
-        self.width = 8
-        self.height = 5
-        self.resolution = 500.0
+        self.format = 'png'
+        self.width = 17
+        self.height = 6
+        self.resolution = 250.0
 
 
     def waveform(self, filename, wavfile, framerate, minX=None,maxX=None,minY=None,maxY=None):
@@ -60,8 +60,8 @@ class GLE:
         FILE.writelines('\n'.join(s))
         FILE.close()
 
-        glecall = ['gle', '-device', self.format, '-output', filename+'.'+self.format, filename+'.gle']
-        print ' '.join(glecall)
-        call(glecall)
+        glecall = ['/usr/bin/gle', '-device', self.format, '-output', filename+'.'+self.format, filename+'.gle']
+        pid,stdin,stdout,stderr = spawn_async(glecall, flags=SPAWN_DO_NOT_REAP_CHILD)
+        return pid
 
 

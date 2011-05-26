@@ -2,6 +2,8 @@
 <interface>
   <requires lib="gtk+" version="2.24"/>
   <object class="GtkWindow" id="MainWindow">
+    <property name="width_request">800</property>
+    <property name="height_request">600</property>
     <property name="can_focus">False</property>
     <child>
       <object class="GtkVBox" id="box1">
@@ -309,6 +311,7 @@
                         <property name="label" translatable="yes">Save</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-save</property>
+                        <signal name="clicked" handler="WaveFormSave" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -323,6 +326,7 @@
                         <property name="label" translatable="yes">Refresh</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-refresh</property>
+                        <signal name="clicked" handler="refreshWaveForm" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -353,6 +357,36 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="toolbar_style">icons</property>
+                    <child>
+                      <object class="GtkToolButton" id="SpectrogramSave">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Save</property>
+                        <property name="use_underline">True</property>
+                        <property name="stock_id">gtk-save</property>
+                        <signal name="clicked" handler="SpectrogramSave" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkToolButton" id="SpectrogramRefresh">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Refresh</property>
+                        <property name="use_underline">True</property>
+                        <property name="stock_id">gtk-refresh</property>
+                        <signal name="clicked" handler="refreshSpectrogram" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="homogeneous">True</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
