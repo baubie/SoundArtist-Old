@@ -102,7 +102,11 @@ class SoundArtist:
 	    endtime = endtime / 1000.0
 	    msmode = False
 
-        pid = self.GLE.spectrogram(tmpname[1], self.wavfile, self.framerate, msmode=msmode, minX=starttime, maxX=endtime)
+	hzmode = True
+	if self.cbFreqAxis.get_active() == 1:
+	    hzmode = False
+
+        pid = self.GLE.spectrogram(tmpname[1], self.wavfile, self.framerate, msmode=msmode, hzmode=hzmode, minX=starttime, maxX=endtime)
         watch = child_watch_add(pid, self.updateSpectrogramImage, data=tmpname[1])
         self.clearEvents()
 
@@ -119,12 +123,20 @@ class SoundArtist:
 
         self.builder.get_object("WaveFormImage").clear()
         self.builder.get_object("SpectrogramImage").clear()
+
 	self.cbTimeAxis = gtk.combo_box_new_text()
         self.builder.get_object("boxTimeAxis").pack_start(self.cbTimeAxis)
         self.cbTimeAxis.append_text("Seconds (s)")
         self.cbTimeAxis.append_text("Milliseconds (ms)")
 	self.cbTimeAxis.set_active(0)
 	self.cbTimeAxis.show()
+
+	self.cbFreqAxis = gtk.combo_box_new_text()
+	self.builder.get_object("boxFrequencyAxis").pack_start(self.cbFreqAxis)
+	self.cbFreqAxis.append_text("Hz")
+	self.cbFreqAxis.append_text("kHz")
+	self.cbFreqAxis.set_active(0)
+	self.cbFreqAxis.show()
 
 
 if __name__ == "__main__":

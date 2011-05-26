@@ -27,6 +27,7 @@ class GLE:
             skip = int(floor(float(rawResolution)/self.resolution))
 	if skip < 1:
 	    skip = 1
+	skip = 1
 
 	timescale = 1
 	if msmode:
@@ -57,7 +58,6 @@ class GLE:
         s.append('nobox')
         s.append('x2axis off')
         s.append('y2axis off')
-        s.append('scale auto')
 
 	if msmode:
 	    s.append('xtitle "Time (ms)"')
@@ -118,11 +118,16 @@ class GLE:
 	if msmode:
 	    timescale = 1000
 
+	freqscale = 0.001
+	if hzmode:
+	    freqscale = 1
+
+
 	scale = 1
 	spec = transposed(spec)
 
         FILE = open(filename+'_SA_.z', 'w')
-	FILE.write('! nx '+str(len(spec[0]))+' ny '+str(len(spec)/scale)+' xmin 0 xmax '+str(timescale*len(wavfile_array)/float(framerate))+' ymin 0 ymax '+str(framerate/2.0)+"\n")
+	FILE.write('! nx '+str(len(spec[0]))+' ny '+str(len(spec)/scale)+' xmin 0 xmax '+str(timescale*len(wavfile_array)/float(framerate))+' ymin 0 ymax '+str(freqscale*framerate/2.0)+"\n")
 
 	maxval = -100
 	for y in range(0,len(spec),scale):
@@ -157,7 +162,6 @@ class GLE:
         s.append('nobox')
         s.append('x2axis off')
         s.append('y2axis off')
-        s.append('scale auto')
 	if msmode:
 	    s.append('xtitle "Time (ms)"')
 	else:
@@ -173,7 +177,7 @@ class GLE:
         s.append('yticks length -0.1')
         s.append('title ""')
 	s.append('xaxis min '+str(minX)+' max '+str(maxX))
-	s.append('yaxis min '+str(minY)+' max '+str(maxY))
+	s.append('yaxis min '+str(minY*freqscale)+' max '+str(maxY*freqscale))
         s.append('colormap "'+filename.rsplit('/')[-1]+'_SA_.z" 300 200 color')
         s.append('end graph')
 
