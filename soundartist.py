@@ -52,7 +52,7 @@ class SoundArtist:
             self.builder.get_object("lblDuration").set_label("Duration: "+str(float(len(self.wavfile))/self.framerate)+" s")
             chooser.destroy()
             self.clearEvents()
-            self.refreshWaveForm()
+#            self.refreshWaveForm()
             self.refreshSpectrogram()
         else:
             chooser.destroy()

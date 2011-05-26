@@ -2,14 +2,18 @@ from os import remove,access,F_OK,mkdir,rename
 from math import floor
 from glib import spawn_async, SPAWN_DO_NOT_REAP_CHILD
 from numpy import abs,fft,linspace
-from scipy.signal import flattop
+from scipy.signal import flattop,hamming
+
+def transposed(lists):
+   if not lists: return []
+   return map(lambda *row: list(row), *lists)
 
 class GLE:
 
     def __init__(self):
         self.format = 'png'
         self.width = 17
-        self.height = 6
+        self.height = 7
         self.resolution = 250.0
 
     
@@ -72,8 +76,8 @@ class GLE:
     # Coeff := 128
     def spectrogram(self, filename, wavfile, framerate, minX=None,maxX=None,minY=None,maxY=None):
 
-        increment = 64
-        nwindow =  64
+        increment = 128
+        nwindow =  256
         window = flattop(nwindow)
         nfft = nwindow
 
@@ -86,17 +90,34 @@ class GLE:
 
         numPoints = len(wavfile)
 
-        FILE = open(filename+'_SA_.dat', 'w')
+	spec = []
+
         for i in range(0,len(wavfile_array)-nwindow,increment):
             buf = wavfile_array[i:i+nwindow]
             N = nwindow
             X = abs(fft.fft(window*buf, nfft))
             f = linspace(0,framerate,N+1)[:N] 
             Nout = N/2 + 1
-            for point in range(Nout):
-                FILE.write(str(i/float(framerate))+" ")
-                FILE.write(str(f[point])+" ")
-                FILE.write(str(X[point])+"\n")
+	    spec.append(X[Nout:])
+
+	scale = 1
+	spec = transposed(spec)
+
+        FILE = open(filename+'_SA_.z', 'w')
+	FILE.write('! nx '+str(len(spec[0]))+' ny '+str(len(spec)/scale)+' xmin 0 xmax '+str(len(wavfile_array)/float(framerate))+' ymin 0 ymax '+str(framerate/2.0)+"\n")
+
+	maxval = -100
+	for y in range(0,len(spec),scale):
+	    for x in range(0,len(spec[y]),1):
+		if spec[y][x] > maxval:
+		    maxval = spec[y][x]
+
+	maxval = float(maxval)
+
+	for y in range(0,len(spec),scale):
+	    for x in range(0,len(spec[y]),1):
+                FILE.write(str(1-spec[len(spec)-y-1][x]/maxval)+" ")
+	    FILE.write("\n") 
         FILE.close()
 
 
@@ -105,10 +126,6 @@ class GLE:
         s.append('include "color.gle"')
         s.append('set font psh')
         s.append('set hei 0.4')
-        s.append('begin fitz')
-        s.append('data "'+filename.rsplit('/')[-1]+'_SA_.dat"')
-        s.append('ncontour 2')
-        s.append('end fitz')
         s.append('begin graph')
         s.append('nobox')
         s.append('x2axis off')
