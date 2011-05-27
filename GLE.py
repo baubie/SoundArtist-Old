@@ -16,8 +16,6 @@ class GLE:
         self.height = 7
         self.resolution = 250.0
 
-    
-
     def waveform(self, filename, wavfile, framerate, msmode=False, minX=None,maxX=None,minY=None,maxY=None):
 
         numPoints = len(wavfile)

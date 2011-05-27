@@ -5,6 +5,7 @@ from numpy import fromstring
 import tempfile
 from GLE import *
 from glib import child_watch_add
+from os import remove
 
 class SoundArtist:
 
@@ -12,8 +13,31 @@ class SoundArtist:
         cleantemp()
         gtk.main_quit()
 
-    def cleantemp(self):
-        folder = tempfile.gettempdir()
+    def cleanTemp(self,filename):
+	try:
+	    remove(filename)
+	except OSError,error:
+	    pass
+
+	try:
+	    remove(filename+"_SA_.z")
+	except OSError,error:
+	    pass
+
+	try:
+	    remove(filename+"_SA_.dat")
+	except OSError,error:
+	    pass
+
+	try:
+	    remove(filename+"_SA_.gle")
+	except OSError,error:
+	    pass
+
+	try:
+	    remove(filename+"_SA_.png")
+	except OSError,error:
+	    pass
 
     def quit(self, widget, data=None):
         gtk.main_quit()
@@ -54,8 +78,8 @@ class SoundArtist:
             self.builder.get_object("txtStart").set_text("0")
             self.builder.get_object("txtEnd").set_text(str(1000*float(len(self.wavfile))/self.framerate))
             self.clearEvents()
-            self.refreshWaveForm()
-            self.refreshSpectrogram()
+	    self.refreshWaveForm(data={"type":"preview"})
+            self.refreshSpectrogram(data={"type":"preview"})
         else:
             chooser.destroy()
 
@@ -68,9 +92,11 @@ class SoundArtist:
 
     def updateWaveFormImage(self, pid, condition, data=None):
         self.builder.get_object("WaveFormImage").set_from_file(data+"_SA_.png")
+	self.cleanTemp(data)
 
     def updateSpectrogramImage(self, pid, condition, data=None):
         self.builder.get_object("SpectrogramImage").set_from_file(data+"_SA_.png")
+	self.cleanTemp(data)
 
     def refreshWaveForm(self, widget=None, data=None):
         self.builder.get_object("WaveFormImage").set_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_LARGE_TOOLBAR)
@@ -85,7 +111,11 @@ class SoundArtist:
 	    endtime = endtime / 1000.0
 	    msmode = False
 
-        pid = self.GLE.waveform(tmpname[1], self.wavfile, self.framerate, msmode=msmode, minX=starttime, maxX=endtime)
+	gle = GLE()
+	if data == None or data["type"] == "preview":
+	    gle.format = 'png' 
+
+        pid = gle.waveform(tmpname[1], self.wavfile, self.framerate, msmode=msmode, minX=starttime, maxX=endtime)
         watch = child_watch_add(pid, self.updateWaveFormImage, data=tmpname[1])
         self.clearEvents()
 
@@ -106,14 +136,16 @@ class SoundArtist:
 	if self.cbFreqAxis.get_active() == 1:
 	    hzmode = False
 
-        pid = self.GLE.spectrogram(tmpname[1], self.wavfile, self.framerate, msmode=msmode, hzmode=hzmode, minX=starttime, maxX=endtime)
+	gle = GLE()
+	if data == None or data["type"] == "preview":
+	    gle.format = 'png' 
+
+        pid = gle.spectrogram(tmpname[1], self.wavfile, self.framerate, msmode=msmode, hzmode=hzmode, minX=starttime, maxX=endtime)
         watch = child_watch_add(pid, self.updateSpectrogramImage, data=tmpname[1])
         self.clearEvents()
 
 
     def __init__(self):
-
-        self.GLE = GLE()
 
         self.builder = gtk.Builder()
         self.builder.add_from_file("gui.glade")
