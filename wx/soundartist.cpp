@@ -15,5 +15,10 @@ bool MyApp::OnInit()
     return true;
 } 
 
+void MainWindow::OnQuit(wxCommandEvent& WXUNUSED(event))
+{
+    Close(true);
+}
+
 
 IMPLEMENT_APP(MyApp)
