@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
 PROJECT(SoundArtist CXX)
 FIND_PACKAGE(wxWidgets COMPONENTS core base adv propgrid REQUIRED)
 INCLUDE( ${wxWidgets_USE_FILE} )
-SET(SRCS soundartist.cpp gui.cpp)
+SET(SRCS soundartist.cpp SoundArtistGUI.cpp mainwindow.cpp)
 
 IF (APPLE) 
     ADD_EXECUTABLE(soundartist MACOSX_BUNDLE ${SRCS} ) 

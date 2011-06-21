@@ -1,24 +1,19 @@
-#include "wx/wx.h" 
-#include "gui.h"
+#include "mainwindow.h"
 
 class MyApp: public wxApp
 {
-    virtual bool OnInit();
+    public:
+	virtual bool OnInit();
 };
 
 bool MyApp::OnInit()
 {
-    MainWindow *mw = new MainWindow(NULL, wxID_ANY, _("Sound Artist"), wxPoint(50, 50),
-                                  wxSize(850,540) );
+    mainwindow *mw = new mainwindow(NULL);
+
     mw->Show(true);
     SetTopWindow(mw);
     return true;
 } 
-
-void MainWindow::OnQuit(wxCommandEvent& WXUNUSED(event))
-{
-    Close(true);
-}
 
 
 IMPLEMENT_APP(MyApp)
