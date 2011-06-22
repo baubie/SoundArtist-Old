@@ -1,9 +1,12 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
 
 PROJECT(SoundArtist CXX)
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_MODULE_PATH}")
+
 FIND_PACKAGE(wxWidgets COMPONENTS core base adv propgrid REQUIRED)
+FIND_PACKAGE(sndfile REQUIRED)
 INCLUDE( ${wxWidgets_USE_FILE} )
-SET(SRCS soundartist.cpp SoundArtistGUI.cpp mainwindow.cpp)
+SET(SRCS soundartist.cpp wavread.cpp SoundArtistGUI.cpp SoundArtistMainWindow.cpp)
 
 IF (APPLE) 
     ADD_EXECUTABLE(soundartist MACOSX_BUNDLE ${SRCS} ) 
@@ -12,4 +15,4 @@ ELSE (APPLE)
 ENDIF (APPLE) 
 
 
-TARGET_LINK_LIBRARIES(soundartist ${wxWidgets_LIBRARIES})
+TARGET_LINK_LIBRARIES(soundartist ${wxWidgets_LIBRARIES} ${SNDFILE_LIBRARY})

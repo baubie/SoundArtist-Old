@@ -1,14 +1,18 @@
-#include "mainwindow.h"
+#include <wx/app.h>
+#include "SoundArtistMainWindow.h"
 
-class MyApp: public wxApp
+class SoundArtist : public wxApp
 {
     public:
-	virtual bool OnInit();
+		virtual bool OnInit();
+		
+		WavRead m_wr;
+	
 };
 
-bool MyApp::OnInit()
+bool SoundArtist::OnInit()
 {
-    mainwindow *mw = new mainwindow(NULL);
+    SoundArtistMainWindow *mw = new SoundArtistMainWindow(NULL);
 
     mw->Show(true);
     SetTopWindow(mw);
@@ -16,4 +20,4 @@ bool MyApp::OnInit()
 } 
 
 
-IMPLEMENT_APP(MyApp)
+IMPLEMENT_APP(SoundArtist)
