@@ -137,7 +137,7 @@
                         <property name="checked">0</property>
                         <property name="enabled">1</property>
                         <property name="help"></property>
-                        <property name="id">wxID_ANY</property>
+                        <property name="id">wxID_OPEN</property>
                         <property name="kind">wxITEM_NORMAL</property>
                         <property name="label">Open</property>
                         <property name="name">m_menuOpen</property>
@@ -152,7 +152,7 @@
                         <property name="checked">0</property>
                         <property name="enabled">1</property>
                         <property name="help"></property>
-                        <property name="id">wxID_ANY</property>
+                        <property name="id">wxID_EXIT</property>
                         <property name="kind">wxITEM_NORMAL</property>
                         <property name="label">Quit</property>
                         <property name="name">m_menuQuit</property>
@@ -811,12 +811,12 @@
                                         <event name="OnMotion"></event>
                                         <event name="OnMouseEvents"></event>
                                         <event name="OnMouseWheel"></event>
-                                        <event name="OnPaint"></event>
+                                        <event name="OnPaint">OnSpectrogramPaint</event>
                                         <event name="OnRightDClick"></event>
                                         <event name="OnRightDown"></event>
                                         <event name="OnRightUp"></event>
                                         <event name="OnSetFocus"></event>
-                                        <event name="OnSize"></event>
+                                        <event name="OnSize">OnSpectrogramSize</event>
                                         <event name="OnUpdateUI"></event>
                                     </object>
                                 </object>

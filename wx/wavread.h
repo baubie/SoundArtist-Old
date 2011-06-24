@@ -4,6 +4,7 @@
 #include <wx/filename.h>
 #include <wx/utils.h>
 #include <sndfile.h>
+#include <fftw3.h>
 
 struct WR_WFINFO {
 	float quality;
@@ -29,11 +30,17 @@ struct WR_SPECINFO {
 		hz,
 		khz
 	} freqaxis;
+	enum {
+		none,
+		flattop,
+	} window;
 	float lwidth;
 	float width;
 	float height;
 	float start;
 	float end;
+	int nwindow;
+	int increment;
 	bool color;
 };
 
@@ -51,10 +58,13 @@ class WavRead {
 		int seekable;
 
 		// Graphing Functions
-		bool makeWaveForm(wxFileName filename, WR_WFINFO* info);
+		bool makeWaveForm(wxFileName filename, WR_WFINFO* wfinfo);
+		bool makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo);
 
 	private:
 		wxFileName m_filename;
+		void window_flattop(const int N, float* window);
+		void window_none(const int N, float* window);
 
 };
 

@@ -3,3 +3,4 @@
 Requirements
 - wxWidgets 2.9.1 or higher
 - libsndfile
+- fftw
