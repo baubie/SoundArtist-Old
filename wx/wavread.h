@@ -39,6 +39,7 @@ struct WR_SPECINFO {
 	float height;
 	float start;
 	float end;
+	float floor;
 	int nwindow;
 	int increment;
 	bool color;

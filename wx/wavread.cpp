@@ -58,6 +58,10 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo)
 	 * Create the Spectrogram data file.
 	 */
 
+	// Make sure our settings are valid
+    if (specinfo->floor < 0) specinfo->floor = 0;	
+    if (specinfo->floor > 1) specinfo->floor = 1;
+
 	wxFile dataf(filename.GetFullPath()<<".z", wxFile::write);
 	if (!dataf.IsOpened()) return false;
 
@@ -90,13 +94,13 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo)
 
 
 	int nx = floor((frames-N)/specinfo->increment)+1;
-	int ny = N;
+	int ny = N/2.0+1;
 	dataf.Write("! nx ");
 	dataf.Write(wxString::Format("%i", nx));
 	dataf.Write(" ny ");
 	dataf.Write(wxString::Format("%i", ny)); 
 	dataf.Write(" xmin 0 xmax ");
-	dataf.Write(wxString::Format("%f", (float)timescale*num/frames));
+	dataf.Write(wxString::Format("%f", (float)timescale*frames/samplerate));
 	dataf.Write(" ymin 0 ymax ");
 	dataf.Write(wxString::Format("%f", freqscale*samplerate/2.0));
 	dataf.Write("\n");
@@ -104,22 +108,22 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo)
 	// Write spectrogram data to file
 	
 	// Create out 2D array on the heap (due to size)
-	float **spec = new float*[nx];
-	for (int j = 0; j < nx; ++j) spec[j] = new float[ny];
+	double **spec = new double*[nx];
+	for (int j = 0; j < nx; ++j) spec[j] = new double[ny];
 
 	int curX = 0;
-	double maxVal = 1;
+	double maxVal = 0.0001;
 	double *in;
 	double *out;
 	in = (double*) fftw_malloc(sizeof(double)*N);
 	out = (double*) fftw_malloc(sizeof(double)*N);
-	fftw_plan p = fftw_plan_r2r_1d(N, in, out, FFTW_R2HC, FFTW_ESTIMATE);
+	fftw_plan p = fftw_plan_r2r_1d(N, in, out, FFTW_DHT, FFTW_ESTIMATE);
+
 	for (int i = 0; i < info.frames-N; i+=specinfo->increment)
 	{
 		for (int j = 0; j < N; ++j)
 		{
 			in[j] = buf[i+j]*window[j];	
-			in[j] = sin((i+j)*100*3.14159265)*window[j];
 		}
 
 		fftw_execute(p);
@@ -127,7 +131,8 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo)
 		// Save results
 		for (int j = 0; j < ny; ++j)
 		{
-			spec[curX][j] = 10*log10(out[j]*out[j]);
+			double val = 10*log10(out[j]*out[j]);
+			spec[curX][j] = val;
 			maxVal = maxVal < spec[curX][j] ? spec[curX][j] : maxVal;
 		}
 
@@ -138,9 +143,13 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo)
 	fftw_free(out);
 
 	// Write the data to file
+	double floor = 1-specinfo->floor;
 	for (int y = 0; y < ny; ++y) {
 		for (int x = 0; x < nx; ++x) {
-			dataf.Write(wxString::Format("%f ", spec[x][y]/maxVal));
+			double val = 1-spec[x][y]/maxVal;
+			if (val > floor) val = 1;
+			val = (val-floor)/(floor);
+			dataf.Write(wxString::Format("%f ", val));
 		}
 		dataf.Write("\n");
 	}
@@ -190,8 +199,6 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo)
 
 	// Generate PNG file
 	wxShell(wxString("gle -d png ") << filename.GetFullPath() << ".gle");	
-
-	wxPuts(wxString::Format("%f",3.14159265));
 
 	return true;
 }
