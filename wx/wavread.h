@@ -59,8 +59,8 @@ class WavRead {
 		int seekable;
 
 		// Graphing Functions
-		bool makeWaveForm(wxFileName filename, WR_WFINFO* wfinfo);
-		bool makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo);
+		bool makeWaveForm(wxFileName filename, WR_WFINFO* wfinfo, bool pdf);
+		bool makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool pdf);
 
 	private:
 		wxFileName m_filename;
