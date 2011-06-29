@@ -197,7 +197,17 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool p
 	glef.Write(wxString::Format("xaxis min %f max %f", specinfo->start*timescale/1000, specinfo->end*timescale/1000)); glef.Write("\n");
 	glef.Write(wxString::Format("yaxis min %f max %f", 0.0, freqscale*samplerate/2)); glef.Write("\n");
 
-    glef.Write(wxString("colormap \"") << filename.GetFullName() << ".z\" "<< nx << " " << ny << " color"); glef.Write("\n");
+
+	switch (specinfo->palette)
+	{
+		case 100:
+			glef.Write(wxString("colormap \"") << filename.GetFullName() << ".z\" "<< nx << " " << ny << " color"); glef.Write("\n");
+			break;
+
+		default:
+			glef.Write(wxString("colormap \"") << filename.GetFullName() << ".z\" "<< nx << " " << ny); glef.Write("\n");
+			break;
+	}
 
 	glef.Write("end graph"); glef.Write("\n");
 	glef.Close();

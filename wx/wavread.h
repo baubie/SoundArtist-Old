@@ -43,6 +43,7 @@ struct WR_SPECINFO {
 	int nwindow;
 	int increment;
 	bool color;
+	int palette;
 };
 
 
