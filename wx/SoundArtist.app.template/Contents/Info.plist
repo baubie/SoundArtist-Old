@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Sound Artist</string>
 	<key>CFBundleExecutable</key>
-	<string>soundartist</string>
+	<string>Sound Artist</string>
 	<key>CFBundleGetInfoString</key>
 	<string>Sound Artist 1.0.0 Copyright 2011 Brandon Aubie</string>
 	<key>CFBundleIconFile</key>

@@ -26,7 +26,8 @@ IF(APPLE)
 ADD_CUSTOM_COMMAND(TARGET soundartist POST_BUILD
 	COMMAND rm -rf ${BUNDLE_LOCATION}
 	COMMAND cp -r SoundArtist.app.template ${BUNDLE_LOCATION}
-	COMMAND cp soundartist ${BUNDLE_LOCATION}/Contents/MacOS
+	COMMAND mkdir ${BUNDLE_LOCATION}/Contents/MacOS
+	COMMAND cp soundartist ${BUNDLE_LOCATION}/Contents/MacOS/Sound\ Artist
     DEPENDS soundartist)
 ENDIF(APPLE)
 
