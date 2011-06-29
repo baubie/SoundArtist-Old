@@ -18,11 +18,15 @@ INCLUDE_DIRECTORIES (${FFTW_INCLUDE_DIR} ${SNDFILE_INCLUDE_DIR})
 SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 SET(SRCS soundartist.cpp wavread.cpp SoundArtistGUI.cpp SoundArtistMainWindow.cpp)
 
-IF (APPLE) 
-    ADD_EXECUTABLE(soundartist MACOSX_BUNDLE ${SRCS} ) 
-ELSE (APPLE) 
-    ADD_EXECUTABLE(soundartist ${SRCS} ) 
-ENDIF (APPLE) 
-
-
+ADD_EXECUTABLE(soundartist ${SRCS} ) 
 TARGET_LINK_LIBRARIES(soundartist ${wxWidgets_LIBRARIES} ${SNDFILE_LIBRARY} ${FFTW_LIBRARIES})
+
+IF(APPLE)
+	SET(BUNDLE_LOCATION SoundArtist.app)
+ADD_CUSTOM_COMMAND(TARGET soundartist POST_BUILD
+	COMMAND rm -rf ${BUNDLE_LOCATION}
+	COMMAND cp -r SoundArtist.app.template ${BUNDLE_LOCATION}
+	COMMAND cp soundartist ${BUNDLE_LOCATION}/Contents/MacOS
+    DEPENDS soundartist)
+ENDIF(APPLE)
+
