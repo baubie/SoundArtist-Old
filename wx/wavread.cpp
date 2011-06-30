@@ -50,6 +50,42 @@ void WavRead::window_flattop(const int N, float* window)
 	}
 }
 
+void WavRead::window_cosine(const int N, float* window)
+{
+#define PI 3.14159265
+	for(int i=0; i < N; ++i) {
+		window[i] = sin(PI*i/(N-1)); 
+	}
+}
+
+void WavRead::window_hann(const int N, float* window)
+{
+#define PI 3.14159265
+	for(int i=0; i < N; ++i) {
+		window[i] = 0.5 * (1 - cos((2*PI*i)/(N-1)));
+	}
+}
+
+void WavRead::window_hamming(const int N, float* window)
+{
+#define PI 3.14159265
+	for(int i=0; i < N; ++i) {
+		window[i] = 0.54 - 0.46*cos(2*PI*i/(N-1)); 
+	}
+}
+
+void WavRead::window_blackman(const int N, float* window)
+{
+#define PI 3.14159265
+#define alpha 0.16
+#define alpha0 (1-alpha)/2
+#define alpha1 0.5
+#define alpha2 alpha/2
+	for(int i=0; i < N; ++i) {
+		window[i] = alpha0 - alpha1*cos(2*PI*i/(N-1))+alpha2*cos(4*PI*i/(N-1));
+	}
+}
+
 bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool pdf)
 {
 	if (!this->fileOpen()) return false;
@@ -91,6 +127,14 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool p
 		window_none(N, window);
 	} else if (specinfo->window == WR_SPECINFO::flattop) {
 		window_flattop(N, window);
+	} else if (specinfo->window == WR_SPECINFO::hamming) {
+		window_hamming(N, window);
+	} else if (specinfo->window == WR_SPECINFO::hann) {
+		window_hann(N, window);
+	} else if (specinfo->window == WR_SPECINFO::cosine) {
+		window_cosine(N, window);
+	} else if (specinfo->window == WR_SPECINFO::blackman) {
+		window_blackman(N, window);
 	}
 
 
@@ -100,8 +144,11 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool p
 	dataf.Write(wxString::Format("%i", nx));
 	dataf.Write(" ny ");
 	dataf.Write(wxString::Format("%i", ny)); 
-	dataf.Write(" xmin 0 xmax ");
-	dataf.Write(wxString::Format("%f", (float)timescale*frames/samplerate));
+	if (specinfo->startatzero) {
+		dataf.Write(wxString::Format(" xmin %f xmax %f", (float)-1.0*timescale*specinfo->start/1000, (float)timescale*((float)frames/(float)samplerate) - specinfo->start*timescale/1000));
+	} else {
+		dataf.Write(wxString::Format(" xmin 0 xmax %f", (float)timescale*frames/samplerate));
+	}
 	dataf.Write(" ymin 0 ymax ");
 	dataf.Write(wxString::Format("%f", freqscale*samplerate/2.0));
 	dataf.Write("\n");
@@ -173,8 +220,10 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool p
 	glef.Write(wxString("size ") << wxString::Format(wxT("%f"), specinfo->width) << " " << wxString::Format(wxT("%f"), specinfo->height) << "\n");
 	glef.Write("include \"color.gle\""); glef.Write("\n");
 	glef.Write("set font psh"); glef.Write("\n");
-	glef.Write("set hei 0.4"); glef.Write("\n");
+	glef.Write(wxString("set hei ") << specinfo->fontsize); glef.Write("\n");
+	glef.Write(wxString("set lwidth ") << specinfo->lwidth); glef.Write("\n");
 	glef.Write("begin graph"); glef.Write("\n");
+	glef.Write("vscale auto"); glef.Write("\n");
 	glef.Write("nobox"); glef.Write("\n");
 	glef.Write("x2axis off"); glef.Write("\n");
 	glef.Write("y2axis off"); glef.Write("\n");
@@ -194,22 +243,39 @@ bool WavRead::makeSpectrogram(wxFileName filename, WR_SPECINFO* specinfo, bool p
 	glef.Write("xticks length -0.1"); glef.Write("\n");
 	glef.Write("yticks length -0.1"); glef.Write("\n");
 	glef.Write("title \"\""); glef.Write("\n");
-	glef.Write(wxString::Format("xaxis min %f max %f", specinfo->start*timescale/1000, specinfo->end*timescale/1000)); glef.Write("\n");
+
+	if (specinfo->startatzero) {
+		glef.Write(wxString::Format("xaxis min %f max %f", 0.0, (specinfo->end-specinfo->start)*timescale/1000)); glef.Write("\n");
+	} else {
+		glef.Write(wxString::Format("xaxis min %f max %f", specinfo->start*timescale/1000, specinfo->end*timescale/1000)); glef.Write("\n");
+	}
+
 	glef.Write(wxString::Format("yaxis min %f max %f", 0.0, freqscale*samplerate/2)); glef.Write("\n");
 
 
+	wxString scalebar_palette;
 	switch (specinfo->palette)
 	{
 		case 100:
+			scalebar_palette = "color";
 			glef.Write(wxString("colormap \"") << filename.GetFullName() << ".z\" "<< nx << " " << ny << " color"); glef.Write("\n");
 			break;
 
 		default:
+			scalebar_palette = "grayscale";
 			glef.Write(wxString("colormap \"") << filename.GetFullName() << ".z\" "<< nx << " " << ny); glef.Write("\n");
 			break;
 	}
 
 	glef.Write("end graph"); glef.Write("\n");
+
+
+	if (specinfo->scalebar)
+	{
+		glef.Write("amove xg(xgmax)+0.5 yg(ygmin)\n");
+		glef.Write(wxString::Format("color_range_vertical zmin 0 zmax 1 zstep 50 palette \"%s\" pixels 1500 format \"fix 0\"\n", scalebar_palette));
+	}
+
 	glef.Close();
 
 	if (!pdf)
@@ -248,9 +314,16 @@ bool WavRead::makeWaveForm(wxFileName filename, WR_WFINFO* wfinfo, bool pdf)
 	int timescale = 1;
 	if (wfinfo->timeaxis == WR_WFINFO::milliseconds) timescale = 1000;
 	// Write wavefile data to file
+	
 	for (int i = 0; i < info.frames; i+=(int)(1.0/wfinfo->quality))
 	{
-		float t = (float)(timescale*(float)i/(float)info.samplerate);
+		float t;
+		if (wfinfo->startatzero)
+		{
+			t = (float)(timescale*(float)i/(float)info.samplerate) - wfinfo->start*timescale/1000;
+		} else {
+			t = (float)(timescale*(float)i/(float)info.samplerate);
+		}
 		dataf.Write(wxString::Format(wxT("%f"), t) 
 									 << "," 
 									 << wxString::Format(wxT("%i"),buf[i])<<"\n");
@@ -265,8 +338,10 @@ bool WavRead::makeWaveForm(wxFileName filename, WR_WFINFO* wfinfo, bool pdf)
 
 	glef.Write(wxString("size ") << wxString::Format(wxT("%f"), wfinfo->width) << " " << wxString::Format(wxT("%f"), wfinfo->height) << "\n");
 	glef.Write("set font psh"); glef.Write("\n");
-	glef.Write("set hei 0.4"); glef.Write("\n");
+	glef.Write(wxString("set hei ") << wfinfo->fontsize); glef.Write("\n");
+	glef.Write(wxString("set lwidth ") << wfinfo->lwidth); glef.Write("\n");
 	glef.Write("begin graph"); glef.Write("\n");
+	glef.Write("vscale auto"); glef.Write("\n");
 	glef.Write("nobox"); glef.Write("\n");
 	glef.Write("x2axis off"); glef.Write("\n");
 	glef.Write("y2axis off"); glef.Write("\n");
@@ -287,11 +362,16 @@ bool WavRead::makeWaveForm(wxFileName filename, WR_WFINFO* wfinfo, bool pdf)
 	glef.Write("xticks length -0.1"); glef.Write("\n");
 	glef.Write("yticks length -0.1"); glef.Write("\n");
 	glef.Write("title \"\""); glef.Write("\n");
-	glef.Write(wxString::Format("xaxis min %f max %f", wfinfo->start*timescale/1000, wfinfo->end*timescale/1000)); glef.Write("\n");
+	if (wfinfo->startatzero) {
+		glef.Write(wxString::Format("xaxis min %f max %f", 0.0, (wfinfo->end-wfinfo->start)*timescale/1000)); glef.Write("\n");
+	} else {
+		glef.Write(wxString::Format("xaxis min %f max %f", wfinfo->start*timescale/1000, wfinfo->end*timescale/1000)); glef.Write("\n");
+	}
+
 
 	glef.Write(wxString("data \"") << filename.GetFullName() << ".dat\""); glef.Write("\n");
 
-	glef.Write("d1 line"); glef.Write("\n");
+	glef.Write(wxString("d1 line lwidth ") << wfinfo->wflwidth); glef.Write("\n");
 	glef.Write("end graph"); glef.Write("\n");
 	glef.Close();
 

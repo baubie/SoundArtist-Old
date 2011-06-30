@@ -14,10 +14,13 @@ struct WR_WFINFO {
 	} timeaxis;
 	bool ylabels;
 	float lwidth;
+	float wflwidth; 
+	float fontsize;
 	float width;
 	float height;
 	float start;
 	float end;
+	bool startatzero;
 };
 
 struct WR_SPECINFO {
@@ -33,8 +36,13 @@ struct WR_SPECINFO {
 	enum {
 		none,
 		flattop,
+		hann,
+		hamming,
+		cosine,
+		blackman
 	} window;
 	float lwidth;
+	float fontsize;
 	float width;
 	float height;
 	float start;
@@ -44,6 +52,8 @@ struct WR_SPECINFO {
 	int increment;
 	bool color;
 	int palette;
+	bool startatzero;
+	bool scalebar;
 };
 
 
@@ -66,6 +76,10 @@ class WavRead {
 	private:
 		wxFileName m_filename;
 		void window_flattop(const int N, float* window);
+		void window_hann(const int N, float* window);
+		void window_hamming(const int N, float* window);
+		void window_cosine(const int N, float* window);
+		void window_blackman(const int N, float* window);
 		void window_none(const int N, float* window);
 
 };

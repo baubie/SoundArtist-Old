@@ -37,7 +37,7 @@
             <property name="minimum_size"></property>
             <property name="name">MainWindow</property>
             <property name="pos"></property>
-            <property name="size">800,600</property>
+            <property name="size">900,750</property>
             <property name="style">wxDEFAULT_FRAME_STYLE</property>
             <property name="subclass"></property>
             <property name="title">Sound Artist</property>
