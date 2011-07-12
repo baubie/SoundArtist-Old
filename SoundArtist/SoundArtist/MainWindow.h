@@ -68,7 +68,7 @@
     NSPopUpButton *fftPoints;    
     NSTextField *fftOverlap;    
     NSSlider *spectrogramFloor;    
-
+    NSPopUpButton *spectrogramPalette;
 }
 
 @property (nonatomic, retain) IBOutlet NSWindow *splashWindow;
@@ -120,6 +120,7 @@
 @property (nonatomic, retain) IBOutlet NSPopUpButton *fftPoints;
 @property (nonatomic, retain) IBOutlet NSSlider *spectrogramFloor;
 @property (nonatomic, retain) IBOutlet NSTextField *fftOverlap;
+@property (nonatomic, retain) IBOutlet NSPopUpButton *spectrogramPalette;
 
 
 

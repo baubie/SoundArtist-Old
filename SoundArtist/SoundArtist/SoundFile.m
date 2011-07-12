@@ -132,9 +132,8 @@
     
 	// Read in the sound file
 	int *buf;
-	int num;
 	buf = (int *) malloc((int)m_info.frames*sizeof(int));
-	num = (int)sf_read_int(sf,buf,(int)m_info.frames);
+    sf_read_int(sf,buf,(int)m_info.frames);    
 	sf_close(sf);
 
     
@@ -174,7 +173,17 @@
 	// Write spectrogram data to file
 	
 	// Create out 2D array on the heap (due to size)
-    double spec[nx][ny];
+    
+    double **spec;
+    spec = malloc(nx * sizeof(double *));
+    for (int i = 0; i < nx; ++i) {
+        spec[i] = malloc(ny * sizeof(double));
+    }
+    
+    // Initialize array
+    for (int i = 0; i < nx; ++i)
+        for (int j = 0; j < ny; ++j)
+            spec[i][j] = 0;
        
 	int curX = 0;
 	double maxVal = 0.0001;
@@ -211,8 +220,9 @@
 	double floor = 1-specinfo->floor;
 	for (int y = 0; y < ny; ++y) {
 		for (int x = 0; x < nx; ++x) {
-			double val = 1-spec[x][y]/maxVal;
-            
+   
+            double val = 1-spec[x][y]/maxVal;
+     
 			// This is our floor function.  Right now we shoot everything to 1.
 			// Should have something more gradual.
 			if (val > floor) val = 1;
@@ -223,9 +233,15 @@
         [data appendString:@"\n"];
 	}
 	free(buf);
+    for (int i = 0; i < nx; ++i) {
+        free(spec[i]);
+    }
+    free(spec);
+    
+    
     NSError *error;
     [data writeToFile:zFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
-     
+    [data release]; 
     
     
 	// Create the GLE file.
@@ -273,7 +289,7 @@
 	NSString* scalebar_palette;
 	switch (specinfo->palette)
 	{
-		case 100:
+		case 1:
 			scalebar_palette = [NSString stringWithString:@"color"];
             [gle appendFormat:@"colormap \"%@\" %i %i color\n", zFilename, nx, ny];
 			break;
@@ -286,15 +302,16 @@
     
     [gle appendString:@"end graph\n"];   
     
-    /*
+    
 	if (specinfo->scalebar)
 	{
-		glef.Write("amove xg(xgmax)+0.5 yg(ygmin)\n");
-		glef.Write(wxString::Format("color_range_vertical zmin 0 zmax 1 zstep 50 palette \"%s\" pixels 1500 format \"fix 0\"\n", scalebar_palette));
+        [gle appendString:@"amove xg(xgmax)+0.5 yg(ygmin)\n"];
+		[gle appendFormat:@"color_range_vertical zmin 0 zmax 1 zstep 50 palette \"%@\" pixels 1500 format \"fix 0\"\n", scalebar_palette];
 	}
-    */
+    
     
     [gle writeToFile:gleFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    [gle release];
     
     NSTask *gleProcess;
     gleProcess = [[NSTask alloc] init];    
@@ -304,6 +321,10 @@
     [gleProcess launch];
     [gleProcess waitUntilExit];
     [gleProcess release];
+    
+    [gleFilename release];
+    [zFilename release];
+    
     
 	return true;
 
@@ -318,9 +339,8 @@
     
 	// Read in the sound file
 	int *buf;
-	int num;
 	buf = (int *) malloc((int)m_info.frames*sizeof(int));
-	num = (int)sf_read_int(sf,buf,(int)m_info.frames);
+    sf_read_int(sf,buf,(int)m_info.frames);    
 	sf_close(sf);
     
 	int timescale = 1;
@@ -344,7 +364,7 @@
 	free(buf);
     NSError *error;
     [data writeToFile:dataFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
-    
+    [data release];
     
 	/*
 	 * Create the GLE file.
@@ -393,16 +413,23 @@
     [gle appendString:@"end graph\n"];
 
     [gle writeToFile:gleFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
-
+    [gle release];
+    
     NSTask *gleProcess;
     gleProcess = [[NSTask alloc] init];    
     [gleProcess setLaunchPath:@"/usr/bin/gle"];
     [gleProcess setArguments:
      [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
+    
     [gleProcess launch];
     [gleProcess waitUntilExit];
+    
+        
     [gleProcess release];
         
+    [gleFilename release];
+    [dataFilename release];
+    
     return true;
 }
 

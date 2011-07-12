@@ -58,6 +58,7 @@
 @synthesize fftPoints;
 @synthesize fftOverlap;
 @synthesize spectrogramFloor;
+@synthesize spectrogramPalette;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -153,6 +154,11 @@
         [[NSFileManager defaultManager] removeItemAtPath:dataFilename error:&error];
         [[NSFileManager defaultManager] removeItemAtPath:gleFilename error:&error];
         [[NSFileManager defaultManager] removeItemAtPath:pdfFilename error:&error];
+        
+        [pdfFilename release];
+        [dataFilename release];
+        [gleFilename release];
+        
     }
     [refreshWaveformButton setEnabled:YES];
 
@@ -160,7 +166,7 @@
     if (imagesReloading == 0) {
         [waitMessage setHidden:YES];
     }
-    
+    [sf release];
 }
 
 
@@ -216,7 +222,9 @@
         case 5:
             specinfo.window = Blackman;
             break;
-    }     
+    } 
+    
+    specinfo.palette = (int)[spectrogramPalette indexOfSelectedItem];
         
     specinfo.nwindow = [[[fftPoints selectedItem] title] intValue];
     float overlap = 0.01*[fftOverlap floatValue];
@@ -235,6 +243,8 @@
     specinfo.fontsize = [fontSize floatValue];
     specinfo.floor = [spectrogramFloor floatValue];
     
+    specinfo.scalebar = false;
+    
     SoundFile *sf = [[SoundFile alloc] init];
     
     if ([sf openFile:m_filename])
@@ -250,6 +260,7 @@
         [spectrogramView setImage:pdf];
         [pdf release];
                
+        
         if (pId == exportSpectrogram) {
             
             NSSavePanel *save = [NSSavePanel savePanel];
@@ -270,12 +281,17 @@
         [[NSFileManager defaultManager] removeItemAtPath:dataFilename error:&error];
         [[NSFileManager defaultManager] removeItemAtPath:gleFilename error:&error];
         [[NSFileManager defaultManager] removeItemAtPath:pdfFilename error:&error];
+        [pdfFilename release];
+        [dataFilename release];
+        [gleFilename release];
+        
     }
     [refreshSpectrogramButton setEnabled:YES];    
     imagesReloading--;
     if (imagesReloading == 0) {
         [waitMessage setHidden:YES];
     }
+    [sf release];
 }
 
 - (IBAction)openDocument: (id) pID {
