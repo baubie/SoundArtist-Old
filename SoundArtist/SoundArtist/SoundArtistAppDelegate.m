@@ -16,6 +16,29 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     windowController = [window delegate];
+    
+    // Setup temporary folders
+    NSString *tempDirectoryTemplate =
+    [NSTemporaryDirectory() stringByAppendingPathComponent:@"soundartist.XXXXXX"];
+    const char *tempDirectoryTemplateCString =
+    [tempDirectoryTemplate fileSystemRepresentation];
+    char *tempDirectoryNameCString =
+    (char *)malloc(strlen(tempDirectoryTemplateCString) + 1);
+    strcpy(tempDirectoryNameCString, tempDirectoryTemplateCString);
+    
+    char *result = mkdtemp(tempDirectoryNameCString);
+    if (!result)
+    {
+        // handle directory creation failure
+    }
+    NSString *tempDirectoryPath =
+    [[NSFileManager defaultManager]
+     stringWithFileSystemRepresentation:tempDirectoryNameCString
+     length:strlen(result)];
+    free(tempDirectoryNameCString);
+    
+    [windowController setTempDirectory:tempDirectoryPath];
+    
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
