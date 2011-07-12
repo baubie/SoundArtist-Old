@@ -12,9 +12,68 @@
 @interface MainWindow : NSWindowController <NSWindowDelegate> {
 @private
     
+    int imagesReloading;
+    
+    NSWindow* splashWindow;
+    
+    NSTextField* waitMessage;
+    
+    NSView* mainView;
+    
     NSString* m_filename;
+    
+    NSString* tempDirectory;
+    
+    NSPanel *commonPropertiesPanel;
+    NSPanel *waveformPropertiesPanel;
+    NSPanel *spectrogramPropertiesPanel;
+    
+    NSMenuItem *commonPropertiesMenuItem;
+    NSMenuItem *waveformPropertiesMenuItem;
+    NSMenuItem *spectrogramPropertiesMenuItem;
+    
+    NSMenuItem *exportWaveform;
+    NSMenuItem *exportSpectrogram;
+    
+    NSToolbarItem *refreshWaveformButton;
+    NSToolbarItem *refreshSpectrogramButton;
+    
+    NSTextFieldCell *sampleRate;
+    NSTextFieldCell *frames;
+    NSTextFieldCell *duration;
+    
+    NSImageView *waveformView;
+    NSImageView *spectrogramView;
+    
+    
+    //Common
+    NSPopUpButton *timeAxis;
+    NSTextField *timeStart;
+    NSTextField *timeEnd;
+    NSButton *timeShiftToZero;
+    NSTextField *lineWidth;
+    NSTextField *fontSize;
+    
+    //Waveform
+    NSSlider *waveformQuality;
+    NSTextField *waveformWidth;
+    NSTextField *waveformHeight;
+    NSTextField *waveformLineWidth;
+    
+    //Spectrogram
+    NSTextField *spectrogramWidth;
+    NSTextField *spectrogramHeight;
+    NSPopUpButton *frequencyAxis;
+    NSPopUpButton *fftWindow;
+    NSPopUpButton *fftPoints;    
+    NSTextField *fftOverlap;    
+    NSSlider *spectrogramFloor;    
 
 }
+
+@property (nonatomic, retain) IBOutlet NSWindow *splashWindow;
+@property (nonatomic, retain) IBOutlet NSView *mainView;
+@property (nonatomic, retain) IBOutlet NSTextField* waitMessage;
 
 @property (retain) NSString* tempDirectory;
 
@@ -25,6 +84,8 @@
 @property (nonatomic, retain) IBOutlet NSMenuItem *commonPropertiesMenuItem;
 @property (nonatomic, retain) IBOutlet NSMenuItem *waveformPropertiesMenuItem;
 @property (nonatomic, retain) IBOutlet NSMenuItem *spectrogramPropertiesMenuItem;
+@property (nonatomic, retain) IBOutlet NSMenuItem *exportWaveform;
+@property (nonatomic, retain) IBOutlet NSMenuItem *exportSpectrogram;
 
 @property (nonatomic, retain) IBOutlet NSToolbarItem *refreshWaveformButton;
 @property (nonatomic, retain) IBOutlet NSToolbarItem *refreshSpectrogramButton;
@@ -56,7 +117,9 @@
 @property (nonatomic, retain) IBOutlet NSTextField *spectrogramHeight;
 @property (nonatomic, retain) IBOutlet NSPopUpButton *frequencyAxis;
 @property (nonatomic, retain) IBOutlet NSPopUpButton *fftWindow;
+@property (nonatomic, retain) IBOutlet NSPopUpButton *fftPoints;
 @property (nonatomic, retain) IBOutlet NSSlider *spectrogramFloor;
+@property (nonatomic, retain) IBOutlet NSTextField *fftOverlap;
 
 
 
@@ -67,5 +130,7 @@
 
 - (void) windowWillClose: (NSNotification *) notification;
 - (BOOL) openSoundFile: (NSString *) filename;
+
+- (void) windowDidResize:(NSNotification *)notification;
 
 @end

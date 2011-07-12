@@ -133,7 +133,7 @@
 	// Read in the sound file
 	int *buf;
 	int num;
-	buf = (int *) malloc(m_info.frames*sizeof(int));
+	buf = (int *) malloc((int)m_info.frames*sizeof(int));
 	num = (int)sf_read_int(sf,buf,(int)m_info.frames);
 	sf_close(sf);
 
@@ -319,7 +319,7 @@
 	// Read in the sound file
 	int *buf;
 	int num;
-	buf = (int *) malloc(m_info.frames*sizeof(int));
+	buf = (int *) malloc((int)m_info.frames*sizeof(int));
 	num = (int)sf_read_int(sf,buf,(int)m_info.frames);
 	sf_close(sf);
     

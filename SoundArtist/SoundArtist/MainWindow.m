@@ -11,12 +11,18 @@
 
 @implementation MainWindow
 
+@synthesize splashWindow;
+@synthesize mainView;
+@synthesize waitMessage;
+
 @synthesize commonPropertiesPanel;
 @synthesize waveformPropertiesPanel;
 @synthesize spectrogramPropertiesPanel;
 @synthesize commonPropertiesMenuItem;
 @synthesize waveformPropertiesMenuItem;
 @synthesize spectrogramPropertiesMenuItem;
+@synthesize exportWaveform;
+@synthesize exportSpectrogram;
 
 @synthesize tempDirectory;
 
@@ -49,13 +55,15 @@
 @synthesize spectrogramHeight;
 @synthesize frequencyAxis;
 @synthesize fftWindow;
+@synthesize fftPoints;
+@synthesize fftOverlap;
 @synthesize spectrogramFloor;
 
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
     if (self) {
-        
+        imagesReloading = 0;
     }
     
     return self;
@@ -71,20 +79,30 @@
     [super windowDidLoad];
 }
 
+- (void) windowDidResize:(NSNotification *)notification {
+    
+    NSRect viewSize = [mainView bounds];
+    
+    [waveformView setFrame:NSMakeRect(0, viewSize.size.height*0.5+1, viewSize.size.width, viewSize.size.height*0.5)];
+    [spectrogramView setFrame:NSMakeRect(0, 0, viewSize.size.width, viewSize.size.height*0.5)];
+    
+}
+
 - (IBAction)refreshWaveform: (id) pId {
 
     [refreshWaveformButton setEnabled:NO];
     [waveformView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
-
+    imagesReloading++;
+    [waitMessage setHidden:NO];
     
     struct WR_WFINFO wfinfo;
     
     switch ([timeAxis indexOfSelectedItem]) {
         case 0:
-            wfinfo.timeaxis = milliseconds;
+            wfinfo.timeaxis = seconds;
             break;
         case 1:
-            wfinfo.timeaxis = seconds;
+            wfinfo.timeaxis = milliseconds;
             break;
     }
     
@@ -115,6 +133,21 @@
         [waveformView setImage:pdf];
         [pdf release];
         
+        if (pId == exportWaveform) {
+            
+            NSSavePanel *save = [NSSavePanel savePanel];
+            [save setCanCreateDirectories:YES];
+            [save setTitle:@"Export Waveform"];
+            [save setMessage:@"Select a folder to export the waveform GLE and PDF files to."];
+            [save setPrompt:@"Export Waveform"];
+            
+            if ( [save runModal] == NSOKButton ) {
+                NSError *error;
+                [[NSFileManager defaultManager] copyItemAtPath:tempDirectory toPath:[save filename] error:&error];
+            }                    
+        }
+        
+        
         // Clean up
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtPath:dataFilename error:&error];
@@ -122,6 +155,11 @@
         [[NSFileManager defaultManager] removeItemAtPath:pdfFilename error:&error];
     }
     [refreshWaveformButton setEnabled:YES];
+
+    imagesReloading--;
+    if (imagesReloading == 0) {
+        [waitMessage setHidden:YES];
+    }
     
 }
 
@@ -131,17 +169,18 @@
     
     [refreshSpectrogramButton setEnabled:NO];
     [spectrogramView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
-    
+    imagesReloading++;
+    [waitMessage setHidden:NO];
     
     struct WR_SPECINFO specinfo;
     specinfo.quality = 1;
     
     switch ([timeAxis indexOfSelectedItem]) {
         case 0:
-            specinfo.timeaxis = milliseconds;
+            specinfo.timeaxis = seconds;
             break;
         case 1:
-            specinfo.timeaxis = seconds;
+            specinfo.timeaxis = milliseconds;
             break;
     }
     
@@ -150,7 +189,7 @@
             specinfo.freqaxis = khz;
             break;
         case 1:
-            specinfo.timeaxis = hz;
+            specinfo.freqaxis = hz;
             break;
     }    
     
@@ -178,18 +217,20 @@
             specinfo.window = Blackman;
             break;
     }     
-    
-    specinfo.nwindow = 128;
-    specinfo.increment = specinfo.nwindow * 0.5;
-    
+        
+    specinfo.nwindow = [[[fftPoints selectedItem] title] intValue];
+    float overlap = 0.01*[fftOverlap floatValue];
+    if (overlap >= 1) overlap = 0.9999;
+    if (overlap < 0) overlap = 0;
+    specinfo.increment = specinfo.nwindow * (1-overlap) > 1 ? specinfo.nwindow * (1-overlap) : 1;
     specinfo.quality = 1;
     
     specinfo.start = [timeStart floatValue];
     specinfo.end = [timeEnd floatValue];
     specinfo.startatzero = ([timeShiftToZero state] == NSOnState);
     
-    specinfo.width = [waveformWidth floatValue];
-    specinfo.height = [waveformHeight floatValue];
+    specinfo.width = [spectrogramWidth floatValue];
+    specinfo.height = [spectrogramHeight floatValue];
     specinfo.lwidth = [lineWidth floatValue];
     specinfo.fontsize = [fontSize floatValue];
     specinfo.floor = [spectrogramFloor floatValue];
@@ -209,6 +250,21 @@
         [spectrogramView setImage:pdf];
         [pdf release];
                
+        if (pId == exportSpectrogram) {
+            
+            NSSavePanel *save = [NSSavePanel savePanel];
+            [save setCanCreateDirectories:YES];
+            [save setTitle:@"Export Spectrogram"];
+            [save setMessage:@"Select a folder to export the spectrogram GLE and PDF files to."];
+            [save setPrompt:@"Export Spectrogram"];
+            
+            if ( [save runModal] == NSOKButton ) {
+                NSError *error;
+                [[NSFileManager defaultManager] copyItemAtPath:tempDirectory toPath:[save filename] error:&error];
+            }                    
+        }
+        
+        
         // Clean up
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtPath:dataFilename error:&error];
@@ -216,6 +272,10 @@
         [[NSFileManager defaultManager] removeItemAtPath:pdfFilename error:&error];
     }
     [refreshSpectrogramButton setEnabled:YES];    
+    imagesReloading--;
+    if (imagesReloading == 0) {
+        [waitMessage setHidden:YES];
+    }
 }
 
 - (IBAction)openDocument: (id) pID {
@@ -227,6 +287,7 @@
     
     if ( [openDlg runModalForDirectory:nil file:nil] == NSOKButton )
     {
+        [splashWindow close];
         [self openSoundFile:[openDlg filename]];
     }
 }

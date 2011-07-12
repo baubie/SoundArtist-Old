@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'SoundArtist' target in the 'SoundArtist' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif
