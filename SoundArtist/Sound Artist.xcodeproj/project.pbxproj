@@ -17,8 +17,24 @@
 		CA95731A13CCA4FF00E240B1 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA95731913CCA4FF00E240B1 /* libfftw3.a */; };
 		CA9E0AC213CB6253005BB8E9 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9E0AC113CB6253005BB8E9 /* libsndfile.a */; };
 		CA9E0AC513CB6428005BB8E9 /* SoundFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9E0AC413CB6428005BB8E9 /* SoundFile.m */; };
+		CAB9D03513DCCFE400331481 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB9D03413DCCFE400331481 /* Sparkle.framework */; };
+		CAB9D03813DCD04A00331481 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAB9D03413DCCFE400331481 /* Sparkle.framework */; };
+		CAB9D03A13DCDD7800331481 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = CAB9D03913DCDD7800331481 /* dsa_pub.pem */; };
 		CAFCEB3B13CB7CF200613D74 /* SoundArtist.icns in Resources */ = {isa = PBXBuildFile; fileRef = CAFCEB3A13CB7CF200613D74 /* SoundArtist.icns */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CAB9D03713DCD01400331481 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CAB9D03813DCD04A00331481 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CA33A96D13CA4D3E001237E6 /* Sound Artist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sound Artist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +58,8 @@
 		CA9E0AC113CB6253005BB8E9 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
 		CA9E0AC313CB6428005BB8E9 /* SoundFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundFile.h; sourceTree = "<group>"; };
 		CA9E0AC413CB6428005BB8E9 /* SoundFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundFile.m; sourceTree = "<group>"; };
+		CAB9D03413DCCFE400331481 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		CAB9D03913DCDD7800331481 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		CAFCEB3A13CB7CF200613D74 /* SoundArtist.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SoundArtist.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +71,7 @@
 				CA33A97213CA4D3E001237E6 /* Cocoa.framework in Frameworks */,
 				CA9E0AC213CB6253005BB8E9 /* libsndfile.a in Frameworks */,
 				CA95731A13CCA4FF00E240B1 /* libfftw3.a in Frameworks */,
+				CAB9D03513DCCFE400331481 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +101,7 @@
 		CA33A97013CA4D3E001237E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAB9D03413DCCFE400331481 /* Sparkle.framework */,
 				CA33A97113CA4D3E001237E6 /* Cocoa.framework */,
 				CA33A97313CA4D3E001237E6 /* Other Frameworks */,
 			);
@@ -101,6 +121,7 @@
 		CA33A97713CA4D3E001237E6 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				CAB9D03913DCDD7800331481 /* dsa_pub.pem */,
 				CA33A97813CA4D3E001237E6 /* Supporting Files */,
 				CA33A98E13CA5BB1001237E6 /* MainWindow.h */,
 				CA33A98F13CA5BB1001237E6 /* MainWindow.m */,
@@ -156,6 +177,7 @@
 				CA33A96913CA4D3E001237E6 /* Sources */,
 				CA33A96A13CA4D3E001237E6 /* Frameworks */,
 				CA33A96B13CA4D3E001237E6 /* Resources */,
+				CAB9D03713DCD01400331481 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -200,6 +222,7 @@
 				CA33A98213CA4D3F001237E6 /* Credits.rtf in Resources */,
 				CA33A98813CA4D3F001237E6 /* MainMenu.xib in Resources */,
 				CAFCEB3B13CB7CF200613D74 /* SoundArtist.icns in Resources */,
+				CAB9D03A13DCDD7800331481 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

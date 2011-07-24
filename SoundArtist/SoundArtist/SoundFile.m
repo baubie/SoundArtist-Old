@@ -315,7 +315,7 @@
     
     NSTask *gleProcess;
     gleProcess = [[NSTask alloc] init];    
-    [gleProcess setLaunchPath:@"/usr/bin/gle"];
+    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
     [gleProcess setArguments:
      [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
     [gleProcess launch];
@@ -417,7 +417,7 @@
     
     NSTask *gleProcess;
     gleProcess = [[NSTask alloc] init];    
-    [gleProcess setLaunchPath:@"/usr/bin/gle"];
+    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
     [gleProcess setArguments:
      [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
     
