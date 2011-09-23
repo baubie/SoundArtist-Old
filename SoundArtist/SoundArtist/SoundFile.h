@@ -77,6 +77,7 @@ struct WR_SPECINFO {
 - (void) makeWindow: (enum windows) type length:(int) N array: (float *) window;
 - (BOOL) makeWaveForm: (NSString*) folder info:(struct WR_WFINFO*) wfinfo;
 - (BOOL) makeSpectrogram: (NSString*) folder info:(struct WR_SPECINFO*) specinfo;
+- (BOOL) makePower: (NSString*) folder info:(struct WR_SPECINFO*) specinfo;
 
 
 @end

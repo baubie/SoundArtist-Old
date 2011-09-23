@@ -119,7 +119,6 @@
     NSString *zFilename = [[NSString alloc] initWithFormat:@"%@/spectrogram.z", folder];
     NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/spectrogram.gle", folder];
 
-    
 	/*
 	 * Create the Spectrogram data file.
 	 */
@@ -131,9 +130,9 @@
     SNDFILE* sf = sf_open([m_filename UTF8String], SFM_READ, &m_info);
     
 	// Read in the sound file
-	int *buf;
-	buf = (int *) malloc((int)m_info.frames*sizeof(int));
-    sf_read_int(sf,buf,(int)m_info.frames);    
+	double *buf;
+	buf = (double *) malloc((int)m_info.frames*sizeof(double));
+    sf_read_double(sf,buf,(int)m_info.frames);    
 	sf_close(sf);
 
     
@@ -186,49 +185,61 @@
             spec[i][j] = 0;
        
 	int curX = 0;
-	double maxVal = 0.0001;
+	double maxVal = -99999999;
+    double minVal = +99999999;
 	double *in;
 	double *out;
-	in = (double*) fftw_malloc(sizeof(double)*N);
-	out = (double*) fftw_malloc(sizeof(double)*N);
-	fftw_plan p = fftw_plan_r2r_1d(N, in, out, FFTW_DHT, FFTW_ESTIMATE);
+	in = (double*) fftw_malloc(sizeof(double)*specinfo->nwindow);
+	out = (double*) fftw_malloc(sizeof(double)*specinfo->nwindow);
+	fftw_plan p = fftw_plan_r2r_1d(specinfo->nwindow, in, out, FFTW_R2HC, FFTW_ESTIMATE);
+    
+    if (specinfo->increment < 1) specinfo->increment = 1;
     
 	for (int i = 0; i < m_info.frames-N; i+=specinfo->increment)
 	{
 		for (int j = 0; j < N; ++j)
-		{
+		{              
 			in[j] = buf[i+j]*window[j];	
 		}
         
 		fftw_execute(p);
         
 		// Save results
-		for (int j = 0; j < ny; ++j)
+		for (int j = 1; j < ny; ++j)
 		{
-			double val = 10*log10(out[j]*out[j]);
+			double val = 10*log10((out[j]*out[j]+out[N-j]*out[N-j]));
+            if (out[j]*out[j]+out[N-j]*out[N-j] == 0) {
+                val = -99999999;
+            }
 			spec[curX][j] = val;
 			maxVal = maxVal < spec[curX][j] ? spec[curX][j] : maxVal;
+            minVal = minVal > spec[curX][j] ? spec[curX][j] : minVal;
 		}
-        
 		curX++;
 	}
 	fftw_destroy_plan(p);
 	fftw_free(in); 
 	fftw_free(out);
     
+    
 	// Write the data to file
 	double floor = 1-specinfo->floor;
 	for (int y = 0; y < ny; ++y) {
 		for (int x = 0; x < nx; ++x) {
    
-            double val = 1-spec[x][y]/maxVal;
-     
-			// This is our floor function.  Right now we shoot everything to 1.
-			// Should have something more gradual.
-			if (val > floor) val = 1;
-			else val = 1-pow((val-floor)/(floor),2);
-            
-			[data appendFormat:@"%f ", val];
+            if (spec[x][y] > -99999999)
+            {
+                double val = 1-(spec[x][y]-minVal)/(maxVal-minVal);
+         
+                // This is our floor function.  Right now we shoot everything to 1.
+                // Should have something more gradual.
+                if (val > floor) val = 1;
+                else val = 1-pow((val-floor)/(floor),2);
+                    
+                [data appendFormat:@"%f ", val];
+            } else {
+                [data appendString:@"- "];
+            }
 		}
         [data appendString:@"\n"];
 	}
@@ -246,7 +257,6 @@
     
 	// Create the GLE file.
     NSMutableString* gle = [[NSMutableString alloc] init];    
-    
 
     [gle appendFormat:@"size %f %f\n", specinfo->width, specinfo->height];
     [gle appendString:@"include \"color.gle\"\n"];
@@ -265,9 +275,6 @@
 	else {
         [gle appendString:@"xtitle \"Time (s)\"\n"];
 	}
-    [gle appendString:@"ytitle \"\"\n"];
-
-    
 	if (specinfo->freqaxis == hz) {
         [gle appendString:@"ytitle \"Frequency (Hz)\"\n"];
 	} else {
@@ -291,12 +298,12 @@
 	{
 		case 1:
 			scalebar_palette = [NSString stringWithString:@"color"];
-            [gle appendFormat:@"colormap \"%@\" %i %i color\n", zFilename, nx, ny];
+            [gle appendFormat:@"colormap \"%@\" %i %i color\n", @"spectrogram.z", nx, ny];
 			break;
             
 		default:
 			scalebar_palette = [NSString stringWithString:@"grayscale"];
-            [gle appendFormat:@"colormap \"%@\" %i %i\n", zFilename, nx, ny];
+            [gle appendFormat:@"colormap \"%@\" %i %i\n", @"spectrogram.z", nx, ny];
 			break;
 	}
     
@@ -338,9 +345,9 @@
     NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/waveform.gle", folder];
     
 	// Read in the sound file
-	int *buf;
-	buf = (int *) malloc((int)m_info.frames*sizeof(int));
-    sf_read_int(sf,buf,(int)m_info.frames);    
+	double *buf;
+	buf = (double *) malloc((int)m_info.frames*sizeof(double));
+    sf_read_double(sf,buf,(int)m_info.frames);    
 	sf_close(sf);
     
 	int timescale = 1;
@@ -349,6 +356,7 @@
 	// Write wavefile data to file
 	
     NSMutableString* data = [[NSMutableString alloc] init];
+
     
 	for (int i = 0; i < m_info.frames; i+=(int)(1.0/wfinfo->quality))
 	{
@@ -359,7 +367,7 @@
 		} else {
 			t = (float)(timescale*(float)i/(float)m_info.samplerate);
 		}
-        [data appendFormat:@"%f,%i\n", t, buf[i]];
+        [data appendFormat:@"%f,%f\n", t, buf[i]];
 	}
 	free(buf);
     NSError *error;
@@ -408,7 +416,7 @@
         [gle appendFormat:@"xaxis min %f max %f\n", wfinfo->start*timescale/1000, wfinfo->end*timescale/1000];
 	}
     
-    [gle appendFormat:@"data \"%@\"\n", dataFilename];
+    [gle appendFormat:@"data \"%@\"\n", @"waveform.dat"];
     [gle appendFormat:@"d1 line lwidth %f\n", wfinfo->wflwidth];
     [gle appendString:@"end graph\n"];
 
@@ -431,6 +439,155 @@
     [dataFilename release];
     
     return true;
+}
+
+- (BOOL) makePower:(NSString *)folder info:(struct WR_SPECINFO *) specinfo {   
+
+    NSString *zFilename = [[NSString alloc] initWithFormat:@"%@/power.dat", folder];
+    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/power.gle", folder];
+    
+	/*
+	 * Create the power data file.
+	 */    
+    SNDFILE* sf = sf_open([m_filename UTF8String], SFM_READ, &m_info);
+    
+	// Read in the sound file
+	double *buf;
+	buf = (double *) malloc((int)m_info.frames*sizeof(double));
+    sf_read_double(sf,buf,(int)m_info.frames);    
+	sf_close(sf);
+            
+	float freqscale = 0.001;
+	if (specinfo->freqaxis == hz) freqscale = 1;
+    
+    int N = specinfo->nwindow;
+            
+	// Get the window
+	float window[specinfo->nwindow];    
+    [self makeWindow:specinfo->window length:specinfo->nwindow array: window];  
+    
+    NSMutableString* data = [[NSMutableString alloc] init];    
+    
+	// Write spectrogram data to file
+	// Create out 2D array on the heap (due to size)            
+	double *in;
+	double *out;
+    double *power;
+    int numFreqs = specinfo->nwindow/2+1;
+	in = (double*) fftw_malloc(sizeof(double)*specinfo->nwindow);
+	out = (double*) fftw_malloc(sizeof(double)*specinfo->nwindow);
+    power = (double*) fftw_malloc(sizeof(double)*(numFreqs));
+    
+	fftw_plan p = fftw_plan_r2r_1d(specinfo->nwindow, in, out, FFTW_R2HC, FFTW_ESTIMATE);
+
+    for (int j = 0; j < numFreqs; ++j)
+    {
+        power[j] = 0;
+    }
+    
+    int count = 0;
+    for (int i = 0; i < m_info.frames-specinfo->nwindow; i+=specinfo->increment)
+	{
+		for (int j = 0; j < specinfo->nwindow; ++j)
+		{
+			in[j] = buf[i+j]*window[j];	
+		}
+        
+		fftw_execute(p);
+                
+		// Save results
+        power[0] = out[0]*out[0];
+		for (int j = 1; j < specinfo->nwindow/2; ++j)
+		{
+			double val = out[j]*out[j]+out[N-j]*out[N-j];
+            power[j] += val;
+		}
+        if (N%2 == 0) power[N/2] = out[N/2]*out[N/2];
+        count++;
+	}
+    
+    // Average over the spectrogram and find the peak
+    double maxValue = -9999999;
+    for (int j = 0; j < N/2 + 1; ++j)
+    {
+        power[j] /= count;
+        maxValue = maxValue < power[j] ? power[j] : maxValue;
+    }
+    
+    for (int j = 0; j < numFreqs; ++j)
+    {
+        if (power[j] > 0)
+        {
+            power[j] = 10*log10(power[j] / maxValue);
+        } else {
+            power[j] = -100000;
+        }
+    }
+    
+    // Save results        
+	// Write the data to file    
+    for (int k = 0; k < specinfo->nwindow/2; k+=1)
+    {
+        if (power[k] != - 100000)
+            [data appendFormat:@"%f,%f\n",(double)k*freqscale*m_info.samplerate/specinfo->nwindow,power[k]];
+        else
+            [data appendFormat:@"%f,-\n",(double)k*freqscale*m_info.samplerate/specinfo->nwindow];
+    }
+        
+    free(buf);
+    free(power);
+	fftw_destroy_plan(p);
+	fftw_free(in); 
+	fftw_free(out);
+
+    NSError *error;
+    [data writeToFile:zFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    [data release]; 
+    
+	// Create the GLE file.
+    NSMutableString* gle = [[NSMutableString alloc] init];
+    [gle appendFormat:@"size %f %f\n", specinfo->width, specinfo->height];
+    [gle appendString:@"set font psh\n"];
+    [gle appendFormat:@"set hei %f\n", specinfo->fontsize];
+    [gle appendFormat:@"set lwidth %f\n", specinfo->lwidth];
+    [gle appendString:@"begin graph\n"];
+    [gle appendString:@"vscale auto\n"];
+    [gle appendString:@"nobox\n"];
+    [gle appendString:@"x2axis off\n"];
+    [gle appendString:@"y2axis off\n"];
+
+    if (specinfo->freqaxis == hz) {
+        [gle appendString:@"xtitle \"Frequency (Hz)\"\n"];
+	} else {
+        [gle appendString:@"xtitle \"Frequency (kHz)\"\n"];
+	}
+    [gle appendString:@"ytitle \"Amplitude (dB Re Peak)\"\n"];
+    [gle appendFormat:@"xaxis min 0 max %f\n", freqscale*m_info.samplerate/2];    
+    [gle appendString:@"xticks length -0.1\n"];
+    [gle appendString:@"yticks length -0.1\n"];
+    [gle appendString:@"title \"\"\n"];
+    [gle appendFormat:@"data \"%@\"\n", @"power.dat"];
+    [gle appendString:@"d1 line\n"];
+    [gle appendString:@"end graph\n"];   
+    
+    [gle writeToFile:gleFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    [gle release];
+        
+    NSTask *gleProcess;
+    gleProcess = [[NSTask alloc] init];    
+    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
+    [gleProcess setArguments:
+     [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
+    [gleProcess launch];
+    [gleProcess waitUntilExit];
+    [gleProcess release];
+    
+    [gleFilename release];
+    [zFilename release];
+    
+    
+	return true;
+    
 }
 
 

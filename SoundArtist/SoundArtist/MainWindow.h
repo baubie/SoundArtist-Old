@@ -15,9 +15,7 @@
     int imagesReloading;
     
     NSWindow* splashWindow;
-    
-    NSTextField* waitMessage;
-    
+        
     NSView* mainView;
     
     NSString* m_filename;
@@ -34,9 +32,11 @@
     
     NSMenuItem *exportWaveform;
     NSMenuItem *exportSpectrogram;
-    
+    NSMenuItem *exportPower;
+
     NSToolbarItem *refreshWaveformButton;
     NSToolbarItem *refreshSpectrogramButton;
+    NSToolbarItem *refreshPowerButton;
     
     NSTextFieldCell *sampleRate;
     NSTextFieldCell *frames;
@@ -44,7 +44,8 @@
     
     NSImageView *waveformView;
     NSImageView *spectrogramView;
-    
+    NSImageView *powerView;
+
     
     //Common
     NSPopUpButton *timeAxis;
@@ -73,7 +74,6 @@
 
 @property (nonatomic, retain) IBOutlet NSWindow *splashWindow;
 @property (nonatomic, retain) IBOutlet NSView *mainView;
-@property (nonatomic, retain) IBOutlet NSTextField* waitMessage;
 
 @property (retain) NSString* tempDirectory;
 
@@ -86,6 +86,7 @@
 @property (nonatomic, retain) IBOutlet NSMenuItem *spectrogramPropertiesMenuItem;
 @property (nonatomic, retain) IBOutlet NSMenuItem *exportWaveform;
 @property (nonatomic, retain) IBOutlet NSMenuItem *exportSpectrogram;
+@property (nonatomic, retain) IBOutlet NSMenuItem *exportPower;
 
 @property (nonatomic, retain) IBOutlet NSToolbarItem *refreshWaveformButton;
 @property (nonatomic, retain) IBOutlet NSToolbarItem *refreshSpectrogramButton;
@@ -96,6 +97,7 @@
 
 @property (nonatomic, retain) IBOutlet NSImageView *waveformView;
 @property (nonatomic, retain) IBOutlet NSImageView *spectrogramView;
+@property (nonatomic, retain) IBOutlet NSImageView *powerView;
 
 
 //Common
@@ -123,11 +125,11 @@
 @property (nonatomic, retain) IBOutlet NSPopUpButton *spectrogramPalette;
 
 
-
 - (IBAction)toggleProperties: (id) pId;
 - (IBAction)openDocument: (id) pID;
 - (IBAction)refreshWaveform: (id) pId;
 - (IBAction)refreshSpectrogram: (id) pId;
+- (IBAction)refreshPower: (id) pId;
 
 - (void) windowWillClose: (NSNotification *) notification;
 - (BOOL) openSoundFile: (NSString *) filename;

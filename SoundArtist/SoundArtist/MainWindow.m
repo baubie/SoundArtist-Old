@@ -13,7 +13,7 @@
 
 @synthesize splashWindow;
 @synthesize mainView;
-@synthesize waitMessage;
+@synthesize powerView;
 
 @synthesize commonPropertiesPanel;
 @synthesize waveformPropertiesPanel;
@@ -23,6 +23,7 @@
 @synthesize spectrogramPropertiesMenuItem;
 @synthesize exportWaveform;
 @synthesize exportSpectrogram;
+@synthesize exportPower;
 
 @synthesize tempDirectory;
 
@@ -75,6 +76,29 @@
     [super dealloc];
 }
 
+- (void)windowDidBecomeMain:(NSNotification *)notification
+{
+    int width = [mainView frame].size.width;
+    int height = [mainView frame].size.height/3;
+    NSRect waveformRect;
+    NSRect spectrogramRect;
+    NSRect powerRect;
+    powerRect.origin.x = 0;
+    powerRect.origin.y = 0;
+    powerRect.size.width = width;
+    powerRect.size.height = height;
+    spectrogramRect = powerRect;
+    spectrogramRect.origin.y += height;
+    waveformRect = spectrogramRect;
+    waveformRect.origin.y += height;
+    waveformView = [[NSImageView alloc] initWithFrame:waveformRect];
+    spectrogramView =[[NSImageView alloc] initWithFrame:spectrogramRect];
+    powerView = [[NSImageView alloc] initWithFrame:powerRect];
+    [mainView addSubview:waveformView];
+    [mainView addSubview:spectrogramView];
+    [mainView addSubview:powerView];
+}
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
@@ -84,17 +108,18 @@
     
     NSRect viewSize = [mainView bounds];
     
-    [waveformView setFrame:NSMakeRect(0, viewSize.size.height*0.5+1, viewSize.size.width, viewSize.size.height*0.5)];
-    [spectrogramView setFrame:NSMakeRect(0, 0, viewSize.size.width, viewSize.size.height*0.5)];
+    [waveformView setFrame:NSMakeRect(0, viewSize.size.height*2*0.3333+1, viewSize.size.width, viewSize.size.height*0.333)];
+    [spectrogramView setFrame:NSMakeRect(0, viewSize.size.height*0.3333+1, viewSize.size.width, viewSize.size.height*0.333)];
+    [powerView setFrame:NSMakeRect(0, 0, viewSize.size.width, viewSize.size.height*0.333)];
     
 }
 
 - (IBAction)refreshWaveform: (id) pId {
 
     [refreshWaveformButton setEnabled:NO];
+    [waveformView setImage:nil];      
     [waveformView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
     imagesReloading++;
-    [waitMessage setHidden:NO];
     
     struct WR_WFINFO wfinfo;
     
@@ -118,6 +143,8 @@
     wfinfo.wflwidth = [waveformLineWidth floatValue];
     wfinfo.lwidth = [lineWidth floatValue];
     wfinfo.fontsize = [fontSize floatValue];
+    
+    wfinfo.ylabels = false;
     
     SoundFile *sf = [[SoundFile alloc] init];
     
@@ -163,20 +190,136 @@
     [refreshWaveformButton setEnabled:YES];
 
     imagesReloading--;
-    if (imagesReloading == 0) {
-        [waitMessage setHidden:YES];
-    }
     [sf release];
 }
 
+- (IBAction)refreshPower: (id) pId {
+    
+    [refreshPowerButton setEnabled:NO];
+    [powerView setImage:nil];          
+    [powerView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
+    imagesReloading++;
+    
+    struct WR_SPECINFO specinfo;
+    specinfo.quality = 1;
+    
+    switch ([timeAxis indexOfSelectedItem]) {
+        case 0:
+            specinfo.timeaxis = seconds;
+            break;
+        case 1:
+            specinfo.timeaxis = milliseconds;
+            break;
+    }
+    
+    switch ([frequencyAxis indexOfSelectedItem]) {
+        case 0:
+            specinfo.freqaxis = khz;
+            break;
+        case 1:
+            specinfo.freqaxis = hz;
+            break;
+    }    
+    
+    switch ([fftWindow indexOfSelectedItem]) {
+        case 0:
+            specinfo.window = None;
+            break;
+        case 1:
+            specinfo.window = Flattop;
+            break;
+            
+        case 2:
+            specinfo.window = Hamming;
+            break;
+            
+        case 3:
+            specinfo.window = Hann;
+            break;
+            
+        case 4:
+            specinfo.window = Cosine;
+            break;
+            
+        case 5:
+            specinfo.window = Blackman;
+            break;
+    } 
+    
+    specinfo.palette = (int)[spectrogramPalette indexOfSelectedItem];
+    
+    specinfo.nwindow = [[[fftPoints selectedItem] title] intValue];
+    float overlap = 0.01*[fftOverlap floatValue];
+    if (overlap >= 1) overlap = 0.9999;
+    if (overlap < 0) overlap = 0;
+    specinfo.increment = specinfo.nwindow * (1-overlap) > 1 ? specinfo.nwindow * (1-overlap) : 1;
+    specinfo.quality = 1;
+    
+    specinfo.start = [timeStart floatValue];
+    specinfo.end = [timeEnd floatValue];
+    specinfo.startatzero = ([timeShiftToZero state] == NSOnState);
+    
+    specinfo.width = [spectrogramWidth floatValue];
+    specinfo.height = [spectrogramHeight floatValue];
+    specinfo.lwidth = [lineWidth floatValue];
+    specinfo.fontsize = [fontSize floatValue];
+    specinfo.floor = [spectrogramFloor floatValue];
+    
+    specinfo.scalebar = false;
+    
+    SoundFile *sf = [[SoundFile alloc] init];
+    
+    if ([sf openFile:m_filename])
+    {
+        
+        [sf makePower:tempDirectory info:&specinfo];
+        
+        NSString *pdfFilename = [[NSString alloc] initWithFormat:@"%@/power.pdf", tempDirectory];
+        NSString *dataFilename = [[NSString alloc] initWithFormat:@"%@/power.dat", tempDirectory];
+        NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/power.gle", tempDirectory];
+        
+        NSImage *pdf = [[NSImage alloc] initWithContentsOfFile:pdfFilename];
+        [powerView setImage:pdf];
+        [pdf release];
+        
+        
+        if (pId == exportPower) {
+            
+            NSSavePanel *save = [NSSavePanel savePanel];
+            [save setCanCreateDirectories:YES];
+            [save setTitle:@"Export Power Spectrum"];
+            [save setMessage:@"Select a folder to export the power spectrum GLE and PDF files to."];
+            [save setPrompt:@"Export Power Spectrum"];
+            
+            if ( [save runModal] == NSOKButton ) {
+                NSError *error;
+                [[NSFileManager defaultManager] copyItemAtPath:tempDirectory toPath:[save filename] error:&error];
+            }                    
+        }
+        
+        
+        // Clean up
+        NSError *error;
+        [[NSFileManager defaultManager] removeItemAtPath:dataFilename error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:gleFilename error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:pdfFilename error:&error];
+        [pdfFilename release];
+        [dataFilename release];
+        [gleFilename release];
+        
+    }
+    [refreshPowerButton setEnabled:YES];    
+    imagesReloading--;
+    [sf release];
+}
 
 - (IBAction)refreshSpectrogram: (id) pId {
     
     
     [refreshSpectrogramButton setEnabled:NO];
+    [spectrogramView setImage:nil];          
     [spectrogramView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
     imagesReloading++;
-    [waitMessage setHidden:NO];
     
     struct WR_SPECINFO specinfo;
     specinfo.quality = 1;
@@ -288,9 +431,6 @@
     }
     [refreshSpectrogramButton setEnabled:YES];    
     imagesReloading--;
-    if (imagesReloading == 0) {
-        [waitMessage setHidden:YES];
-    }
     [sf release];
 }
 
@@ -303,7 +443,6 @@
     
     if ( [openDlg runModalForDirectory:nil file:nil] == NSOKButton )
     {
-        [splashWindow close];
         [self openSoundFile:[openDlg filename]];
     }
 }
@@ -312,7 +451,11 @@
     
     [refreshSpectrogramButton setEnabled:NO];
     [refreshWaveformButton  setEnabled:NO];
+    [refreshPowerButton setEnabled:NO];
+
+    [spectrogramView setImage:nil];
     [waveformView setImage:nil];  
+    [powerView setImage:nil];
     
     SoundFile *sf = [[SoundFile alloc] init];
 
@@ -339,11 +482,14 @@
 
         [self refreshWaveform:self];
         [self refreshSpectrogram:self];
+        [self refreshPower:self];
         [sf release];
         
         [refreshSpectrogramButton setEnabled:YES];
-        [refreshWaveformButton  setEnabled:YES];       
-        
+        [refreshWaveformButton  setEnabled:YES];     
+        [refreshPowerButton setEnabled:YES];
+        [splashWindow close];
+
         return true;
     }
     [sf release];

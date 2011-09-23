@@ -15,7 +15,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    windowController = [window delegate];
+    windowController = (MainWindow *)[window delegate];
     
     // Setup temporary folders
     NSString *tempDirectoryTemplate =
@@ -39,6 +39,13 @@
     
     [windowController setTempDirectory:tempDirectoryPath];
 
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+    // Delete the temp folder
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:[windowController tempDirectory] error:&error];
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
