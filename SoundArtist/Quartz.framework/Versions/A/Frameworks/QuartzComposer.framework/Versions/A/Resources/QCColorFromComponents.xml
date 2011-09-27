@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>.identifiers</key>
+	<dict>
+		
+		<key>rgb</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>RGB Color</string>
+				<key>description</key>
+				<string>Generates a color from red, green, blue, and alpha components.</string>
+				<key>examples</key>
+				<array>
+					<string>Alpha.qtz</string>
+					<string>Image Pixel.qtz</string>
+				</array>
+				<key>aliasNames</key>
+				<array>
+					<string>Red</string>
+					<string>Green</string>
+					<string>Blue</string>
+					<string>Alpha</string>
+				</array>
+			</dict>
+			<key>inputAttributes</key>
+			<dict>
+				<key>input1</key>
+				<dict>
+					<key>description</key>
+					<string>The red component.</string>
+					<key>name</key>
+					<string>Red</string>
+				</dict>
+				<key>input2</key>
+				<dict>
+					<key>description</key>
+					<string>The green component.</string>
+					<key>name</key>
+					<string>Green</string>
+				</dict>
+				<key>input3</key>
+				<dict>
+					<key>description</key>
+					<string>The blue component.</string>
+					<key>name</key>
+					<string>Blue</string>
+				</dict>
+			</dict>
+		</dict>
+		
+		<key>hsl</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>HSL Color</string>
+				<key>description</key>
+				<string>Generates a color from hue, saturation, luminosity, and alpha components.</string>
+				<key>examples</key>
+				<array>
+					<string>Alpha.qtz</string>
+				</array>
+				<key>aliasNames</key>
+				<array>
+					<string>HSB</string>
+					<string>Hue</string>
+					<string>Saturation</string>
+					<string>Luminosity</string>
+					<string>Brightness</string>
+					<string>Alpha</string>
+				</array>
+			</dict>
+			<key>inputAttributes</key>
+			<dict>
+				<key>input1</key>
+				<dict>
+					<key>description</key>
+					<string>The hue component.</string>
+					<key>name</key>
+					<string>Hue</string>
+				</dict>
+				<key>input2</key>
+				<dict>
+					<key>description</key>
+					<string>The saturation component.</string>
+					<key>name</key>
+					<string>Saturation</string>
+				</dict>
+				<key>input3</key>
+				<dict>
+					<key>description</key>
+					<string>The luminosity component.</string>
+					<key>name</key>
+					<string>Luminosity</string>
+				</dict>
+			</dict>
+		</dict>
+		
+	</dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/Color</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputAlpha</key>
+		<dict>
+			<key>description</key>
+			<string>The alpha component</string>
+			<key>name</key>
+			<string>Alpha</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting color.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Host Info</string>
+		<key>aliasNames</key>
+		<array>
+			<string>User</string>
+			<string>Name</string>
+			<string>IP Address</string>
+			<string>Version</string>
+			<string>CPU</string>
+		</array>
+		<key>description</key>
+		<string>This patch retrieves information about the computer like its name, IP address, system version, CPU type... along with the current load on each processor.
+
+This patch also retrieves the short and long names of the currently logged-in user.</string>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>CPU Meters.qtz</string>
+        </array>  
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputUserName</key>
+		<dict>
+			<key>description</key>
+			<string>The short user name.</string>
+			<key>name</key>
+			<string>User Name</string>
+		</dict>
+		<key>outputLongUserName</key>
+		<dict>
+			<key>description</key>
+			<string>The long user name.</string>
+			<key>name</key>
+			<string>Long User Name</string>
+		</dict>
+		<key>outputMachineName</key>
+		<dict>
+			<key>description</key>
+			<string>The machine name.</string>
+			<key>name</key>
+			<string>Machine Name</string>
+		</dict>
+		<key>outputComputerName</key>
+		<dict>
+			<key>description</key>
+			<string>The computer name.</string>
+			<key>name</key>
+			<string>Computer Name</string>
+		</dict>
+		<key>outputHostName</key>
+		<dict>
+			<key>description</key>
+			<string>The host name.</string>
+			<key>name</key>
+			<string>Host Name</string>
+		</dict>
+		<key>outputIPAddress</key>
+		<dict>
+			<key>description</key>
+			<string>The main IP address.</string>
+			<key>name</key>
+			<string>IP Address</string>
+		</dict>
+		<key>outputOSVersion</key>
+		<dict>
+			<key>description</key>
+			<string>The version of the OS.</string>
+			<key>name</key>
+			<string>OS Version</string>
+		</dict>
+		<key>outputKernelVersion</key>
+		<dict>
+			<key>description</key>
+			<string>The version of the kernel.</string>
+			<key>name</key>
+			<string>Kernel Version</string>
+		</dict>
+		<key>outputRAMSize</key>
+		<dict>
+			<key>description</key>
+			<string>The amount of RAM in megabytes.</string>
+			<key>name</key>
+			<string>RAM Size</string>
+		</dict>
+		<key>outputCPUType</key>
+		<dict>
+			<key>description</key>
+			<string>The type of CPU.</string>
+			<key>name</key>
+			<string>CPU Type</string>
+		</dict>
+	</dict>
+	
+	<key>_portAttributes</key>
+	<dict>
+		<key>outputCPULoad</key>
+		<dict>
+			<key>description</key>
+			<string>The load on each CPU in the [0,1] range.</string>
+			<key>name</key>
+			<string>CPU Load</string>
+		</dict>
+		<key>outputCPUCount</key>
+		<dict>
+			<key>description</key>
+			<string>The number of CPUs.</string>
+			<key>name</key>
+			<string>CPU Count</string>
+		</dict>
+		<key>outputCPULoad_1</key>
+		<dict>
+			<key>description</key>
+			<string>The load of the first CPU in the [0,1] range.</string>
+			<key>name</key>
+			<string>CPU 1 Load</string>
+		</dict>
+		<key>outputCPULoad_2</key>
+		<dict>
+			<key>description</key>
+			<string>The load of the second CPU in the [0,1] range.</string>
+			<key>name</key>
+			<string>CPU 2 Load</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

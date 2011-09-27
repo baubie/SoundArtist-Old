@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Pixel</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Pixel Color</string>
+		</array>
+		<key>description</key>
+		<string>Extracts from an image the R, G, B, A values of a pixel in a given colorspace.
+
+If the source image is not in RGB, using the "Image Native" color space will be replaced by Generic RGB.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+		<key>examples</key>
+        <array>
+			<string>Image Pixel.qtz</string>
+            <string>Image Histogram.qtz</string>
+			<string>Area Histogram.qtz</string>
+			<string>Brightness Sort.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image to analyze.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>inputPixelX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the pixel to look up.</string>
+			<key>name</key>
+			<string>Pixel X</string>
+		</dict>
+		<key>inputPixelY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the pixel to look up.</string>
+			<key>name</key>
+			<string>Pixel Y</string>
+		</dict>
+		<key>inputColorSpace</key>
+		<dict>
+			<key>description</key>
+			<string>The colorspace to use when looking up the pixel component values.</string>
+			<key>name</key>
+			<string>Color Space</string>
+			<key>menu</key>
+			<array>
+				<string>Image Native</string>
+				<string>Absolute Linear</string>
+				<string>Rendering Destination</string>
+			</array>
+		</dict>
+        <key>examples</key>
+        <array>
+            <string>Image Pixel.qtz</string>
+        </array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputRed</key>
+		<dict>
+			<key>description</key>
+			<string>The red component of the pixel.</string>
+			<key>name</key>
+			<string>Red Component</string>
+		</dict>
+		<key>outputGreen</key>
+		<dict>
+			<key>description</key>
+			<string>The green component of the pixel.</string>
+			<key>name</key>
+			<string>Green Component</string>
+		</dict>
+		<key>outputBlue</key>
+		<dict>
+			<key>description</key>
+			<string>The blue component of the pixel.</string>
+			<key>name</key>
+			<string>Blue Component</string>
+		</dict>
+		<key>outputAlpha</key>
+		<dict>
+			<key>description</key>
+			<string>The alpha component of the pixel.</string>
+			<key>name</key>
+			<string>Alpha Component</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

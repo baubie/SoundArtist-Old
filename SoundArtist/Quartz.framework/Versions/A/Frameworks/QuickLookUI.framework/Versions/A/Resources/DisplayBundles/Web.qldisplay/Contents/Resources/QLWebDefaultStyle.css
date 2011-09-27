@@ -1,0 +1,70 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 20px;
+    padding: 0px;
+    font-family: LucidaGrande, sans-serif;
+    -apple-text-size-adjust: none;
+}
+
+body.gradient
+{
+    background: -webkit-gradient(linear, left top, left 200%, from(#ddd), to(#fff));
+    color: black;
+}
+
+body.transparent
+{
+    background-color: none;
+    color: white;
+}
+
+#details {
+    padding-top: 8px;
+}
+
+.fieldgroup {
+    display: table;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.field {
+    display: table-row;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.fieldname {
+    display: table-cell;
+    text-align: right;
+    font-weight: bold;
+    min-width: 88px;
+    max-width: 88px;
+    color: rgb(70, 70, 70);
+}
+
+.fieldvalue {
+    display: table-cell;
+    padding-left: 5px;
+}
+
+body.gradient a:link {
+    text-decoration: none;
+    color: black;
+}
+
+body.transparent a:link {
+    text-decoration: none;
+    color: white;
+}
+
+body.gradient a:hover {
+    text-decoration: underline;
+}
+
+body.transparent a:hover {
+    text-decoration: underline;
+}

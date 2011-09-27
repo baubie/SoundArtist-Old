@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch renders a 3D particle system.
+
+Each particle is created at position specified by the X/Y/Z position inputs, with a color specified by the "Color" input and a lifetime defined by the "Lifetime" input. The initial velocity of the particle is randomly chosen in the range specified by the X/Y/Z Min/Max velocity inputs. Its initial size is randomly chosen in the range specified by the Min/Max size inputs.
+
+The particle movement is then affected by gravity and by the attraction relative to its initial position, its size is reduced by "Size Delta" per second and its colors are also reduced according to the value their "Delta" inputs. More control over size and color can be achieved when "Interpolate" is enabled in Settings. When the particle reaches its lifetime, it is regenerated.
+
+The particles can display an image specified by the "Image" input but it will be the same for all particles, independently of their individual states.
+
+Note that this particle system will not be deterministic unless all its input parameters are constants.</string>
+		<key>name</key>
+		<string>Particle System</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Smoke</string>
+			<string>Fire</string>
+			<string>Clouds</string>
+			<string>Sparkle</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Particle Blob.qtz</string>
+            <string>Particle Explosion.qtz</string>
+            <string>Particle System.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputCount</key>
+		<dict>
+			<key>description</key>
+			<string>The number of particles in the system.</string>
+			<key>name</key>
+			<string>Particle Count</string>
+		</dict>
+		
+		<key>inputPositionX</key>
+		<dict>
+			<key>description</key>
+			<string>The initial position of the particles on the X-axis.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>inputPositionY</key>
+		<dict>
+			<key>description</key>
+			<string>The initial position of the particles on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>inputPositionZ</key>
+		<dict>
+			<key>description</key>
+			<string>The initial position of the particles on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Position</string>
+		</dict>
+		
+		<key>inputVelocityMinX</key>
+		<dict>
+			<key>description</key>
+			<string>The minimum initial velocity of the particles on the X-axis.</string>
+			<key>name</key>
+			<string>X Min Velocity</string>
+		</dict>
+		<key>inputVelocityMaxX</key>
+		<dict>
+			<key>description</key>
+			<string>The maximum initial velocity of the particles on the X-axis.</string>
+			<key>name</key>
+			<string>X Max Velocity</string>
+		</dict>
+		<key>inputVelocityMinY</key>
+		<dict>
+			<key>description</key>
+			<string>The minimum initial velocity of the particles on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Min Velocity</string>
+		</dict>
+		<key>inputVelocityMaxY</key>
+		<dict>
+			<key>description</key>
+			<string>The maximum initial velocity of the particles on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Max Velocity</string>
+		</dict>
+		<key>inputVelocityMinZ</key>
+		<dict>
+			<key>description</key>
+			<string>The minimum initial velocity of the particles on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Min Velocity</string>
+		</dict>
+		<key>inputVelocityMaxZ</key>
+		<dict>
+			<key>description</key>
+			<string>The maximum initial velocity of the particles on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Max Velocity</string>
+		</dict>
+		
+		<key>inputMinSize</key>
+		<dict>
+			<key>description</key>
+			<string>The minimum initial size of the particles.</string>
+			<key>name</key>
+			<string>Min Size</string>
+		</dict>
+		<key>inputMaxSize</key>
+		<dict>
+			<key>description</key>
+			<string>The maximum initial size of the particles.</string>
+			<key>name</key>
+			<string>Max Size</string>
+		</dict>
+		<key>inputLifeTime</key>
+		<dict>
+			<key>description</key>
+			<string>The lifetime of the particles.</string>
+			<key>name</key>
+			<string>Lifetime</string>
+		</dict>
+		
+		<key>inputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The initial color of the particles.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+		
+		<key>inputAttraction</key>
+		<dict>
+			<key>description</key>
+			<string>The amount of attraction influencing the particle movement.</string>
+			<key>name</key>
+			<string>Attraction</string>
+		</dict>
+		<key>inputGravity</key>
+		<dict>
+			<key>description</key>
+			<string>The world gravity.</string>
+			<key>name</key>
+			<string>Gravity</string>
+		</dict>
+		
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the particles.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	<key>_inputSizeDelta</key>
+	<dict>
+		<key>description</key>
+		<string>The particle size change in units per second.</string>
+		<key>name</key>
+		<string>Size Delta</string>
+	</dict>
+	<key>_inputRedDelta</key>
+	<dict>
+		<key>description</key>
+		<string>The particle red change in units per second.</string>
+		<key>name</key>
+		<string>Red Delta</string>
+	</dict>
+	<key>_inputGreenDelta</key>
+	<dict>
+		<key>description</key>
+		<string>The particle green change in units per second.</string>
+		<key>name</key>
+		<string>Green Delta</string>
+	</dict>
+	<key>_inputBlueDelta</key>
+	<dict>
+		<key>description</key>
+		<string>The particle blue change in units per second.</string>
+		<key>name</key>
+		<string>Blue Delta</string>
+	</dict>
+	<key>_inputOpacityDelta</key>
+	<dict>
+		<key>description</key>
+		<string>The particle opacity change in units per second.</string>
+		<key>name</key>
+		<string>Opacity Delta</string>
+	</dict>
+	<key>_inputFinalSize</key>
+	<dict>
+		<key>description</key>
+		<string>The target size of each particle at the end of its lifetime.</string>
+		<key>name</key>
+		<string>End of Life Size</string>
+	</dict>
+	<key>_inputSizeInterpolation</key>
+	<dict>
+		<key>description</key>
+		<string>A curve describing the size of each particle over its lifetime.</string>
+		<key>name</key>
+		<string>Size Interpolation</string>
+	</dict>
+	<key>_inputRedInterpolation</key>
+	<dict>
+		<key>description</key>
+		<string>A curve describing the red color of each particle over its lifetime.</string>
+		<key>name</key>
+		<string>Red Interpolation</string>
+	</dict>
+	<key>_inputGreenInterpolation</key>
+	<dict>
+		<key>description</key>
+		<string>A curve describing the green color of each particle over its lifetime.</string>
+		<key>name</key>
+		<string>Green Interpolation</string>
+	</dict>
+	<key>_inputBlueInterpolation</key>
+	<dict>
+		<key>description</key>
+		<string>A curve describing the green color of each particle over its lifetime.</string>
+		<key>name</key>
+		<string>Blue Interpolation</string>
+	</dict>
+	<key>_inputFinalColor</key>
+	<dict>
+		<key>description</key>
+		<string>The target color of each particle at the end of its lifetime.</string>
+		<key>name</key>
+		<string>End of Life Color</string>
+	</dict>
+	<key>_inputOpacityInterpolation</key>
+	<dict>
+		<key>description</key>
+		<string>A curve describing the opacity of each particle over its lifetime.</string>
+		<key>name</key>
+		<string>Opacity Interpolation</string>
+	</dict>
+</dict>
+</plist>

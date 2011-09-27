@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+		<key>name</key>
+		<string>String Subrange</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Split</string>
+			<string>Word</string>
+		</array>
+		<key>description</key>
+		<string>Extracts a substring from a string.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The source string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+		<key>inputIndex</key>
+		<dict>
+			<key>description</key>
+			<string>The index of the first character.</string>
+			<key>name</key>
+			<string>Index</string>
+		</dict>
+		<key>inputLength</key>
+		<dict>
+			<key>description</key>
+			<string>The number of characters.</string>
+			<key>name</key>
+			<string>Length</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

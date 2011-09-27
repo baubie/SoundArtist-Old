@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Color Transformation</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Hue</string>
+			<string>Luminosity</string>
+			<string>Saturation</string>
+			<string>Opacity</string>
+		</array>
+		<key>description</key>
+		<string>This patch modifies the hue, luminosity, saturation, or opacity of a color.</string>		
+		<key>categories</key>
+		<array>
+			<string>Utility/Color</string>
+		</array>
+		<key>examples</key>
+		<array>
+			<string>Alpha.qtz</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The source color.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+		<key>inputHue</key>
+		<dict>
+			<key>description</key>
+			<string>Hue rotation expressed in degrees.</string>
+			<key>name</key>
+			<string>Hue Rotation</string>
+		</dict>
+		<key>inputSaturation</key>
+		<dict>
+			<key>description</key>
+			<string>Saturation multiplication factor.</string>
+			<key>name</key>
+			<string>Saturation Factor</string>
+		</dict>
+		<key>inputLuminosity</key>
+		<dict>
+			<key>description</key>
+			<string>Luminosity multiplication factor.</string>
+			<key>name</key>
+			<string>Luminosity Factor</string>
+		</dict>
+		<key>inputAlpha</key>
+		<dict>
+			<key>description</key>
+			<string>Alpha multiplication factor.</string>
+			<key>name</key>
+			<string>Alpha Factor</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting color.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Structure Reverse</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Sort</string>
+			<string>Order</string>
+		</array>
+		<key>description</key>
+		<string>This patch reverses the order of members in a structure.</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Structure</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The structure whose member order to reverse.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The reversed structure.</string>
+			<key>name</key>
+			<string>Reversed Structure</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

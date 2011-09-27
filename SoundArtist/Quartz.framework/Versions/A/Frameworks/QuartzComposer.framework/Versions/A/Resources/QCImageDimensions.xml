@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Dimensions</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Image Size</string>
+		</array>
+		<key>description</key>
+		<string>Reports the dimensions of an image in image pixels or in Quartz Composer coordinates system units.
+
+Note that the dimensions of the image expressed in units will change depending on the rendering destination's size. They are computed so that if the image were to be rendered at those dimensions, 1 pixel of the image would equal 1 pixel in the rendering destination.
+
+If the image has infinite dimensions, its reported width and height will be 0.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image to query.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the image in units.</string>
+			<key>name</key>
+			<string>Width</string>
+		</dict>
+		<key>outputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the image in units.</string>
+			<key>name</key>
+			<string>Height</string>
+		</dict>
+		<key>outputPixelsWide</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the image in pixels.</string>
+			<key>name</key>
+			<string>Pixels Wide</string>
+		</dict>
+		<key>outputPixelsHigh</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the image in pixels.</string>
+			<key>name</key>
+			<string>Pixels High</string>
+		</dict>
+		<key>outputRatio</key>
+		<dict>
+			<key>description</key>
+			<string>The image aspect ratio.</string>
+			<key>name</key>
+			<string>Aspect Ratio</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

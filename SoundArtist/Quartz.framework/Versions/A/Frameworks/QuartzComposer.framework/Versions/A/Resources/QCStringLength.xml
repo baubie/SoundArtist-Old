@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+		<key>name</key>
+		<string>String Length</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Count</string>
+			<string>Characters</string>
+			<string>Number</string>
+		</array>
+		<key>description</key>
+		<string>This patch returns the number of characters in a string.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The string to query.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputLength</key>
+		<dict>
+			<key>description</key>
+			<string>The number of characters in the string.</string>
+			<key>name</key>
+			<string>Length</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

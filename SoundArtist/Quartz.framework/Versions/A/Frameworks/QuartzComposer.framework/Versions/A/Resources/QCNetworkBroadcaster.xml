@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch sends text over the local network using UDP broadcasting or multicasting. The sent text can be received by compositions on other computers using the Network Receiver patch.
+
+The text is sent as strings whenever it changes with a maximum length of 256 characters.</string>
+		<key>name</key>
+		<string>Network Broadcaster</string>
+		<key>categories</key>
+		<array>
+			<string>Network</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Network Broadcaster.qtz</string>
+            <string>Network Receiver.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The string to broadcast.</string>
+			<key>name</key>
+			<string>Broadcast String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

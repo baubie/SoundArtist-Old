@@ -22,10 +22,6 @@
     
     NSString* tempDirectory;
     
-    NSPanel *commonPropertiesPanel;
-    NSPanel *waveformPropertiesPanel;
-    NSPanel *spectrogramPropertiesPanel;
-    
     NSMenuItem *commonPropertiesMenuItem;
     NSMenuItem *waveformPropertiesMenuItem;
     NSMenuItem *spectrogramPropertiesMenuItem;
@@ -37,7 +33,13 @@
     NSToolbarItem *refreshWaveformButton;
     NSToolbarItem *refreshSpectrogramButton;
     NSToolbarItem *refreshPowerButton;
-    
+
+    NSToolbarItem *optionsGeneral;
+    NSToolbarItem *optionsWaveform;
+    NSToolbarItem *optionsSpectrogram;
+    NSToolbarItem *optionsPower;
+    NSTabView *optionsTabView;
+
     NSTextFieldCell *sampleRate;
     NSTextFieldCell *frames;
     NSTextFieldCell *duration;
@@ -46,6 +48,7 @@
     NSImageView *spectrogramView;
     NSImageView *powerView;
 
+    NSPanel *optionsPanel;
     
     //Common
     NSPopUpButton *timeAxis;
@@ -77,9 +80,7 @@
 
 @property (retain) NSString* tempDirectory;
 
-@property (nonatomic, retain) IBOutlet NSPanel *commonPropertiesPanel;
-@property (nonatomic, retain) IBOutlet NSPanel *waveformPropertiesPanel;
-@property (nonatomic, retain) IBOutlet NSPanel *spectrogramPropertiesPanel;
+@property (nonatomic, retain) IBOutlet NSPanel *optionsPanel;
 
 @property (nonatomic, retain) IBOutlet NSMenuItem *commonPropertiesMenuItem;
 @property (nonatomic, retain) IBOutlet NSMenuItem *waveformPropertiesMenuItem;
@@ -90,6 +91,13 @@
 
 @property (nonatomic, retain) IBOutlet NSToolbarItem *refreshWaveformButton;
 @property (nonatomic, retain) IBOutlet NSToolbarItem *refreshSpectrogramButton;
+@property (nonatomic, retain) IBOutlet NSToolbarItem *refreshPowerButton;
+
+@property (nonatomic, retain) IBOutlet NSToolbarItem *optionsGeneral;
+@property (nonatomic, retain) IBOutlet NSToolbarItem *optionsWaveform;
+@property (nonatomic, retain) IBOutlet NSToolbarItem *optionsSpectrogram;
+@property (nonatomic, retain) IBOutlet NSToolbarItem *optionsPower;
+
 
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *sampleRate;
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *frames;
@@ -99,6 +107,7 @@
 @property (nonatomic, retain) IBOutlet NSImageView *spectrogramView;
 @property (nonatomic, retain) IBOutlet NSImageView *powerView;
 
+@property (nonatomic, retain) IBOutlet NSTabView *optionsTabView;
 
 //Common
 @property (nonatomic, retain) IBOutlet NSPopUpButton *timeAxis;
@@ -125,15 +134,13 @@
 @property (nonatomic, retain) IBOutlet NSPopUpButton *spectrogramPalette;
 
 
-- (IBAction)toggleProperties: (id) pId;
 - (IBAction)openDocument: (id) pID;
 - (IBAction)refreshWaveform: (id) pId;
 - (IBAction)refreshSpectrogram: (id) pId;
 - (IBAction)refreshPower: (id) pId;
 
-- (void) windowWillClose: (NSNotification *) notification;
+- (IBAction)changeOptionsTab: (id) pId;
 - (BOOL) openSoundFile: (NSString *) filename;
-
 - (void) windowDidResize:(NSNotification *)notification;
 
 @end

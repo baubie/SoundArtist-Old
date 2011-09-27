@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Macro Patch</string>
+		<key>description</key>
+		<string>Standard Quartz Composer macro patch.</string>
+	</dict>
+	
+	<key>_interpolationPortAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Interpolation</string>
+		<key>description</key>
+		<string>The interpolation mode.</string>
+		<key>menu</key>
+		<array>
+			<string>Linear</string>
+			<string>-</string>
+			<string>Quadratic In</string>
+			<string>Quadratic Out</string>
+			<string>Quadratic In-Out</string>
+			<string>-</string>
+			<string>Cubic In</string>
+			<string>Cubic Out</string>
+			<string>Cubic In-Out</string>
+			<string>-</string>
+			<string>Exponential In</string>
+			<string>Exponential Out</string>
+			<string>Exponential In-Out</string>
+			<string>-</string>
+			<string>Sinusoidal In</string>
+			<string>Sinusoidal Out</string>
+			<string>Sinusoidal In-Out</string>
+		</array>
+	</dict>
+	
+	<key>_zBufferPortAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Depth Testing</string>
+		<key>description</key>
+		<string>Depth testing control.</string>
+		<key>menu</key>
+		<array>
+			<string>None</string>
+			<string>Read / Write</string>
+			<string>Read-Only</string>
+		</array>
+	</dict>
+	
+	<key>_cullingPortAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Face Culling</string>
+		<key>description</key>
+		<string>Face culling control.</string>
+		<key>menu</key>
+		<array>
+			<string>None</string>
+			<string>Back Faces</string>
+			<string>Front Faces</string>
+			<string>Use Model Culling</string>
+		</array>
+	</dict>
+	
+	<key>_blendingPortAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Blending</string>
+		<key>description</key>
+		<string>Blending control.</string>
+		<key>menu</key>
+		<array>
+			<string>Replace</string>
+			<string>Over</string>
+			<string>Add</string>
+		</array>
+	</dict>
+	
+</dict>
+</plist>

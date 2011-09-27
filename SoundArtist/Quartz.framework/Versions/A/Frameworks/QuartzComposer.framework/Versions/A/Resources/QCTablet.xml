@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns the current state of the tablet pointing device.
+
+The pen position is expressed in units in the Quartz Composer coordinates system. The pen tilt on the X and Y axes is normalized to the [-1.0,1.0] range and the pen pressure is normalized to the [0,1] range.
+
+Note that this patch does not read the tablet state directly but is dependent on the proper information being passed to the composition. This information may not always be available, depending on the environment in which Quartz Composer is running.</string>
+		<key>name</key>
+		<string>Tablet</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Pen</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Source/Device</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Tablet Trail.qtz</string>
+        </array>  
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputX</key>
+		<dict>
+			<key>description</key>
+			<string>The horizontal position of the pen in units.</string>
+			<key>name</key>
+			<string>X</string>
+		</dict>
+		<key>outputY</key>
+		<dict>
+			<key>description</key>
+			<string>The vertical position of the pen in units.</string>
+			<key>name</key>
+			<string>Y</string>
+		</dict>
+		<key>outputTiltX</key>
+		<dict>
+			<key>description</key>
+			<string>The scaled horizontal tilt value of the pen in the [-1.0,1.0] range.</string>
+			<key>name</key>
+			<string>Tilt X</string>
+		</dict>
+		<key>outputTiltY</key>
+		<dict>
+			<key>description</key>
+			<string>The scaled vertical tilt value of the pen in the [-1.0,1.0] range.</string>
+			<key>name</key>
+			<string>Tilt Y</string>
+		</dict>
+		<key>outputPressure</key>
+		<dict>
+			<key>description</key>
+			<string>The pressure applied to the pen in the [0,1] range.</string>
+			<key>name</key>
+			<string>Pressure</string>
+		</dict>
+		<key>outputTipButton</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the pen tip button.</string>
+			<key>name</key>
+			<string>Tip Button</string>
+		</dict>
+		<key>outputLowerButton</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the pen lower side button.</string>
+			<key>name</key>
+			<string>Lower Button</string>
+		</dict>
+		<key>outputUpperButton</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the pen upper side button.</string>
+			<key>name</key>
+			<string>Upper Button</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

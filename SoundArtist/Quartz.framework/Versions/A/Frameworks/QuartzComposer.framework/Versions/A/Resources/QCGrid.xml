@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>GLSL Grid</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Sprite</string>
+		</array>
+		<key>description</key>
+		<string>This patch renders a flat surface. It is meant to be used within a GLSL patch. 
+
+The surface is made of quads whose horizontal and vertical quantity is set by the "Horizontal Resolution" and "Vertical Resolution" input parameters.</string>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputX</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the X-axis.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>inputY</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>inputZ</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Position</string>
+		</dict>
+		<key>inputRX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the X-axis.</string>
+			<key>name</key>
+			<string>X Rotation</string>
+		</dict>
+		<key>inputRY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Rotation</string>
+		</dict>
+		<key>inputRZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Rotation</string>
+		</dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the grid.</string>
+			<key>name</key>
+			<string>Width</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the grid.</string>
+			<key>name</key>
+			<string>Height</string>
+		</dict>
+		<key>inputWidthResolution</key>
+		<dict>
+			<key>description</key>
+			<string>The horizontal resolution of the grid (the number of quads + 1)</string>
+			<key>name</key>
+			<string>Horizontal Resolution</string>
+		</dict>
+		<key>inputHeightResolution</key>
+		<dict>
+			<key>description</key>
+			<string>The vertical resolution of the grid (the number of quads + 1)</string>
+			<key>name</key>
+			<string>Vertical Resolution</string>
+		</dict>				
+	</dict>
+	
+</dict>
+</plist>

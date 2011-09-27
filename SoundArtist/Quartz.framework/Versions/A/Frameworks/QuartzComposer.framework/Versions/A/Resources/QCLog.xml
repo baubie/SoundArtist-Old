@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Prints the content of the string input to the Quartz Composer log whenever it changes.</string>
+		<key>name</key>
+		<string>Log</string>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputValue</key>
+		<dict>
+			<key>description</key>
+			<string>The value to print in the log.</string>
+			<key>name</key>
+			<string>Value</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

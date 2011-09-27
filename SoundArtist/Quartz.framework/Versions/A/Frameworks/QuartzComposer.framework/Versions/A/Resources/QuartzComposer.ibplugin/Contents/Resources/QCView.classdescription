@@ -1,0 +1,13 @@
+{
+    ClassName = QCView; 
+    SuperClass = NSView; 
+    Actions = {
+		"play:" = "id";
+		"start:" = "id";
+		"stop:" = "id";
+		"copy:" = "id";
+    };
+    Outlets = {
+		delegate = id;
+    };
+}

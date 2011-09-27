@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Structure Range</string>
+		<key>description</key>
+		<string>Extracts a substructure from a structure.</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Structure</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The source structure.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+		<key>inputIndex</key>
+		<dict>
+			<key>description</key>
+			<string>The index of the first member.</string>
+			<key>name</key>
+			<string>Index</string>
+		</dict>
+		<key>inputLength</key>
+		<dict>
+			<key>description</key>
+			<string>The number of members.</string>
+			<key>name</key>
+			<string>Length</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting structure.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

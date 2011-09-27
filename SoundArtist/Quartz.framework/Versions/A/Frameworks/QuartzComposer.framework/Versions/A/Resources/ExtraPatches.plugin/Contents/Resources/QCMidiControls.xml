@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch sends arbitrary MIDI controller values on a given MIDI channel to one or more MIDI destinations.
+
+The values of the controllers are normalized in the [0,1] range.
+
+Note that when the composition starts rendering, all MIDI controllers values are sent.</string>
+		<key>name</key>
+		<string>MIDI Controllers Sender</string>
+		<key>categories</key>
+		<array>
+			<string>Network/MIDI</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputPitchWheel</key>
+		<dict>
+			<key>description</key>
+			<string>Value for pitch wheel.</string>
+			<key>name</key>
+			<string>Pitch Wheel</string>
+		</dict>
+	</dict>
+	
+	<key>_controllerAttributes</key>
+	<dict>
+		<key>inputName</key>
+		<string>Controller #%i</string>
+		<key>inputDescription</key>
+		<string>Value for MIDI controller #%i.</string>
+	</dict>
+	
+</dict>
+</plist>

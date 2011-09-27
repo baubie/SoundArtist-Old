@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Mesh Importer</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Mesh</string>
+			<string>3D</string>
+			<string>Model</string>
+		</array>
+		<key>description</key>
+		<string>This patch imports an mesh from a digital asset exchange (dae) file, with an option to extract all separate meshes into a structure.
+
+Note that the mesh data is not saved within the composition.</string>
+		<key>categories</key>
+		<array>
+			<string>Source</string>
+		</array>
+	</dict>
+
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputPath</key>
+		<dict>
+			<key>description</key>
+			<string>The path of the file.</string>
+			<key>name</key>
+			<string>Mesh Location</string>
+		</dict>
+	</dict>
+	
+	<key>_outputMesh</key>
+	<dict>
+		<key>description</key>
+		<string>The resulting mesh.</string>
+		<key>name</key>
+		<string>Mesh</string>
+	</dict>
+	
+	<key>_outputMeshes</key>
+	<dict>
+		<key>description</key>
+		<string>The resulting meshes.</string>
+		<key>name</key>
+		<string>Meshes</string>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch receives the text sent on the local network by the Network Broadcaster patch.
+
+The settings of this patch (broadcast / multicast address and port) must match those of the Network Broadcaster patch to listen to.</string>
+		<key>name</key>
+		<string>Network Receiver</string>
+		<key>categories</key>
+		<array>
+			<string>Network</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Network Receiver.qtz</string>
+            <string>Network Broadcaster.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The latest received string.</string>
+			<key>name</key>
+			<string>Received String</string>
+		</dict>
+		<key>outputTimestamp</key>
+		<dict>
+			<key>description</key>
+			<string>The reception time of the latest received string.</string>
+			<key>name</key>
+			<string>Received Timestamp</string>
+		</dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The string received signal.</string>
+			<key>name</key>
+			<string>Received Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

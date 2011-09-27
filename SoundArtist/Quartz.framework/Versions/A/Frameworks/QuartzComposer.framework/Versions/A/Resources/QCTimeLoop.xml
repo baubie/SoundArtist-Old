@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Makes the specified number of copies of the subpatches, using a different time for each copy.</string>
+		<key>name</key>
+		<string>Replicate in Time</string>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputCount</key>
+		<dict>
+			<key>description</key>
+			<string>Number of copies.</string>
+			<key>name</key>
+			<string>Copies</string>
+		</dict>
+		<key>inputStart</key>
+		<dict>
+			<key>description</key>
+			<string>The loop starting time.</string>
+			<key>name</key>
+			<string>Start Time</string>
+		</dict>
+		<key>inputEnd</key>
+		<dict>
+			<key>description</key>
+			<string>The loop ending time.</string>
+			<key>name</key>
+			<string>End Time</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Origin</string>
+		<key>description</key>
+		<string>Reports the origin of an image in image pixels.
+
+If the image has infinite dimensions, its reported X and Y origin will be 0.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image to query.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputPixelsOriginX</key>
+		<dict>
+			<key>description</key>
+			<string>The X origin of the image in pixels.</string>
+			<key>name</key>
+			<string>Pixels Origin X</string>
+		</dict>
+		<key>outputPixelsOriginY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y origin of the image in pixels.</string>
+			<key>name</key>
+			<string>Pixels Origin Y</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

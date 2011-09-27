@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility</string>
+		</array>
+		<key>name</key>
+		<string>MD5</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Hash</string>
+			<string>Unique</string>
+			<string>String MD5</string>
+		</array>
+		<key>description</key>
+		<string>This patch computes the MD5 hash of the input string and outputs it as 32 characters hexadecimal string.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The source string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The MD5 for the input string.</string>
+			<key>name</key>
+			<string>MD5</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

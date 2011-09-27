@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+		<key>name</key>
+		<string>Image Color Matching Properties</string>
+		<key>description</key>
+		<string>This patch modifies the color matching properties of an image.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The original image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>inputColorMatching</key>
+		<dict>
+			<key>description</key>
+			<string>The image color matching state.</string>
+			<key>name</key>
+			<string>Color Matching</string>
+			<key>menu</key>
+			<array>
+				<string>Default</string>
+				<string>-</string>
+				<string>Enable</string>
+				<string>Disable</string>
+			</array>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

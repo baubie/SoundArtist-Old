@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns the current absolute time expressed in seconds since the reference date of January 1st 2001 GMT ("system time").
+
+Use the Date Formatter patch to convert a system time to a formatted string.</string>
+		<key>name</key>
+		<string>System Time</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Absolute</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Clock.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputTime</key>
+		<dict>
+			<key>description</key>
+			<string>The current system time in seconds.</string>
+			<key>name</key>
+			<string>Time</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

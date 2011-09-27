@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch implements an Open Sound Control (OSC) server that receives packets: received OSC arguments are stored on the output ports.
+
+Supported OSC Type Tags are String, Float, Floats (array of floats), and Integers.</string>
+		<key>name</key>
+		<string>OSC Receiver</string>
+		<key>categories</key>
+		<array>
+			<string>Network/OSC</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>OSC Receiver.qtz</string>
+            <string>OSC Sender.qtz</string>
+        </array> 
+	</dict>
+
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The bundle received signal.</string>
+			<key>name</key>
+			<string>Received Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Date Formatter</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Time</string>
+		</array>
+		<key>description</key>
+		<string>Given a absolute time expressed in seconds since the reference date of January 1st 2001 GMT ("system time"), this patch creates a gregorian date and formats it as string representation.
+
+The gregorian date can be generated either in the system time zone or in specific one. The string representation can be created using predefined styles for the date and time parts, or using a customized format described using ICU library syntax.
+
+Note that predefined styles are localized and the resulting string will depend on the settings in the International pane of the System Preferences.</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Formatter</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Clock.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputTime</key>
+		<dict>
+			<key>description</key>
+			<string>System time in seconds.</string>
+			<key>name</key>
+			<string>Time</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The date as a string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

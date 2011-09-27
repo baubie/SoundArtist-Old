@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+		<key>name</key>
+		<string>String Truncate</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Ellipsis</string>
+			<string>Length</string>
+			<string>Shorten</string>
+			<string>Maximum</string>
+		</array>
+		<key>description</key>
+		<string>This patch truncates a string, from its beginning, middle or end, to a maximum number of characters, words, or sentences.
+
+The "Token" string input defines the string to insert where the truncation took place in the original string.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The source string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+		<key>inputDirection</key>
+		<dict>
+			<key>description</key>
+			<string>The truncation direction.</string>
+			<key>name</key>
+			<string>Direction</string>
+			<key>menu</key>
+			<array>
+				<string>From the Start</string>
+				<string>From the Middle</string>
+				<string>From the End</string>
+			</array>
+		</dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The units used to express the maximum string length.</string>
+			<key>name</key>
+			<string>Length Units</string>
+			<key>menu</key>
+			<array>
+				<string>Characters</string>
+				<string>Words</string>
+			</array>
+		</dict>
+		<key>inputMax</key>
+		<dict>
+			<key>description</key>
+			<string>The maximum string length.</string>
+			<key>name</key>
+			<string>Maximum Length</string>
+		</dict>
+		<key>inputToken</key>
+		<dict>
+			<key>description</key>
+			<string>The string to insert where the truncation took place.</string>
+			<key>name</key>
+			<string>Token</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The truncated string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

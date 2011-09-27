@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+        <key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+		<key>name</key>
+		<string>String Compare</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Equal</string>
+			<string>Insensitive</string>
+		</array>
+		<key>description</key>
+		<string>This patch compares two strings and returns the result as an index: "0" if the strings are equal, "1" if the first string precedes the second one, "2" otherwise.
+
+Note that the comparison is case-insensitive.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString1</key>
+		<dict>
+			<key>description</key>
+			<string>The first string.</string>
+			<key>name</key>
+			<string>First String</string>
+		</dict>
+		<key>inputString2</key>
+		<dict>
+			<key>description</key>
+			<string>The second string.</string>
+			<key>name</key>
+			<string>Second String</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputResult</key>
+		<dict>
+			<key>description</key>
+			<string>The comparison result.</string>
+			<key>name</key>
+			<string>Result</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

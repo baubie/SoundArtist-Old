@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns the current state of a customizable list of keys of the keyboard device.
+
+Each observed key is represented by a boolean output set to True when the key is down and False otherwise. Because the keys are actually observed through the character they produce, key modifiers (like [Shift], [Control]...) matter: for example, 'Q' is considered different than 'q'.
+
+Note that this patch does not read the keyboard state directly but is dependent on the proper information being passed to the composition. This information may not always be available, depending on the environment in which Quartz Composer is running.</string>
+		<key>name</key>
+		<string>Keyboard</string>
+		<key>categories</key>
+		<array>
+			<string>Source/Device</string>
+		</array>
+	</dict>
+	
+	<key>_keyAttributes</key>
+	<dict>
+		<key>keyName</key>
+		<string>Key '%@'</string>
+		<key>keyDescription</key>
+		<string>True if the key "%@" is down.</string>
+	</dict>
+	
+</dict>
+</plist>

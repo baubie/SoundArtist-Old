@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Quartz Composer Info</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Safe</string>
+			<string>Version</string>
+		</array>	
+		<key>description</key>
+		<string>This patch retrieves information about the current Quartz Composer environment.
+
+This patch can be used by the composition to know if it's running on an older Quartz Composer implementation with unsupported features, and act accordingly.</string>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputVersion</key>
+		<dict>
+			<key>description</key>
+			<string>Version of the current Quartz Composer runtime.</string>
+			<key>name</key>
+			<string>Runtime Version</string>
+		</dict>
+		<key>outputSafeMode</key>
+		<dict>
+			<key>description</key>
+			<string>Indicates if the composition is running in Safe Mode.</string>
+			<key>name</key>
+			<string>Safe Mode</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

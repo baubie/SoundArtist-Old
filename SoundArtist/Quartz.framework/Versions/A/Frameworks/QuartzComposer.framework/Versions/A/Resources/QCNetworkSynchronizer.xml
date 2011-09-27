@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch automatically synchronizes text between compositions running on multiple computers on the local network.
+
+The patch uses UDP broadcasting or multicasting, and automatically configures itself as a broadcaster or receiver.
+
+The text is sent as strings when it changes with a maximum length of 256 characters.</string>
+		<key>name</key>
+		<string>Network Synchronizer</string>
+		<key>categories</key>
+		<array>
+			<string>Network</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The string to broadcast.</string>
+			<key>name</key>
+			<string>Broadcast String</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputBroadcasting</key>
+		<dict>
+			<key>description</key>
+			<string>The synchronizer state: broadcasting or receiving.</string>
+			<key>name</key>
+			<string>Broadcasting</string>
+		</dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The latest received string.</string>
+			<key>name</key>
+			<string>Received String</string>
+		</dict>
+		<key>outputTimestamp</key>
+		<dict>
+			<key>description</key>
+			<string>The reception time of the latest received string.</string>
+			<key>name</key>
+			<string>Received Timestamp</string>
+		</dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The string received signal.</string>
+			<key>name</key>
+			<string>Received Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch performs a logic operation on two Boolean values and returns the result as a Boolean.
+
+Note that in case of the "NOT" operation, the second operand is ignored.</string>
+		<key>name</key>
+		<string>Logic</string>
+		<key>aliasNames</key>
+		<array>
+			<string>NOT</string>
+			<string>AND</string>
+			<string>OR</string>
+			<string>XOR</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Utility/Logic</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputValue1</key>
+		<dict>
+			<key>description</key>
+			<string>The first Boolean value.</string>
+			<key>name</key>
+			<string>First Operand</string>
+		</dict>
+		<key>inputOperation</key>
+		<dict>
+			<key>description</key>
+			<string>The logical operation to perform (NOT ignores the second operand).</string>
+			<key>name</key>
+			<string>Operation</string>
+			<key>menu</key>
+			<array>
+				<string>AND</string>
+				<string>OR</string>
+				<string>XOR</string>
+				<string>NOT</string>
+				<string>NAND</string>
+				<string>NOR</string>
+				<string>NXOR</string>
+			</array>
+		</dict>
+		<key>inputValue2</key>
+		<dict>
+			<key>description</key>
+			<string>The second Boolean value.</string>
+			<key>name</key>
+			<string>Second Operand</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputResult</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting Boolean value.</string>
+			<key>name</key>
+			<string>Result</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

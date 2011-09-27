@@ -1,0 +1,6 @@
+{
+    ClassName = IKUIFilterView; 
+    SuperClass = NSView; 
+    Actions = {};
+    Outlets = {};
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns a mesh component.  A mesh component is an array of vertices, colors, normals or indices.</string>
+		<key>name</key>
+		<string>Get Mesh Component</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Attributes</string>
+			<string>Vertices</string>
+			<string>Normals</string>
+		</array>		
+		<key>categories</key>
+		<array>
+			<string>Mesh/Utility</string>
+		</array>
+	</dict>
+
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputValue</key>
+		<dict>
+			<key>description</key>
+			<string>Resulting mesh component.</string>
+			<key>name</key>
+			<string>Mesh Component</string>
+		</dict>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMesh</key>
+		<dict>
+			<key>description</key>
+			<string>The mesh to transform.</string>
+			<key>name</key>
+			<string>Mesh</string>
+		</dict>
+		<key>inputValue</key>
+		<dict>
+			<key>description</key>
+			<string>Structure to set.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+		<key>_inputProperty</key>
+		<dict>
+			<key>description</key>
+			<string>The key.</string>
+			<key>name</key>
+			<string>Key</string>
+		</dict>
+	</dict>
+
+	<key>_propertyMenu</key>
+	<array>
+		<string>Vertices</string>
+		<string>Colors</string>
+		<string>Normals</string>
+		<string>Indices</string>
+	</array>	
+</dict>
+</plist>

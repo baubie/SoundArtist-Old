@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Structure Sort</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Reverse</string>
+			<string>Descriptor</string>
+			<string>Path</string>
+			<string>Descriptor</string>
+			<string>Key</string>
+		</array>
+		<key>description</key>
+		<string>This patch sorts member in a structure using an optional sorting descriptor.
+
+If the optional sorting descriptor is specified, then members are sorted according to their values for it. This is especially useful with structures of structures.
+
+The sorting descriptor can also define descending sorting (using the '!' prefix), multi-levels sorting (using the ':' separator) as well as paths (using the '.' separator). For instance the sorting descriptor "foo:!bar.thing" means sort by ascending values for "foo", then by descending values for "bar.thing".</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Structure</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The structure to sort.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+		<key>inputSortingKey</key>
+		<dict>
+			<key>description</key>
+			<string>The optional sorting descriptor to use.</string>
+			<key>name</key>
+			<string>Sorting Descriptor</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The sorted structure.</string>
+			<key>name</key>
+			<string>Sorted Structure</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

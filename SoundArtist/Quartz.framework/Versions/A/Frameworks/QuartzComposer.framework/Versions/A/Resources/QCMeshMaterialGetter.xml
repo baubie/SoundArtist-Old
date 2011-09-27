@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch gets a texture from a mesh.</string>
+		<key>name</key>
+		<string>Get Mesh Texture</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Texture</string>
+			<string>Image</string>
+		</array>		
+		<key>categories</key>
+		<array>
+			<string>Mesh/Utility</string>
+		</array>
+	</dict>
+
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>Resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>outputCount</key>
+		<dict>
+			<key>description</key>
+			<string>The number of textures.</string>
+			<key>name</key>
+			<string>Texture Count</string>
+		</dict>		
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMesh</key>
+		<dict>
+			<key>description</key>
+			<string>The mesh to use.</string>
+			<key>name</key>
+			<string>Mesh</string>
+		</dict>
+		<key>inputIndex</key>
+		<dict>
+			<key>description</key>
+			<string>The texture index.</string>
+			<key>name</key>
+			<string>Texture Index</string>
+		</dict>
+	</dict>
+
+	<key>_propertyMenu</key>
+	<array>
+		<string>Vertices</string>
+		<string>Colors</string>
+		<string>Normals</string>
+		<string>Indices</string>
+	</array>	
+</dict>
+</plist>

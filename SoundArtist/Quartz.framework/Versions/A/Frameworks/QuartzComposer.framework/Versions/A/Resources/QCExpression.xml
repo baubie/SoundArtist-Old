@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Mathematical Expression</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Equation</string>
+		</array>
+	
+		<key>description</key>
+		<string>This patch executes a mathematical expression with variables.
+
+The expression parser supports parenthesis to an arbitrary depth, the arithmetic operators ( +, -, *, /, %, ^), boolean operators (&lt;, &gt;, ==, !=, &lt;=, &gt;=, ?:), logical operators (&amp;&amp;, ||, ! ) and bitwise operators (&amp;, |, !&amp; (XOR), ~).
+
+Constants may be expressed in either decimal, "12.345", or scientific, "1.2345e1", notation. Some predefined constants are provided: pi and e.
+
+The parser also supports the following functions: sin(), cos(), tan(), asin(), acos(), atan(), atan2(), sinh(), cosh(), tanh(), exp(), ln(), log(), abs(), sqrt(), ceil(), floor(), min(), max() and rand().</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Numeric</string>
+		</array>
+	</dict>
+	
+	<key>_sourceTemplates</key>
+	<dict>
+		<key>expression</key>
+		<string>a * (1 + sin(b))</string>
+	</dict>
+	
+	<key>_sourceKeywords</key>
+	<array>
+		<dict>
+			<key>color</key>
+			<string>R=0.54 G=0.07 B=0.08</string>
+			<key>list</key>
+			<string>
+				sin cos tan asin acos atan atan2 sinh cosh tanh exp ln log abs sqrt ceil floor min max rand
+			</string>
+		</dict>
+	</array>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputResult</key>
+		<dict>
+			<key>description</key>
+			<string>The result of the expression evaluation.</string>
+			<key>name</key>
+			<string>Result</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

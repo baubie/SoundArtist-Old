@@ -1,0 +1,9 @@
+{
+    ClassName = IKScannerDeviceView; 
+    SuperClass = NSView; 
+    Actions = {
+    };
+    Outlets = {
+        delegate = id;
+    };
+}

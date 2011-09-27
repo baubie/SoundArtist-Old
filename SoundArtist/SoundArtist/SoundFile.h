@@ -73,11 +73,21 @@ struct WR_SPECINFO {
 @property (readonly) int frames;
 @property (readonly) double duration;
 
+- (void) runGLE: (NSString *) filename;
 - (BOOL) openFile: (NSString *) filename;
 - (void) makeWindow: (enum windows) type length:(int) N array: (float *) window;
-- (BOOL) makeWaveForm: (NSString*) folder info:(struct WR_WFINFO*) wfinfo;
-- (BOOL) makeSpectrogram: (NSString*) folder info:(struct WR_SPECINFO*) specinfo;
-- (BOOL) makePower: (NSString*) folder info:(struct WR_SPECINFO*) specinfo;
 
+
+- (BOOL) makeWaveForm: (NSString*) folder info:(struct WR_WFINFO*) wfinfo;
+- (BOOL) makeWaveformData: (NSString*) dataFilename info:(struct WR_WFINFO*) wfinfo;
+- (NSString*) makeWaveformPlot: (NSString*) gleFilename info:(struct WR_WFINFO*) wfinfo;
+
+- (BOOL) makeSpectrogram: (NSString*) folder info:(struct WR_SPECINFO*) specinfo;
+- (BOOL) makeSpectrogramData: (NSString*) dataFilename info:(struct WR_SPECINFO*) specinfo;
+- (NSString*) makeSpectrogramPlot: (NSString*) gleFilename info:(struct WR_SPECINFO*) specinfo;
+
+- (BOOL) makePower: (NSString*) folder info:(struct WR_SPECINFO*) specinfo;
+- (BOOL) makePowerData: (NSString*) dataFilename info:(struct WR_SPECINFO*) specinfo;
+- (NSString*) makePowerPlot: (NSString*) gleFilename info:(struct WR_SPECINFO*) specinfo;
 
 @end

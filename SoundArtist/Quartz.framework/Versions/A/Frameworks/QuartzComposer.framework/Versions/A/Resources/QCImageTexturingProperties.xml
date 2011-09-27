@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Texturing Properties</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Target</string>
+			<string>Mipmapping</string>
+			<string>Matrix</string>
+		</array>
+		<key>description</key>
+		<string>This patch modifies the texturing properties of an image: texture target, mipmapping levels and texturing matrix.
+
+Those texturing properties only affect the image when used as a texture by patches, while the actual contents of the image is left untouched. Note however that some patches (e.g. Billboard) may ignore those properties because of the way they use images.
+
+Also be aware that the mipmapping can only be activated if the texture target is set to 2D.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Image Texturing Properties Reflection.qtz</string>
+            <string>Image Texturing Properties Texture Tiling.qtz</string>
+            <string>Image Texturing Properties Grid.qtz</string>
+        </array>  
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The original image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		
+		<key>inputTarget</key>
+		<dict>
+			<key>description</key>
+			<string>The texture target.</string>
+			<key>name</key>
+			<string>Target</string>
+			<key>menu</key>
+			<array>
+				<string>Default</string>
+				<string>-</string>
+				<string>Rectangle</string>
+				<string>2D</string>
+			</array>
+		</dict>
+		<key>inputMipmaps</key>
+		<dict>
+			<key>description</key>
+			<string>Controls mipmapping for the 2D texture target.</string>
+			<key>name</key>
+			<string>Mipmapping</string>
+			<key>menu</key>
+			<array>
+				<string>Default</string>
+				<string>-</string>
+				<string>Disabled</string>
+				<string>Enabled</string>
+			</array>
+		</dict>
+		
+		<key>inputScaleX</key>
+		<dict>
+			<key>description</key>
+			<string>Scaling on the X-axis.</string>
+			<key>name</key>
+			<string>Matrix Scaling X</string>
+		</dict>
+		<key>inputScaleY</key>
+		<dict>
+			<key>description</key>
+			<string>Scaling on the Y-axis.</string>
+			<key>name</key>
+			<string>Matrix Scaling Y</string>
+		</dict>
+		<key>inputRotate</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation amount.</string>
+			<key>name</key>
+			<string>Matrix Rotation</string>
+		</dict>
+		<key>inputTranslateX</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the X-axis.</string>
+			<key>name</key>
+			<string>Matrix Translation X</string>
+		</dict>
+		<key>inputTranslateY</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the Y-axis.</string>
+			<key>name</key>
+			<string>Matrix Translation Y</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

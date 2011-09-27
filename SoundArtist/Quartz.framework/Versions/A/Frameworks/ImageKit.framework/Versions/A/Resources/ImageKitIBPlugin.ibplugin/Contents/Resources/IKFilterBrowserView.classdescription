@@ -1,0 +1,16 @@
+{
+    ClassName = IKFilterBrowserView; 
+    SuperClass = NSView; 
+    Actions = {};
+    Outlets = {
+        _actionButton = id;
+        _addCollectionButton = id;
+        _browser = id;
+        _descriptionField = id;
+        _previewView = id;
+        _removeCollectionButton = id;
+        _searchField = id;
+        _OKButton = id;
+        _CancelButton = id;
+    };
+}

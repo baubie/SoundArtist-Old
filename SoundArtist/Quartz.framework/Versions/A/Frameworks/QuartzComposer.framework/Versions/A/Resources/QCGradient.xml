@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Gradient</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Clear</string>
+		</array>
+		<key>description</key>
+		<string>Renders an horizontal or vertical gradient shading that covers the entire rendering destination and varies between three colors - starting, middle, and ending. This patch also clears the depth buffer.
+
+Assuming the "Blending" input is set to "None", you can use Gradient instead of Clear to clear the rendering destination.</string>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputDirection</key>
+		<dict>
+			<key>description</key>
+			<string>Direction of the gradient.</string>
+			<key>name</key>
+			<string>Direction</string>
+			<key>menu</key>
+			<array>
+				<string>Vertical (Upside)</string>
+				<string>Horizontal (Rightside)</string>
+				<string>Vertical (Downside)</string>
+				<string>Horizontal (Leftside)</string>
+			</array>
+		</dict>
+	</dict>
+	
+	<key>_colorAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>The color of the gradient point.</string>
+		<key>name</key>
+		<string>Color #%i</string>
+	</dict>
+	
+	<key>_positionAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>The normalized position of the gradient point.</string>
+		<key>name</key>
+		<string>Position #%i</string>
+	</dict>
+	
+</dict>
+</plist>

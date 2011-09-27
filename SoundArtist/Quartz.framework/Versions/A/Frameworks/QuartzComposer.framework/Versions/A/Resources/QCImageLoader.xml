@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Loader</string>
+		</array>
+		<key>description</key>
+		<string>This patch imports an image from a file. Most common image file formats are supported: JPEG, TIFF, PNG, GIF, BMP, TGA, OpenEXR, JPEG 2000, PDF...
+
+Note that the image data is saved within the composition.</string>
+		<key>categories</key>
+		<array>
+			<string>Source</string>
+		</array>
+	</dict>
+	
+	<key>_imageAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>The resulting image.</string>
+		<key>name</key>
+		<string>Image</string>
+	</dict>
+	
+	<key>_imagesAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>The resulting images.</string>
+		<key>name</key>
+		<string>Images</string>
+	</dict>
+	
+</dict>
+</plist>

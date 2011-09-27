@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This macro patch configures an environment lighting that affects the rendering of its subpatches.
+
+Along with the ambient light, up to 8 omnidirectional lights each of them using a different color can be defined. If the attenuation parameter of a light is greater than 0, its intensity will diminish linearly with the distance.
+
+Specular and shininess factors for the materials of the illuminated objects are set globally through the related inputs of this patch.</string>
+		<key>name</key>
+		<string>Lighting</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Shadow</string>
+			<string>Shading</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputObjectSpecular</key>
+		<dict>
+			<key>description</key>
+			<string>Specular factor for objects material.</string>
+			<key>name</key>
+			<string>Material Specularity</string>
+		</dict>
+		<key>inputObjectShininess</key>
+		<dict>
+			<key>description</key>
+			<string>Shininess factor for objects material.</string>
+			<key>name</key>
+			<string>Material Shininess</string>
+		</dict>
+		<key>inputAmbientColor</key>
+		<dict>
+			<key>description</key>
+			<string>Scene ambient light.</string>
+			<key>name</key>
+			<string>Ambient Light</string>
+		</dict>
+	</dict>
+	
+	<key>_lightAttributes</key>
+	<dict>
+		<key>colorName</key>
+		<string>Light %i Color</string>
+		<key>colorDescription</key>
+		<string>Diffuse color for the light.</string>
+		
+		<key>attenuationName</key>
+		<string>Light %i Attenuation</string>
+		<key>attenuationDescription</key>
+		<string>Linear attenuation factor for the light.</string>
+		
+		<key>positionXName</key>
+		<string>Light %i X Position</string>
+		<key>positionXDescription</key>
+		<string>Position on the X-axis for the light.</string>
+		
+		<key>positionYName</key>
+		<string>Light %i Y Position</string>
+		<key>positionYDescription</key>
+		<string>Position on the Y-axis for the light.</string>
+		
+		<key>positionZName</key>
+		<string>Light %i Z Position</string>
+		<key>positionZDescription</key>
+		<string>Position on the Z-axis for the light.</string>
+
+		<key>positionZName</key>
+		<string>Light %i Z Position</string>
+		<key>positionZDescription</key>
+		<string>Position on the Z-axis for the light.</string>
+
+		<key>positionZName</key>
+		<string>Light %i Z Position</string>
+		<key>positionZDescription</key>
+		<string>Position on the Z-axis for the light.</string>
+
+		<key>castShadowName</key>
+		<string>Light %i Casts Shadows</string>
+		<key>castShadowDescription</key>
+		<string>Controls whether the light will cast shadows or not.</string>
+		
+		<key>shadowColorName</key>
+		<string>Light %i Shadow Color</string>
+		<key>shadowColorDescription</key>
+		<string>Shaodow Color of the Light.</string>		
+
+		<key>shadowQualityName</key>
+		<string>Light %i Shadow Quality</string>
+		<key>shadowQualityDescription</key>
+		<string>Shaodow quality of the Light.</string>	
+			
+	</dict>
+	
+</dict>
+</plist>

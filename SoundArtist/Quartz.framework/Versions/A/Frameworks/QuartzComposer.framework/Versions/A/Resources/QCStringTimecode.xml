@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Converts a time value to a string.</string>
+		<key>name</key>
+		<string>String Timecode</string>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputTime</key>
+		<dict>
+			<key>description</key>
+			<string>Time to convert.</string>
+			<key>name</key>
+			<string>Time</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The timecode string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

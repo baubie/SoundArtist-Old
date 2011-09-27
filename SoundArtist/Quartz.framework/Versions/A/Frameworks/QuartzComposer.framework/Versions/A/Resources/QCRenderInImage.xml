@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Environment</string>
+		</array>
+		<key>name</key>
+		<string>Render in Image</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Flatten</string>
+		</array>
+		<key>description</key>
+		<string>This macro patch renders its subpatches into an image.
+
+Render in Image basically creates a new rendering destination in the form of an image. The subpatches of this macro patch then render to that new destination instead of the original one. The resulting image can be used as any regular image: for example, it can be passed to Core Image filters or used as a mask.
+
+If set to (0,0), the image dimensions will automatically match the dimensions of the original rendering destination.
+In order to save VRAM, Render in Image can be configured through its settings not to use a depth buffer.
+
+Also be aware that the mipmapping can only be activated if the texture target is set to 2D.</string>
+        <key>examples</key>
+        <array>
+            <string>Render In Image.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputRender</key>
+		<dict>
+			<key>description</key>
+			<string>Enables rendering in the image.</string>
+			<key>name</key>
+			<string>Render</string>
+		</dict>
+		<key>inputTarget</key>
+		<dict>
+			<key>description</key>
+			<string>The texture target.</string>
+			<key>name</key>
+			<string>Texture Target</string>
+			<key>menu</key>
+			<array>
+				<string>Rectangle</string>
+				<string>2D</string>
+			</array>
+		</dict>
+		<key>inputMipmaps</key>
+		<dict>
+			<key>description</key>
+			<string>Controls mipmapping for the 2D texture target.</string>
+			<key>name</key>
+			<string>Texture Mipmapping</string>
+		</dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width in pixels of the image.</string>
+			<key>name</key>
+			<string>Pixels Wide</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height in pixels of the image.</string>
+			<key>name</key>
+			<string>Pixels High</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

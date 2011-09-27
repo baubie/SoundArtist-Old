@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch tests if a point is in a hot zone.
+
+The hot zone is defined as a virtual quad whose position and orientation can be set arbitrarily in 3D space. The point to test is defined in 2D space with its X and Y coordinates expressed in units in the Quartz Composer coordinates system.
+The "Hit Intensity" output indicates if the test point lies in the projection of the hot zone in 2D space: a result of 1.0 means inside and 0.0 outside. If the hot zone has a mask image, that result is multiplied by the intensity of the mask image pixel that was hit.
+The "Hit Zone X" and "Hit Zone Y" outputs provides the coordinates expressed in units of the test point in the hot zone coordinate system. If the hot zone has a mask image, the "Hit Mask X" and "Hit Mask Y" outputs provide those coordinates in pixels as well.
+
+This patch is typically used with the Mouse patch to perform hit testing using masked areas.</string>
+		<key>name</key>
+		<string>Hit Test</string>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputHitX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the point to test.</string>
+			<key>name</key>
+			<string>Test X</string>
+		</dict>
+		<key>inputHitY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the point to test.</string>
+			<key>name</key>
+			<string>Test Y</string>
+		</dict>
+		<key>inputX</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the X-axis.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>inputY</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>inputZ</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Position</string>
+		</dict>
+		<key>inputRX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the X-axis.</string>
+			<key>name</key>
+			<string>X Rotation</string>
+		</dict>
+		<key>inputRY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Rotation</string>
+		</dict>
+		<key>inputRZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Rotation</string>
+		</dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the hot zone.</string>
+			<key>name</key>
+			<string>Width</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the hot zone.</string>
+			<key>name</key>
+			<string>Height</string>
+		</dict>
+		<key>inputMask</key>
+		<dict>
+			<key>description</key>
+			<string>The mask for the hot zone.</string>
+			<key>name</key>
+			<string>Mask Image</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputHit</key>
+		<dict>
+			<key>description</key>
+			<string>Intensity of the hit of the test point in the hot zone.</string>
+			<key>name</key>
+			<string>Hit Intensity</string>
+		</dict>
+		<key>outputZoneX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the test point in the hot zone.</string>
+			<key>name</key>
+			<string>Hit Zone X</string>
+		</dict>
+		<key>outputZoneY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the test point in the hot zone.</string>
+			<key>name</key>
+			<string>Hit Zone Y</string>
+		</dict>
+		<key>outputMaskX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the test point in the hot zone mask in pixels.</string>
+			<key>name</key>
+			<string>Hit Mask X</string>
+		</dict>
+		<key>outputMaskY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the test point in the hot zone mask in pixels.</string>
+			<key>name</key>
+			<string>Hit Mask Y</string>
+		</dict>
+		
+		<key>outputTopLeftX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the top left corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Top Left X</string>
+		</dict>
+		<key>outputTopLeftY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the top left corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Top Left Y</string>
+		</dict>
+		<key>outputTopRightX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the top right corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Top Right X</string>
+		</dict>
+		<key>outputTopRightY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the top right corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Top Right Y</string>
+		</dict>
+		<key>outputBottomLeftX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the bottom left corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Bottom Left X</string>
+		</dict>
+		<key>outputBottomLeftY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the bottom left corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Bottom Left Y</string>
+		</dict>
+		<key>outputBottomRightX</key>
+		<dict>
+			<key>description</key>
+			<string>The X coordinate of the bottom right corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Bottom Right X</string>
+		</dict>
+		<key>outputBottomRightY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y coordinate of the bottom right corner of the hot zone.</string>
+			<key>name</key>
+			<string>Zone Bottom Right Y</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,18 @@
+{
+    ClassName = IKImageView; 
+    SuperClass = NSView; 
+    Actions = {
+        "zoomImageToFit:" = id;
+        "zoomImageToActualSize:" = id;
+        "zoomIn:" = id;
+        "zoomOut:" = id;
+        "autoresizes:" = id;
+        "flipImageHorizontal:" = id;
+        "flipImageVertical:" = id;
+        "rotateImageLeft:" = id;
+        "rotateImageRight:" = id;
+    };
+    Outlets = {
+        delegate = id;
+    };
+}

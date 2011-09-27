@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns the current state of its parent Iterator patch.
+
+Iterator Variables is a special patch to be used inside an Iterator macro patch. It returns the current iteration index (either as an integer or normalized to a [0,1] range) and the total number of iterations.</string>
+		<key>name</key>
+		<string>Iterator Variables</string>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+		<key>examples</key>
+        <array>
+			<string>Random Nested Iterator.qtz</string>
+            <string>Iterator Back to Front.qtz</string>
+			<string>Iterator Counter.qtz</string>
+			<string>Iterator Selection List.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputIndex</key>
+		<dict>
+			<key>description</key>
+			<string>Current iteration index in the [0,count-1] range.</string>
+			<key>name</key>
+			<string>Current Index</string>
+		</dict>
+		<key>outputPosition</key>
+		<dict>
+			<key>description</key>
+			<string>Current normalized loop position in the [0,1] range.</string>
+			<key>name</key>
+			<string>Current Position</string>
+		</dict>
+		<key>outputCount</key>
+		<dict>
+			<key>description</key>
+			<string>Number of iterations in the loop.</string>
+			<key>name</key>
+			<string>Iterations</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

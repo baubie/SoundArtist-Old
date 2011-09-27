@@ -20,6 +20,9 @@
 		CAB9D03513DCCFE400331481 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB9D03413DCCFE400331481 /* Sparkle.framework */; };
 		CAB9D03813DCD04A00331481 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAB9D03413DCCFE400331481 /* Sparkle.framework */; };
 		CAB9D03A13DCDD7800331481 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = CAB9D03913DCDD7800331481 /* dsa_pub.pem */; };
+		CAF5A8E31430C7CB00556CEB /* power.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF5A8E11430C7CB00556CEB /* power.png */; };
+		CAF5A8E41430C7CB00556CEB /* spectrogram.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF5A8E21430C7CB00556CEB /* spectrogram.png */; };
+		CAF5A8E71430C7D700556CEB /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF5A8E61430C7D700556CEB /* wave.png */; };
 		CAFCEB3B13CB7CF200613D74 /* SoundArtist.icns in Resources */ = {isa = PBXBuildFile; fileRef = CAFCEB3A13CB7CF200613D74 /* SoundArtist.icns */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		CA9E0AC413CB6428005BB8E9 /* SoundFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundFile.m; sourceTree = "<group>"; };
 		CAB9D03413DCCFE400331481 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CAB9D03913DCDD7800331481 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		CAF5A8E11430C7CB00556CEB /* power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power.png; sourceTree = "<group>"; };
+		CAF5A8E21430C7CB00556CEB /* spectrogram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spectrogram.png; sourceTree = "<group>"; };
+		CAF5A8E61430C7D700556CEB /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wave.png; path = ../wave.png; sourceTree = "<group>"; };
 		CAFCEB3A13CB7CF200613D74 /* SoundArtist.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SoundArtist.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +136,9 @@
 				CA9E0AC313CB6428005BB8E9 /* SoundFile.h */,
 				CA9E0AC413CB6428005BB8E9 /* SoundFile.m */,
 				CA33A98613CA4D3F001237E6 /* MainMenu.xib */,
+				CAF5A8E61430C7D700556CEB /* wave.png */,
+				CAF5A8E11430C7CB00556CEB /* power.png */,
+				CAF5A8E21430C7CB00556CEB /* spectrogram.png */,
 			);
 			name = "Source Files";
 			path = SoundArtist;
@@ -224,6 +233,9 @@
 				CA33A98813CA4D3F001237E6 /* MainMenu.xib in Resources */,
 				CAFCEB3B13CB7CF200613D74 /* SoundArtist.icns in Resources */,
 				CAB9D03A13DCDD7800331481 /* dsa_pub.pem in Resources */,
+				CAF5A8E31430C7CB00556CEB /* power.png in Resources */,
+				CAF5A8E41430C7CB00556CEB /* spectrogram.png in Resources */,
+				CAF5A8E71430C7D700556CEB /* wave.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

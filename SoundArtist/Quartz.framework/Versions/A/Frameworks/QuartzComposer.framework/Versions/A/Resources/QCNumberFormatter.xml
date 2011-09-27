@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Given a numerical value, this patch creates a string representation.
+
+The string representation for the numerical value can be created using a predefined style, or using a customized format described using ICU library syntax.
+
+Note that predefined styles are localized and the resulting string will depend on the settings in the International pane of the System Preferences.</string>
+		<key>name</key>
+		<string>Number Formatter</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Formatter</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputNumber</key>
+		<dict>
+			<key>description</key>
+			<string>Numerical value.</string>
+			<key>name</key>
+			<string>Number</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The numerical value as a string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

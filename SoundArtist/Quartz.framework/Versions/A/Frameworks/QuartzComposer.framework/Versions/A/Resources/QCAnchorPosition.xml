@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Anchor Position</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Pin</string>
+		</array>
+		<key>description</key>
+		<string>This patch is used to position an element relative to one of 9 anchor points.  An optional size can be specified to position elements such as images within the referential as well as an optional offset which can be used to move the element towards the center.</string>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Anchor Point.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The anchor point.</string>
+			<key>name</key>
+			<string>Anchor Point</string>
+			<key>menu</key>
+			<array>
+				<string>Top Left</string>
+				<string>Top Center</string>
+				<string>Top Right</string>
+				<string>-</string>
+				<string>Center Left</string>
+				<string>Center</string>
+				<string>Center Right</string>
+				<string>-</string>
+				<string>Bottom Left</string>
+				<string>Bottom Center</string>
+				<string>Bottom Right</string>
+			</array>
+		</dict>
+		<key>inputX</key>
+		<dict>
+			<key>description</key>
+			<string>The horizontal offset from the edge towards the center of the referential.</string>
+			<key>name</key>
+			<string>Offset X</string>
+		</dict>
+		<key>inputY</key>
+		<dict>
+			<key>description</key>
+			<string>The vertical offset from the edge towards the center of the referential.</string>
+			<key>name</key>
+			<string>Offset Y</string>
+		</dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the anchored item.</string>
+			<key>name</key>
+			<string>Width</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the anchored item.</string>
+			<key>name</key>
+			<string>Height</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputX</key>
+		<dict>
+			<key>description</key>
+			<string>The absolute horizontal position.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>outputY</key>
+		<dict>
+			<key>description</key>
+			<string>The absolute vertical position.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

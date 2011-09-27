@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch queries the Composition Repository for compositions of a given protocol, and which match an optional set of attributes.</string>
+		<key>name</key>
+		<string>Composition Repository</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Protocol</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Utility/Composition Repository</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputProtocol</key>
+		<dict>
+			<key>description</key>
+			<string>The protocol the compositions must conform to.</string>
+			<key>name</key>
+			<string>Protocol</string>
+			<key>menu</key>
+			<array>
+				<string>Any</string>
+				<string>-</string>
+				<string>Graphic Animation</string>
+				<string>Graphic Transition</string>
+				<string>Image Filter</string>
+				<string>Screen Saver</string>
+				<string>RSS Visualizer</string>
+				<string>Music Visualizer</string>
+				<string>Mesh Filter</string>
+			</array>
+		</dict>
+		<key>inputAttributes</key>
+		<dict>
+			<key>description</key>
+			<string>The optional attributes that the compositions must match.</string>
+			<key>name</key>
+			<string>Attributes</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputCompositions</key>
+		<dict>
+			<key>description</key>
+			<string>The list of resulting composition identifiers.</string>
+			<key>name</key>
+			<string>Composition Identifiers</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

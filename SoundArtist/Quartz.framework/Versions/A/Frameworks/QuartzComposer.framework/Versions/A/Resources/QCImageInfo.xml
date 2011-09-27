@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+		<key>name</key>
+		<string>Image Debugging Info</string>
+		<key>description</key>
+		<string>Reports internal information about an image.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputSourceRepresentation</key>
+		<dict>
+			<key>name</key>
+			<string>Source Representation</string>
+		</dict>
+		<key>outputPixelsOriginX</key>
+		<dict>
+			<key>name</key>
+			<string>Pixels Origin X</string>
+		</dict>
+		<key>outputPixelsOriginY</key>
+		<dict>
+			<key>name</key>
+			<string>Pixels Origin Y</string>
+		</dict>
+		<key>outputPixelsSizeH</key>
+		<dict>
+			<key>name</key>
+			<string>Pixels Size H</string>
+		</dict>
+		<key>outputPixelsSizeV</key>
+		<dict>
+			<key>name</key>
+			<string>Pixels Size V</string>
+		</dict>
+		<key>outputDomainOfDefinition</key>
+		<dict>
+			<key>name</key>
+			<string>Domain Of Definition</string>
+		</dict>
+		<key>outputColorSpace</key>
+		<dict>
+			<key>name</key>
+			<string>Color Space</string>
+		</dict>
+		<key>outputHasAlpha</key>
+		<dict>
+			<key>name</key>
+			<string>Has Alpha</string>
+		</dict>
+		<key>outputTransformation</key>
+		<dict>
+			<key>name</key>
+			<string>Transformation</string>
+		</dict>
+		<key>outputStaticMetadata</key>
+		<dict>
+			<key>name</key>
+			<string>Static Medatada</string>
+		</dict>
+		<key>outputForwardMetadata</key>
+		<dict>
+			<key>name</key>
+			<string>Forwarded Medatada</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

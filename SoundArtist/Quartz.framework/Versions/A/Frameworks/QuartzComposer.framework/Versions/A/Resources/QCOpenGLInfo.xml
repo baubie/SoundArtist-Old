@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch retrieves information about the current OpenGL renderer and checks for the support of arbitrary OpenGL extensions.
+
+By combining OpenGL Info with the "Enable" inputs of consumer patches and the Multiplexer patch, one can design compositions that perform differently depending on the hardware. For example, if the current OpenGL renderer does not have a lot of video memory (which likely means a low or average performance video card), smaller versions of images could be used or even entire parts of the composition workflow could be disabled.
+
+Note that if the "Core Image Accelerated" output returns False, then Quartz Composer is using the software fallback for Core Image and performance will be affected. The composition should then switch to less complex Core Image operations in order to maintain an acceptable frame rate.</string>
+		<key>name</key>
+		<string>OpenGL Info</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Version</string>
+			<string>Core Image</string>
+			<string>Performance</string>
+			<string>Debug</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputVendor</key>
+		<dict>
+			<key>description</key>
+			<string>Vendor of the current GL renderer.</string>
+			<key>name</key>
+			<string>Renderer Vendor</string>
+		</dict>
+		<key>outputRenderer</key>
+		<dict>
+			<key>description</key>
+			<string>Name of the current GL renderer.</string>
+			<key>name</key>
+			<string>Renderer Name</string>
+		</dict>
+		<key>outputVersion</key>
+		<dict>
+			<key>description</key>
+			<string>Version of the current GL renderer.</string>
+			<key>name</key>
+			<string>Renderer Version</string>
+		</dict>
+		<key>outputVRAM</key>
+		<dict>
+			<key>description</key>
+			<string>Number of megabytes of VRAM of the current GL renderer.</string>
+			<key>name</key>
+			<string>Renderer VRAM</string>
+		</dict>
+		<key>outputTextureUnits</key>
+		<dict>
+			<key>description</key>
+			<string>Number of available texture units.</string>
+			<key>name</key>
+			<string>Texture Units</string>
+		</dict>
+		<key>outputMaxTextureSize</key>
+		<dict>
+			<key>description</key>
+			<string>Maximum supported texture size in pixels.</string>
+			<key>name</key>
+			<string>Max Texture Size</string>
+		</dict>
+		<key>outputMaxRenderSize</key>
+		<dict>
+			<key>description</key>
+			<string>Maximum rendering size in pixels.</string>
+			<key>name</key>
+			<string>Max Render Size</string>
+		</dict>
+		<key>outputBitsPerPixel</key>
+		<dict>
+			<key>description</key>
+			<string>Current rendering precision in bits per pixel.</string>
+			<key>name</key>
+			<string>Rendering Bits Per Pixel</string>
+		</dict>
+		<key>outputFloatComponents</key>
+		<dict>
+			<key>description</key>
+			<string>Indicates if rendering uses float components.</string>
+			<key>name</key>
+			<string>Float Components Rendering</string>
+		</dict>
+		<key>outputCIAccelerated</key>
+		<dict>
+			<key>description</key>
+			<string>Indicates if Core Image is currently hardware accelerated.</string>
+			<key>name</key>
+			<string>Core Image Accelerated</string>
+		</dict>
+	</dict>
+	
+	<key>_extensionAttributes</key>
+	<dict>
+		<key>extensionName</key>
+		<string>%@</string>
+		<key>extensionDescription</key>
+		<string>True if the extension "%@" is present.</string>
+	</dict>
+	
+</dict>
+</plist>

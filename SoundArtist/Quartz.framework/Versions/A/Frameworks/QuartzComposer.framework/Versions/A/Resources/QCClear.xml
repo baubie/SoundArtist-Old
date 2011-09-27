@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Clear</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Solid</string>
+			<string>Color</string>
+			<string>Corruption</string>
+			<string>Paint</string>
+		</array>
+		<key>description</key>
+		<string>Paints the entire rendering destination with a constant color and clears the depth buffer.
+
+This is usually the first rendering operation a composition should perform, in order to reset the rendering destination to a known state and prevent visual artifacts.
+
+If the rendering destination is intended to be composited over some other visual content, make sure the alpha component of the color used to paint is smaller than 1.0.</string>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The clearing color.</string>
+			<key>name</key>
+			<string>Clear Color</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

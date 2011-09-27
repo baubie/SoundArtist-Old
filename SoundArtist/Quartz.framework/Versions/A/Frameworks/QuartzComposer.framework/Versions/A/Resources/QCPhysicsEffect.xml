@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>.identifiers</key>
+	<dict>
+		<key>force</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>categories</key>
+				<array>
+					<string>Interaction</string>
+				</array>
+				<key>name</key>
+				<string>Force</string>
+				<key>aliasNames</key>
+				<array>
+					<string>Physics</string>
+					<string>Acceleration</string>
+					<string>Velocity</string>
+					<string>Bounce</string>
+					<string>Force</string>
+				</array>
+				<key>description</key>
+				<string>This patch applies a force on input values.  Note that this must be used within a feedback loop to work properly.</string>
+			</dict>
+			
+			<key>inputAttributes</key>
+			<dict>
+				<key>inputSampling</key>
+				<dict>
+					<key>description</key>
+					<string>Controls the sampling of the value.</string>
+					<key>name</key>
+					<string>Sampling</string>
+				</dict>
+				<key>operandName</key>
+				<string>Operand #%i</string>
+				<key>operandDescription</key>
+				<string>The operand value.</string>
+			</dict>
+
+			<key>_valueAttributes</key>
+			<dict>
+				<key>inputName</key>
+				<string>Value #%i</string>
+				<key>inputDescription</key>
+				<string>The value on which to apply the force.</string>
+				<key>inputEffectName</key>
+				<string>Force #%i</string>
+				<key>inputEffectDescription</key>
+				<string>The force to apply.</string>
+				<key>outputName</key>
+				<string>Output Value #%i</string>
+				<key>outputDescription</key>
+				<string>The simulated value.</string>
+			</dict>
+		</dict>
+	</dict>	
+</dict>
+</plist>

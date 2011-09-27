@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Cube</string>
+		<key>description</key>
+		<string>This patch renders a fully customizable cube.
+
+The 3 dimensions of the cube along with the image on each face can be specified separately. The images on the faces are multiplied by the color set on their related "Color" input.</string>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputX</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the X-axis.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>inputY</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>inputZ</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Position</string>
+		</dict>
+		<key>inputRX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the X-axis.</string>
+			<key>name</key>
+			<string>X Rotation</string>
+		</dict>
+		<key>inputRY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Rotation</string>
+		</dict>
+		<key>inputRZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Rotation</string>
+		</dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the cube.</string>
+			<key>name</key>
+			<string>Width</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the cube.</string>
+			<key>name</key>
+			<string>Height</string>
+		</dict>
+		<key>inputDepth</key>
+		<dict>
+			<key>description</key>
+			<string>The depth of the cube.</string>
+			<key>name</key>
+			<string>Depth</string>
+		</dict>
+		<key>inputColorFront</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the front face of the cube.</string>
+			<key>name</key>
+			<string>Front Color</string>
+		</dict>
+		<key>inputImageFront</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the front face of the cube.</string>
+			<key>name</key>
+			<string>Front Image</string>
+		</dict>
+		<key>inputColorLeft</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the left face of the cube.</string>
+			<key>name</key>
+			<string>Left Color</string>
+		</dict>
+		<key>inputImageLeft</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the left face of the cube.</string>
+			<key>name</key>
+			<string>Left Image</string>
+		</dict>
+		<key>inputColorRight</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the right face of the cube.</string>
+			<key>name</key>
+			<string>Right Color</string>
+		</dict>
+		<key>inputImageRight</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the right face of the cube.</string>
+			<key>name</key>
+			<string>Right Image</string>
+		</dict>
+		<key>inputColorBack</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the back face of the cube.</string>
+			<key>name</key>
+			<string>Back Color</string>
+		</dict>
+		<key>inputImageBack</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the back face of the cube.</string>
+			<key>name</key>
+			<string>Back Image</string>
+		</dict>
+		<key>inputColorTop</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the top face of the cube.</string>
+			<key>name</key>
+			<string>Top Color</string>
+		</dict>
+		<key>inputImageTop</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the top face of the cube.</string>
+			<key>name</key>
+			<string>Top Image</string>
+		</dict>
+		<key>inputColorBottom</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the bottom face of the cube.</string>
+			<key>name</key>
+			<string>Bottom Color</string>
+		</dict>
+		<key>inputImageBottom</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the bottom face of the cube.</string>
+			<key>name</key>
+			<string>Bottom Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

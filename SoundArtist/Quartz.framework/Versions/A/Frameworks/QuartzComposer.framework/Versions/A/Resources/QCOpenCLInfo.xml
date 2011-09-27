@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns labelled indices of the available OpenCL compute devices on the system. 
+		
+This patch can be used together with the OpenCL Device Info patch to adjust the execution of OpenCL kernels to the machines they are run on.
+		
+For instance, one can detect if multiple compute GPUs are available and load balance OpenCL kernel execution accordingly or detect if only the CPU is available.</string>
+		<key>name</key>
+		<string>OpenCL Context Info</string>
+		<key>aliasNames</key>
+		<array>
+			<string>OpenCL</string>
+			<string>Device Group</string>
+			<string>Context</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputDeviceCount</key>
+		<dict>
+			<key>description</key>
+			<string>Number of available compute devices.</string>
+			<key>name</key>
+			<string>Device Count</string>
+		</dict>
+		<key>outputDeviceType</key>
+		<dict>
+			<key>description</key>
+			<string>The OpenCL device type.  Currently 
+supported values are:  
+ 
+CL_DEVICE_TYPE_CPU, 
+CL_DEVICE_TYPE_GPU.</string>
+			<key>name</key>
+			<string>Device Type</string>
+		</dict>
+		<key>outputDeviceName</key>
+		<dict>
+			<key>description</key>
+			<string>Device name string.</string>
+			<key>name</key>
+			<string>Name</string>
+		</dict>
+		<key>outputDeviceVendor</key>
+		<dict>
+			<key>description</key>
+			<string>Vendor name string.</string>
+			<key>name</key>
+			<string>Vendor</string>
+		</dict>
+		<key>outputDeviceVersion</key>
+		<dict>
+			<key>description</key>
+			<string>Device version string in the form 
+major_number.minor_number.</string>
+			<key>name</key>
+			<string>Version</string>
+		</dict>
+		<key>outputDeviceMaxComputeUnits</key>
+		<dict>
+			<key>description</key>
+			<string>The number of parallel compute cores 
+on the compute device.  The minimum 
+value is one.  
+.</string>
+			<key>name</key>
+			<string>Max Compute Units</string>
+		</dict>
+		<key>outputDeviceMaxWorkItemDimensions</key>
+		<dict>
+			<key>description</key>
+			<string>Maximum dimensions that specify the 
+global and local work-item IDs used 
+by the data-parallel execution model. 
+The minimum value is 3.</string>
+			<key>name</key>
+			<string>Max Work Item Dimensions</string>
+		</dict>
+		<key>outputDeviceMaxWorkGroupSize</key>
+		<dict>
+			<key>description</key>
+			<string>Maximum number of work-items in a 
+work-group executing a kernel using 
+the data-parallel execution model.</string>
+			<key>name</key>
+			<string>Max Work Group Size</string>
+		</dict>
+		<key>outputDeviceMaxReadImageArgs</key>
+		<dict>
+			<key>description</key>
+			<string>Max number of simultaneous image 
+objects that can be read by a kernel.  
+The minimum value is 128 if the 
+supported list of image formats > zero.  </string>
+			<key>name</key>
+			<string>Max Read Image Args</string>
+		</dict>
+		<key>outputDeviceMaxWriteImageArgs</key>
+		<dict>
+			<key>description</key>
+			<string>Max number of simultaneous image 
+objects that can be written to by a 
+kernel.  The minimum value is 8 if the 
+supported list of image formats > zero. </string>
+			<key>name</key>
+			<string>Max Write Image Args</string>
+		</dict>
+		<key>outputDeviceMaxSamplers</key>
+		<dict>
+			<key>description</key>
+			<string>Maximum number of samplers that 
+can be used in a kernel.  Refer to 
+section 6.11.8 for a detailed 
+description on samplers.  The 
+minimum value is 16.</string>
+			<key>name</key>
+			<string>Max Samplers</string>
+		</dict>
+		<key>outputDeviceMaxConstantsArgs</key>
+		<dict>
+			<key>description</key>
+			<string>Max number of arguments declared 
+with the __constant qualifer in a 
+kernel.  The minimum value is 8.</string>
+			<key>name</key>
+			<string>Max Constant Args</string>
+		</dict>
+		<key>outputDeviceMaxConstantBufferSize</key>
+		<dict>
+			<key>description</key>
+			<string>Max size in bytes of a constant buffer 
+allocation.  The minimum value is 64 
+KB. </string>
+			<key>name</key>
+			<string>Max Constant Buffer Size</string>
+		</dict>
+		<key>outputDeviceGlobalMemSize</key>
+		<dict>
+			<key>description</key>
+			<string>Size of global device memory in 
+bytes. </string>
+			<key>name</key>
+			<string>Global Mem Size</string>
+		</dict>
+		<key>outputDeviceLocalMemSize</key>
+		<dict>
+			<key>description</key>
+			<string>Size of local memory arena in bytes.  
+The minimum value is 16 KB. </string>
+			<key>name</key>
+			<string>Local Mem Size</string>
+		</dict>
+		<key>outputDeviceImage2DMaxWidth</key>
+		<dict>
+			<key>description</key>
+			<string>Max width of 2D image in pixels.  The 
+minimum value is 8192.</string>
+			<key>name</key>
+			<string>Image2D Max Width</string>
+		</dict>
+		<key>outputDeviceImage2DMaxHeight</key>
+		<dict>
+			<key>description</key>
+			<string>Max height of 2D image in pixels. The 
+minimum value is 8192.</string>
+			<key>name</key>
+			<string>Image2D Max Height</string>
+		</dict>
+	</dict>
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputDevices</key>
+		<dict>
+			<key>description</key>
+			<string>Labelled indices of the available compute devices.</string>
+			<key>name</key>
+			<string>Devices</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

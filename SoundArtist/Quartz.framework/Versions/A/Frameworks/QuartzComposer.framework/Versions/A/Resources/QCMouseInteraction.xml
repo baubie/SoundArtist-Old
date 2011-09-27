@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Interaction</string>
+		</array>
+		<key>name</key>
+		<string>Interaction</string>
+		<key>description</key>
+		<string>This patch enables interaction with consumers.</string>
+        <key>examples</key>
+        <array>
+            <string>Interaction.qtz</string>
+            <string>Inertia.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputInteraction</key>
+		<dict>
+			<key>description</key>
+			<string>Link to the consumer patch you want to receive interaction information from.</string>
+			<key>name</key>
+			<string>Interaction</string>
+		</dict>
+		<key>outputMouseDown</key>
+		<dict>
+			<key>description</key>
+			<string>True as long as the consumer is being interacted with.</string>
+			<key>name</key>
+			<string>Mouse Down</string>
+		</dict>
+		<key>outputIteration</key>
+		<dict>
+			<key>description</key>
+			<string>Absolute iteration in which the click occured.</string>
+			<key>name</key>
+			<string>Iteration</string>
+		</dict>
+		<key>outputXDrag</key>
+		<dict>
+			<key>description</key>
+			<string>X Position for dragging.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>outputYDrag</key>
+		<dict>
+			<key>description</key>
+			<string>Y Position for dragging.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>outputRotate</key>
+		<dict>
+			<key>description</key>
+			<string>True as long as rotate gesture is active</string>
+			<key>name</key>
+			<string>Rotate</string>
+		</dict>
+		<key>outputSwipeX</key>
+		<dict>
+			<key>description</key>
+			<string>Horizontal swipe value.</string>
+			<key>name</key>
+			<string>X Swipe</string>
+		</dict>
+		<key>outputMagnify</key>
+		<dict>
+			<key>description</key>
+			<string>True as long as magnification gesture is active.</string>
+			<key>name</key>
+			<string>Magnify</string>
+		</dict>				
+		<key>outputRotateValue</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation angle.</string>
+			<key>name</key>
+			<string>Rotation Angle</string>
+		</dict>
+		<key>outputSwipeY</key>
+		<dict>
+			<key>description</key>
+			<string>Vertical swipe value.</string>
+			<key>name</key>
+			<string>Y Swipe</string>
+		</dict>
+		<key>outputMagnifyValue</key>
+		<dict>
+			<key>description</key>
+			<string>Magnification coefficient.</string>
+			<key>name</key>
+			<string>Magnification Value</string>
+		</dict>				
+	</dict>
+
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputInitialXDrag</key>
+		<dict>
+			<key>description</key>
+			<string>Offset value of the output X position.</string>
+			<key>name</key>
+			<string>Offset X</string>
+		</dict>
+		<key>inputInitialYDrag</key>
+		<dict>
+			<key>description</key>
+			<string>Offset value of the output Y position.</string>
+			<key>name</key>
+			<string>Offset Y</string>
+		</dict>
+		<key>inputInitialMagnifyValue</key>
+		<dict>
+			<key>description</key>
+			<string>Offset value of the output magnification value.</string>
+			<key>name</key>
+			<string>Offset Magnification</string>
+		</dict>
+		<key>inputInitialRotateValue</key>
+		<dict>
+			<key>description</key>
+			<string>Offset value of the output rotation value.</string>
+			<key>name</key>
+			<string>Offset Rotation</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Set the field of view of the projection.</string>
+		<key>name</key>
+		<string>Field of View</string>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputFieldOfView</key>
+		<dict>
+			<key>description</key>
+			<string>Projection field of view in degrees.</string>
+			<key>name</key>
+			<string>Field Of View</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Conditional</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Comparison</string>
+			<string>Test</string>
+			<string>Less</string>
+			<string>Greater</string>
+			<string>Equal</string>
+		</array>	
+		<key>description</key>
+		<string>Compares two numerical values using a condition and a tolerance, then outputs a boolean indicating if the condition was met (True) or not (False).</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Logic</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputValue1</key>
+		<dict>
+			<key>description</key>
+			<string>The first numerical value.</string>
+			<key>name</key>
+			<string>First value</string>
+		</dict>
+		<key>inputTest</key>
+		<dict>
+			<key>description</key>
+			<string>The comparison to perform.</string>
+			<key>name</key>
+			<string>Condition</string>
+			<key>menu</key>
+			<array>
+				<string>Is Equal</string>
+				<string>Is Not Equal</string>
+				<string>Is Greater Than</string>
+				<string>Is Lower Than</string>
+				<string>Is Greater Than or Equal To</string>
+				<string>Is Lower Than or Equal To</string>
+			</array>
+		</dict>
+		<key>inputValue2</key>
+		<dict>
+			<key>description</key>
+			<string>The second numerical value.</string>
+			<key>name</key>
+			<string>Second Value</string>
+		</dict>
+		<key>inputTolerance</key>
+		<dict>
+			<key>description</key>
+			<string>The numerical tolerance for the conditional test.</string>
+			<key>name</key>
+			<string>Tolerance</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputResult</key>
+		<dict>
+			<key>description</key>
+			<string>The comparison result.</string>
+			<key>name</key>
+			<string>Result</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

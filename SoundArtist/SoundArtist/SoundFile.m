@@ -63,8 +63,21 @@
     return 1000*(double)m_info.frames / m_info.samplerate;
 }
 
-- (void) makeWindow: (enum windows) type length:(int) N array: (float *) window;
+- (void) runGLE: (NSString *) filename
 {
+    NSTask *gleProcess;
+    gleProcess = [[NSTask alloc] init];    
+    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
+    [gleProcess setArguments:
+    [NSArray arrayWithObjects:@"-d",@"pdf", filename, nil]];
+    [gleProcess launch];
+    [gleProcess waitUntilExit];
+    [gleProcess release];
+}
+
+
+
+- (void) makeWindow: (enum windows) type length:(int) N array: (float *) window {
 #define PI 3.14159265
 #define alpha 0.16
 #define alpha0 (1-alpha)/2
@@ -114,27 +127,20 @@
     }
 }
 
-- (BOOL) makeSpectrogram:(NSString *)folder info:(struct WR_SPECINFO *) specinfo {   
-    
-    NSString *zFilename = [[NSString alloc] initWithFormat:@"%@/spectrogram.z", folder];
-    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/spectrogram.gle", folder];
+- (BOOL) makeSpectrogramData: (NSString*) dataFilename info:(struct WR_SPECINFO*) specinfo {
 
-	/*
-	 * Create the Spectrogram data file.
-	 */
-    
+    SNDFILE* sf = sf_open([m_filename UTF8String], SFM_READ, &m_info);    
 	// Make sure our settings are valid
     if (specinfo->floor < 0) specinfo->floor = 0;	
     if (specinfo->floor > 1) specinfo->floor = 1;
-       
-    SNDFILE* sf = sf_open([m_filename UTF8String], SFM_READ, &m_info);
+    
     
 	// Read in the sound file
 	double *buf;
 	buf = (double *) malloc((int)m_info.frames*sizeof(double));
     sf_read_double(sf,buf,(int)m_info.frames);    
 	sf_close(sf);
-
+    
     
 	int timescale = 1;
 	if (specinfo->timeaxis == milliseconds) timescale = 1000;
@@ -149,11 +155,10 @@
 	float window[N];    
     [self makeWindow:specinfo->window length:N array: window];   
     
-    
     // Create data file header
 	int nx = floor((m_info.frames-N)/specinfo->increment)+1;
 	int ny = N/2.0+1;
-
+    
     NSMutableString* data = [[NSMutableString alloc] init];    
     
     float xmin, xmax;
@@ -166,9 +171,7 @@
 	}
     
 	[data appendFormat:@"! nx %i ny %i xmin %f xmax %f ymin 0.0 ymax %f\n", nx, ny, xmin, xmax, freqscale*m_info.samplerate/2.0];
-
     
-   
 	// Write spectrogram data to file
 	
 	// Create out 2D array on the heap (due to size)
@@ -183,7 +186,7 @@
     for (int i = 0; i < nx; ++i)
         for (int j = 0; j < ny; ++j)
             spec[i][j] = 0;
-       
+    
 	int curX = 0;
 	double maxVal = -99999999;
     double minVal = +99999999;
@@ -226,16 +229,16 @@
 	double floor = 1-specinfo->floor;
 	for (int y = 0; y < ny; ++y) {
 		for (int x = 0; x < nx; ++x) {
-   
+            
             if (spec[x][y] > -99999999)
             {
                 double val = 1-(spec[x][y]-minVal)/(maxVal-minVal);
-         
+                
                 // This is our floor function.  Right now we shoot everything to 1.
                 // Should have something more gradual.
                 if (val > floor) val = 1;
                 else val = 1-pow((val-floor)/(floor),2);
-                    
+                
                 [data appendFormat:@"%f ", val];
             } else {
                 [data appendString:@"- "];
@@ -249,20 +252,27 @@
     }
     free(spec);
     
-    
     NSError *error;
-    [data writeToFile:zFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    [data writeToFile:dataFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
     [data release]; 
     
+    return true;
+}
+
+- (NSString*) makeSpectrogramPlot: (NSString*) gleFilename info:(struct WR_SPECINFO*) specinfo {
+
+    int timescale = 1;
+	if (specinfo->timeaxis == milliseconds) timescale = 1000;
     
-	// Create the GLE file.
+	float freqscale = 0.001;
+	if (specinfo->freqaxis == hz) freqscale = 1;
+    
+	int N = specinfo->nwindow;
+	int nx = floor((m_info.frames-N)/specinfo->increment)+1;
+	int ny = N/2.0+1;
+    
     NSMutableString* gle = [[NSMutableString alloc] init];    
 
-    [gle appendFormat:@"size %f %f\n", specinfo->width, specinfo->height];
-    [gle appendString:@"include \"color.gle\"\n"];
-    [gle appendString:@"set font psh\n"];
-    [gle appendFormat:@"set hei %f\n", specinfo->fontsize];
-    [gle appendFormat:@"set lwidth %f\n", specinfo->lwidth];
     [gle appendString:@"begin graph\n"];
     [gle appendString:@"vscale auto\n"];
     [gle appendString:@"nobox\n"];
@@ -308,43 +318,53 @@
 	}
     
     [gle appendString:@"end graph\n"];   
+
+    return gle;
+}
+
+
+- (BOOL) makeSpectrogram:(NSString *)folder info:(struct WR_SPECINFO *) specinfo {   
+    
+    NSString *zFilename = [[NSString alloc] initWithFormat:@"%@/spectrogram.z", folder];
+    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/spectrogram.gle", folder];
+
+
+    [self makeSpectrogramData:zFilename info:specinfo];
+    
+
+    
+	// Create the GLE file.
+    NSMutableString* gle = [[NSMutableString alloc] init];    
+    [gle appendFormat:@"size %f %f\n", specinfo->width, specinfo->height];
+    [gle appendString:@"include \"color.gle\"\n"];
+    [gle appendString:@"set font psh\n"];
+    [gle appendFormat:@"set hei %f\n", specinfo->fontsize];
+    [gle appendFormat:@"set lwidth %f\n", specinfo->lwidth];
+    [gle appendString:[self makeSpectrogramPlot:zFilename info:specinfo]];
     
     
+    /*
 	if (specinfo->scalebar)
 	{
         [gle appendString:@"amove xg(xgmax)+0.5 yg(ygmin)\n"];
 		[gle appendFormat:@"color_range_vertical zmin 0 zmax 1 zstep 50 palette \"%@\" pixels 1500 format \"fix 0\"\n", scalebar_palette];
 	}
+     */
     
-    
+    NSError *error;
     [gle writeToFile:gleFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
     [gle release];
     
-    NSTask *gleProcess;
-    gleProcess = [[NSTask alloc] init];    
-    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
-    [gleProcess setArguments:
-     [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
-    [gleProcess launch];
-    [gleProcess waitUntilExit];
-    [gleProcess release];
-    
+    [self runGLE: gleFilename];
     [gleFilename release];
     [zFilename release];
-    
-    
 	return true;
 
 }
 
-- (BOOL) makeWaveForm: (NSString*) folder info:(struct WR_WFINFO*) wfinfo {
-    
+- (BOOL) makeWaveformData: (NSString*) dataFilename info:(struct WR_WFINFO*) wfinfo {
+    // Read in the sound file
 	SNDFILE* sf = sf_open([m_filename UTF8String], SFM_READ, &m_info);
-    
-    NSString *dataFilename = [[NSString alloc] initWithFormat:@"%@/waveform.dat", folder];
-    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/waveform.gle", folder];
-    
-	// Read in the sound file
 	double *buf;
 	buf = (double *) malloc((int)m_info.frames*sizeof(double));
     sf_read_double(sf,buf,(int)m_info.frames);    
@@ -352,11 +372,11 @@
     
 	int timescale = 1;
 	if (wfinfo->timeaxis == milliseconds) timescale = 1000;
-
+    
 	// Write wavefile data to file
 	
     NSMutableString* data = [[NSMutableString alloc] init];
-
+    
     
 	for (int i = 0; i < m_info.frames; i+=(int)(1.0/wfinfo->quality))
 	{
@@ -374,20 +394,15 @@
     [data writeToFile:dataFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
     [data release];
     
-	/*
-	 * Create the GLE file.
-	 */
-    
-    if (wfinfo->end < wfinfo->start) {
-        wfinfo->end = wfinfo->start;
-    }
-    
+    return true;
+}
+
+- (NSString*) makeWaveformPlot: (NSString*) dataFilename info:(struct WR_WFINFO*) wfinfo
+{
+    int timescale = 1;
+	if (wfinfo->timeaxis == milliseconds) timescale = 1000;
+
     NSMutableString* gle = [[NSMutableString alloc] init];
-        
-    [gle appendFormat:@"size %f %f\n", wfinfo->width, wfinfo->height];
-    [gle appendString:@"set font psh\n"];
-    [gle appendFormat:@"set hei %f\n", wfinfo->fontsize];
-    [gle appendFormat:@"set lwidth %f\n", wfinfo->lwidth];
     [gle appendString:@"begin graph\n"];
     [gle appendString:@"vscale auto\n"];
     [gle appendString:@"nobox\n"];
@@ -419,36 +434,45 @@
     [gle appendFormat:@"data \"%@\"\n", @"waveform.dat"];
     [gle appendFormat:@"d1 line lwidth %f\n", wfinfo->wflwidth];
     [gle appendString:@"end graph\n"];
+    return gle;
+}
 
+
+- (BOOL) makeWaveForm: (NSString*) folder info:(struct WR_WFINFO*) wfinfo {
+    
+    
+    
+    NSString *dataFilename = [[NSString alloc] initWithFormat:@"%@/waveform.dat", folder];
+    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/waveform.gle", folder];
+
+    if (wfinfo->end < wfinfo->start) {
+        wfinfo->end = wfinfo->start;
+    }
+
+    [self makeWaveformData:dataFilename info:wfinfo];
+    
+    
+    NSMutableString* gle = [[NSMutableString alloc] init];        
+    [gle appendFormat:@"size %f %f\n", wfinfo->width, wfinfo->height];
+    [gle appendString:@"set font psh\n"];
+    [gle appendFormat:@"set hei %f\n", wfinfo->fontsize];
+    [gle appendFormat:@"set lwidth %f\n", wfinfo->lwidth];
+    [gle appendString:[self makeWaveformPlot:gleFilename info: wfinfo]];
+
+    NSError *error;    
     [gle writeToFile:gleFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
     [gle release];
     
-    NSTask *gleProcess;
-    gleProcess = [[NSTask alloc] init];    
-    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
-    [gleProcess setArguments:
-     [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
-    
-    [gleProcess launch];
-    [gleProcess waitUntilExit];
-    
-        
-    [gleProcess release];
-        
+    [self runGLE: gleFilename];
     [gleFilename release];
     [dataFilename release];
     
     return true;
 }
 
-- (BOOL) makePower:(NSString *)folder info:(struct WR_SPECINFO *) specinfo {   
 
-    NSString *zFilename = [[NSString alloc] initWithFormat:@"%@/power.dat", folder];
-    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/power.gle", folder];
-    
-	/*
-	 * Create the power data file.
-	 */    
+- (BOOL) makePowerData: (NSString*) dataFilename info:(struct WR_SPECINFO*) specinfo
+{
     SNDFILE* sf = sf_open([m_filename UTF8String], SFM_READ, &m_info);
     
 	// Read in the sound file
@@ -456,12 +480,12 @@
 	buf = (double *) malloc((int)m_info.frames*sizeof(double));
     sf_read_double(sf,buf,(int)m_info.frames);    
 	sf_close(sf);
-            
+    
 	float freqscale = 0.001;
 	if (specinfo->freqaxis == hz) freqscale = 1;
     
     int N = specinfo->nwindow;
-            
+    
 	// Get the window
 	float window[specinfo->nwindow];    
     [self makeWindow:specinfo->window length:specinfo->nwindow array: window];  
@@ -479,7 +503,7 @@
     power = (double*) fftw_malloc(sizeof(double)*(numFreqs));
     
 	fftw_plan p = fftw_plan_r2r_1d(specinfo->nwindow, in, out, FFTW_R2HC, FFTW_ESTIMATE);
-
+    
     for (int j = 0; j < numFreqs; ++j)
     {
         power[j] = 0;
@@ -488,22 +512,25 @@
     int count = 0;
     for (int i = 0; i < m_info.frames-specinfo->nwindow; i+=specinfo->increment)
 	{
-		for (int j = 0; j < specinfo->nwindow; ++j)
-		{
-			in[j] = buf[i+j]*window[j];	
-		}
-        
-		fftw_execute(p);
-                
-		// Save results
-        power[0] = out[0]*out[0];
-		for (int j = 1; j < specinfo->nwindow/2; ++j)
-		{
-			double val = out[j]*out[j]+out[N-j]*out[N-j];
-            power[j] += val;
-		}
-        if (N%2 == 0) power[N/2] = out[N/2]*out[N/2];
-        count++;
+        if (i >= specinfo->start*m_info.samplerate && i <= specinfo->end*m_info.samplerate)
+        {
+            for (int j = 0; j < specinfo->nwindow; ++j)
+            {
+                in[j] = buf[i+j]*window[j];	
+            }
+            
+            fftw_execute(p);
+            
+            // Save results
+            power[0] += out[0]*out[0];
+            for (int j = 1; j < specinfo->nwindow/2; ++j)
+            {
+                double val = out[j]*out[j]+out[N-j]*out[N-j];
+                power[j] += val;
+            }
+            if (N%2 == 0) power[N/2] += out[N/2]*out[N/2];
+            count++;
+        }
 	}
     
     // Average over the spectrogram and find the peak
@@ -533,7 +560,7 @@
         else
             [data appendFormat:@"%f,-\n",(double)k*freqscale*m_info.samplerate/specinfo->nwindow];
     }
-        
+    
     free(buf);
     free(power);
 	fftw_destroy_plan(p);
@@ -541,21 +568,25 @@
 	fftw_free(out);
 
     NSError *error;
-    [data writeToFile:zFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    [data writeToFile:dataFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
     [data release]; 
-    
-	// Create the GLE file.
+
+    return true;
+}
+
+
+- (NSString*) makePowerPlot: (NSString*) gleFilename info:(struct WR_SPECINFO*) specinfo
+{
+    float freqscale = 0.001;
+	if (specinfo->freqaxis == hz) freqscale = 1;
+
     NSMutableString* gle = [[NSMutableString alloc] init];
-    [gle appendFormat:@"size %f %f\n", specinfo->width, specinfo->height];
-    [gle appendString:@"set font psh\n"];
-    [gle appendFormat:@"set hei %f\n", specinfo->fontsize];
-    [gle appendFormat:@"set lwidth %f\n", specinfo->lwidth];
     [gle appendString:@"begin graph\n"];
     [gle appendString:@"vscale auto\n"];
     [gle appendString:@"nobox\n"];
     [gle appendString:@"x2axis off\n"];
     [gle appendString:@"y2axis off\n"];
-
+    
     if (specinfo->freqaxis == hz) {
         [gle appendString:@"xtitle \"Frequency (Hz)\"\n"];
 	} else {
@@ -569,18 +600,34 @@
     [gle appendFormat:@"data \"%@\"\n", @"power.dat"];
     [gle appendString:@"d1 line\n"];
     [gle appendString:@"end graph\n"];   
+    return gle;
+}
+
+
+- (BOOL) makePower:(NSString *)folder info:(struct WR_SPECINFO *) specinfo {   
+
+    NSString *zFilename = [[NSString alloc] initWithFormat:@"%@/power.dat", folder];
+    NSString *gleFilename = [[NSString alloc] initWithFormat:@"%@/power.gle", folder];
     
+
+    [self makePowerData: zFilename info: specinfo];
+
+
+    
+	// Create the GLE file.
+    NSMutableString* gle = [[NSMutableString alloc] init];
+    [gle appendFormat:@"size %f %f\n", specinfo->width, specinfo->height];
+    [gle appendString:@"set font psh\n"];
+    [gle appendFormat:@"set hei %f\n", specinfo->fontsize];
+    [gle appendFormat:@"set lwidth %f\n", specinfo->lwidth];
+    
+    [gle appendString:[self makePowerPlot:zFilename info:specinfo]];
+    
+    NSError *error;
     [gle writeToFile:gleFilename atomically:NO encoding:NSUTF8StringEncoding error:&error];
     [gle release];
         
-    NSTask *gleProcess;
-    gleProcess = [[NSTask alloc] init];    
-    [gleProcess setLaunchPath:@"/Applications/QGLE.app/Contents/bin/gle"];
-    [gleProcess setArguments:
-     [NSArray arrayWithObjects:@"-d",@"pdf", gleFilename, nil]];
-    [gleProcess launch];
-    [gleProcess waitUntilExit];
-    [gleProcess release];
+    [self runGLE: gleFilename];
     
     [gleFilename release];
     [zFilename release];

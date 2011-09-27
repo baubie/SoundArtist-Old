@@ -1,0 +1,10 @@
+{
+    ClassName = QCCompositionParameterView; 
+    SuperClass = NSView; 
+    Actions = {
+    };
+    Outlets = {
+		compositionRenderer = id;
+		delegate = id;
+    };
+}

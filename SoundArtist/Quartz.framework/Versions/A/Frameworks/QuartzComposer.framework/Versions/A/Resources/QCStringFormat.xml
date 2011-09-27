@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>.identifiers</key>
+	<dict>
+		
+		<key>printer</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+                <key>name</key>
+                <string>String Printer</string>
+				<key>description</key>
+				<string>This patch generates a string from a template and a series of arguments.
+
+The template is defined in the patch's settings as string where the special sequences of characters "%@" (without the quotes) are replaced by arguments.
+Those arguments are passed to the patch through the related string inputs, combined with the template, and the resulting string is put on the "String" output.</string>
+                <key>categories</key>
+                <array>
+                    <string>Utility/String</string>
+                </array>
+				<key>aliasNames</key>
+				<array>
+					<string>Template</string>
+					<string>printf</string>
+					<string>Format</string>
+				</array>
+			</dict>
+		</dict>
+		
+		<key>scanner</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+                <key>name</key>
+				<string>String Scanner</string>
+				<key>description</key>
+				<string>This patch extracts arguments from a string using a template.
+
+The template is defined in the patch's settings as string where the special sequences of characters "%@" (without the quotes) replace arguments.
+The string passed to the "String" input of the patch is scanned, arguments are extracted and put on the related string outputs.
+
+Note that undefined arguments will be set to empty strings.</string>
+                <key>categories</key>
+                <array>
+                    <string>Utility/String</string>
+                </array>
+				<key>aliasNames</key>
+				<array>
+					<string>Find</string>
+					<string>Parse</string>
+					<string>Split</string>
+					<string>Format</string>
+					<string>Template</string>
+				</array>
+			</dict>
+		</dict> 
+		
+	</dict>
+	
+	<key>_inputString</key>
+	<dict>
+		<key>description</key>
+		<string>The string to scan.</string>
+		<key>name</key>
+		<string>String</string>
+	</dict>
+	
+	<key>_outputString</key>
+	<dict>
+		<key>description</key>
+		<string>Resulting string.</string>
+		<key>name</key>
+		<string>String</string>
+	</dict>
+	
+	<key>_stringAttributes</key>
+	<dict>
+		<key>stringName</key>
+		<string>Argument #%i</string>
+		<key>stringDescription</key>
+		<string>An argument string.</string>
+	</dict>
+	
+</dict>
+</plist>

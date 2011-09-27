@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch renders a single antialiased 3D line between two points.
+
+Note that the rendered line always has a one pixel width, independently of the rendering destination's dimensions.</string>
+		<key>name</key>
+		<string>Line</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Point</string>
+			<string>Draw</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStartX</key>
+		<dict>
+			<key>description</key>
+			<string>Start line position on the X-axis.</string>
+			<key>name</key>
+			<string>Start Position X</string>
+		</dict>
+		<key>inputStartY</key>
+		<dict>
+			<key>description</key>
+			<string>Start line position on the Y-axis.</string>
+			<key>name</key>
+			<string>Start Position Y</string>
+		</dict>
+		<key>inputStartZ</key>
+		<dict>
+			<key>description</key>
+			<string>Start line position on the Z-axis.</string>
+			<key>name</key>
+			<string>Start Position Z</string>
+		</dict>
+		<key>inputStartColor</key>
+		<dict>
+			<key>description</key>
+			<string>Start line color.</string>
+			<key>name</key>
+			<string>Start Color</string>
+		</dict>
+		<key>inputEndX</key>
+		<dict>
+			<key>description</key>
+			<string>End line position on the X-axis.</string>
+			<key>name</key>
+			<string>End Position X</string>
+		</dict>
+		<key>inputEndY</key>
+		<dict>
+			<key>description</key>
+			<string>End line position on the Y-axis.</string>
+			<key>name</key>
+			<string>End Position Y</string>
+		</dict>
+		<key>inputEndZ</key>
+		<dict>
+			<key>description</key>
+			<string>End line position on the Z-axis.</string>
+			<key>name</key>
+			<string>End Position Z</string>
+		</dict>
+		<key>inputEndColor</key>
+		<dict>
+			<key>description</key>
+			<string>End line color.</string>
+			<key>name</key>
+			<string>End Color</string>
+		</dict>
+		<key>inputLineWidth</key>
+		<dict>
+			<key>description</key>
+			<string>Line Thickness.</string>
+			<key>name</key>
+			<string>Thickness</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

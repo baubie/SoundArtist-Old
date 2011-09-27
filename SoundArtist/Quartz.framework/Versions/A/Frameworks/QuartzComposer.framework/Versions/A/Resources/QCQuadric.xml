@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>.identifiers</key>
+	<dict>
+		
+		<key>sphere</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>Sphere</string>
+				<key>aliasNames</key>
+				<array>
+					<string>Ball</string>
+				</array>
+				<key>description</key>
+				<string>This patch renders a 3D sphere.
+
+The image on the sphere is multiplied by the color set on the "Color" input.
+
+Note that the number of vertical (slices) and horizontal subdivisions (stacks) can be specificied in the patch's settings.</string>
+			</dict>
+			<key>_scaleAttributes</key>
+			<dict>
+				<key>description</key>
+				<string>Diameter of the sphere.</string>
+				<key>name</key>
+				<string>Diameter</string>
+			</dict>
+		</dict>
+		
+		<key>cylinder</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>Cylinder</string>
+				<key>description</key>
+				<string>This patch renders a 3D Cylinder.
+
+The image on the cylinder is multiplied by the color set on the "Color" input.
+
+Note that the number of vertical (slices) and horizontal subdivisions (stacks) can be specificied in the patch's settings.</string>
+			</dict>
+			<key>_heightAttributes</key>
+			<dict>
+				<key>description</key>
+				<string>Height of the cylinder.</string>
+				<key>name</key>
+				<string>Height</string>
+			</dict>
+			<key>_baseAttributes</key>
+			<dict>
+				<key>description</key>
+				<string>Diameter of the base of the cylinder.</string>
+				<key>name</key>
+				<string>Base Diameter</string>
+			</dict>
+			<key>_topAttributes</key>
+			<dict>
+				<key>description</key>
+				<string>Diameter of the top of the cylinder.</string>
+				<key>name</key>
+				<string>Top Diameter</string>
+			</dict>
+		</dict>
+		
+	</dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputX</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the X-axis.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>inputY</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>inputZ</key>
+		<dict>
+			<key>description</key>
+			<string>Position on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Position</string>
+		</dict>
+		<key>inputRX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the X-axis.</string>
+			<key>name</key>
+			<string>X Rotation</string>
+		</dict>
+		<key>inputRY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Y Rotation</string>
+		</dict>
+		<key>inputRZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Z-axis.</string>
+			<key>name</key>
+			<string>Z Rotation</string>
+		</dict>
+		<key>inputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The color of the object.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image on the object.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

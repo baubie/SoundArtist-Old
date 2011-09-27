@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>GLSL Shader</string>
+		<key>description</key>
+		<string>This macro patch applies a shader written using OpenGL GLSL language.</string>
+		<key>categories</key>
+		<array>
+			<string>Program</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>GLSL-Brick Shader.qtz</string>
+            <string>GLSL-Dimple.qtz</string>
+            <string>GLSL-Earth.qtz</string>
+            <string>GLSL-Environment Map.qtz</string>
+            <string>GLSL-Gooch.qtz</string>
+            <string>GLSL-Julia.qtz</string>
+            <string>GLSL-Lattice.qtz</string>
+            <string>GLSL-Mandelbrot.qtz</string>
+            <string>GLSL-Polkadot3D.qtz</string>
+            <string>GLSL-SphereMorph.qtz</string>
+            <string>GLSL-Toon.qtz</string>
+            <string>GLSL-TorusMorph.qtz</string>
+            <string>GLSL-Toyball.qtz</string>
+            <string>GLSL-VertexNoise.qtz</string>
+            <string>GLSL-Wobble.qtz</string>
+            <string>GLSL-Wood1.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>_sourceTemplates</key>
+	<dict>
+		<key>vertexShader</key>
+		<string>/*
+Built-in variables:
+- vec4  gl_Position
+- float gl_PointSize
+- vec4  gl_ClipVertex
+
+Varying variables:
+- vec4  gl_FrontColor
+- vec4  gl_BackColor
+- vec4  gl_FrontSecondaryColor
+- vec4  gl_BackSecondaryColor
+- vec4  gl_TexCoord[]
+- float gl_FogFragCoord
+
+Built-in attributes:
+- vec4  gl_Color
+- vec4  gl_SecondaryColor
+- vec3  gl_Normal
+- vec4  gl_Vertex
+- vec4  gl_MultiTexCoord0..7
+- float gl_FogCoord
+
+Built-in uniform states:
+- mat4  gl_ModelViewMatrix
+- mat4  gl_ProjectionMatrix
+- mat4  gl_ModelViewProjectionMatrix
+- mat4  gl_TextureMatrix[gl_MaxTextureCoords]
+- mat3  gl_NormalMatrix
+- mat4  gl_ModelViewMatrixInverse
+- mat4  gl_ProjectionMatrixInverse
+- mat4  gl_ModelViewProjectionMatrixInverse; 
+- mat4  gl_TextureMatrixInverse[gl_MaxTextureCoords]
+- mat4  gl_ModelViewMatrixTranspose
+- mat4  gl_ProjectionMatrixTranspose
+- mat4  gl_ModelViewProjectionMatrixTranspose; 
+- mat4  gl_TextureMatrixTranspose[gl_MaxTextureCoords]
+- mat4  gl_ModelViewMatrixInverseTranspose
+- mat4  gl_ProjectionMatrixInverseTranspose
+- mat4  gl_ModelViewProjectionMatrixInverseTranspose
+- mat4  gl_TextureMatrixInverseTranspose[gl_MaxTextureCoords]
+- float gl_NormalScale
+- ...
+
+Built-in constants:
+- int   gl_MaxLights 
+- int   gl_MaxClipPlanes
+- int   gl_MaxTextureUnits
+- int   gl_MaxTextureCoords
+- int   gl_MaxVertexAttribs
+- int   gl_MaxVertexUniformComponents
+- int   gl_MaxVaryingFloats
+- int   gl_MaxVertexTextureImageUnits
+- int   gl_MaxCombinedTextureImageUnits
+- int   gl_MaxTextureImageUnits
+- int   gl_MaxFragmentUniformComponents
+- int   gl_MaxDrawBuffers
+*/
+
+void main()
+{
+	//Transform vertex by modelview and projection matrices
+	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+	
+	//Forward current color and texture coordinates after applying texture matrix
+	gl_FrontColor = gl_Color;
+	gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;
+}
+</string>
+		<key>fragmentShader</key>
+		<string>/*
+Built-in variables:
+- vec4  gl_FragCoord
+- bool  gl_FrontFacing
+- vec4  gl_FragColor
+- vec4  gl_FragData[gl_MaxDrawBuffers]
+- float gl_FragDepth
+
+Varying variables:
+- vec4  gl_Color
+- vec4  gl_SecondaryColor
+- vec4  gl_TexCoord[]
+- float gl_FogFragCoord
+- vec2  gl_PointCoord
+*/
+
+//Declare a 2D texture as a uniform variable
+uniform sampler2D texture;
+
+void main()
+{
+	//Multiply color by texture
+	gl_FragColor = gl_Color * texture2D(texture, gl_TexCoord[0].xy);
+}
+</string>
+	</dict>
+	
+	<key>_sourceKeywords</key>
+	<array>
+		<dict>
+			<key>color</key>
+			<string>R=0.62 G=0.4 B=0.00</string>
+			<key>list</key>
+			<string>
+				hvec2 hvec3 hvec4 dvec2 dvec3 dvec4 fvec2 fvec3 fvec4
+				long short double half fixed unsigned
+				asm class union enum typedef template
+				switch default inline noinline volatile public
+				static extern external interface
+				input output sizeof cast namespace using
+			</string>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>R=0.00 G=0.21 B=0.80</string>
+			<key>list</key>
+			<string>
+				struct void
+				float int bool
+				mat2 mat3 mat4
+				vec2 vec3 vec4 ivec2 ivec3 ivec4 bvec2 bvec3 bvec4
+				sampler1D sampler1DShadow sampler2D sampler2DShadow sampler2DRect sampler2DRectShadow sampler3D samplerCube
+			</string>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>R=0.14 G=0.43 B=0.15</string>
+			<key>list</key>
+			<string>
+				attribute const uniform varying
+				break continue do for while return
+				if else
+				in out inout
+				true false
+				discard
+			</string>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>R=0.48 G=0.24 B=0.50</string>
+			<key>list</key>
+			<string>
+				#define #undef
+				#if #ifdef #ifndef #else #elif #endif
+				#error #pragma
+				#extension #version #line
+				__LINE__ __FILE__ __VERSION_
+			</string>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>R=0.54 G=0.07 B=0.08</string>
+			<key>list</key>
+			<string>
+				gl_FrontColor gl_BackColor gl_FrontSecondaryColor gl_BackSecondaryColor
+				gl_TexCoord gl_FogFragCoord gl_Color gl_SecondaryColor gl_Normal gl_Vertex
+				gl_MultiTexCoord0 gl_MultiTexCoord1 gl_MultiTexCoord2 gl_MultiTexCoord3 gl_MultiTexCoord4 gl_MultiTexCoord5 gl_MultiTexCoord6 gl_MultiTexCoord7
+				gl_ModelViewMatrix gl_ProjectionMatrix gl_ModelViewProjectionMatrix
+				gl_TextureMatrix gl_NormalMatrix gl_ModelViewMatrixInverse
+				gl_ProjectionMatrixInverse gl_ModelViewProjectionMatrixInverse gl_TextureMatrixInverse gl_ModelViewMatrixTranspose
+				gl_ProjectionMatrixTranspose gl_ModelViewProjectionMatrixTranspose gl_TextureMatrixTranspose
+				gl_ModelViewMatrixInverseTranspose gl_ProjectionMatrixInverseTranspose gl_ModelViewProjectionMatrixInverseTranspose gl_TextureMatrixInverseTranspose
+				gl_NormalScale gl_DepthRange gl_ClipPlane gl_FogCoord
+				gl_Point gl_FrontMaterial gl_BackMaterial gl_LightSource gl_LightModel
+				gl_FrontLightModelProduct gl_BackLightModelProduct gl_FrontLightProduct gl_BackLightProduct gl_TextureEnvColor
+				gl_EyePlaneQ gl_EyePlaneS gl_EyePlaneT gl_EyePlaneR
+				gl_ObjectPlaneQ gl_ObjectPlaneS gl_ObjectPlaneT gl_ObjectPlaneR
+				gl_Fog gl_FrontFacing gl_FragCoord gl_FragColor gl_FragDepth gl_FragData gl_Position gl_PointSize gl_ClipVertex
+			</string>
+		</dict>
+		<dict>
+			<key>color</key>
+			<string>R=0.46 G=0.06 B=0.31</string>
+			<key>list</key>
+			<string>
+				gl_MaxLights gl_MaxClipPlanes gl_MaxTextureUnits gl_MaxFragmentUniformComponents gl_MaxDrawBuffers
+				gl_MaxTextureCoords gl_MaxVertexAttribs gl_MaxVertexUniformComponents gl_MaxVaryingFloats gl_MaxVertexTextureImageUnits
+				gl_MaxCombinedTextureImageUnits gl_MaxTextureImageUnits
+			</string>
+		</dict>	
+		<dict>
+			<key>color</key>
+			<string>R=0.33 G=0.26 B=0.72</string>
+			<key>list</key>
+			<string>
+				degrees radians
+				sin cos tan asin acos atan
+				pow exp log exp2 log2
+				sqrt inversesqrt
+				abs sign floor ceil fract mod
+				min max clamp mix
+				step smoothstep
+				length distance dot cross normalize
+				ftransform faceforward reflect refract matrixCompMult
+				lessThan lessThanEqual greaterThan
+				greaterThanEqual equal notEqual any all not
+				texture1D texture1DProj texture1DLod texture1DProjLod
+				texture2D texture2DProj texture2DLod texture2DProjLod
+				texture2DRect texture2DRectProj
+				texture3D texture3DProj texture3DLod texture3DProjLod
+				textureCube textureCubeLod
+				shadow1D shadow1DProj shadow1DLod shadow1DProjLod
+				shadow2D shadow2DProj shadow2DLod shadow2DProjLod
+				shadow2DRect shadow2DRectProj
+				dFdx dFdy fwidth
+				noise1 noise2 noise3 noise4
+			</string>
+		</dict>
+	</array>
+	
+</dict>
+</plist>

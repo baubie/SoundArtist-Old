@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch renders a series of antialiased 3D lines between two points.
+
+The position, orientation, length and color of the lines are computed by interpolating the values set at the start point and those set at the end point.
+
+Note that the rendered lines always have a one pixel width, independently of the rendering destination's dimensions.</string>
+		<key>name</key>
+		<string>Line Family</string>
+		<key>categories</key>
+		<array>
+			<string>Render</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		
+		<key>inputStartX</key>
+		<dict>
+			<key>description</key>
+			<string>Start line position on the X-axis.</string>
+			<key>name</key>
+			<string>Start Position X</string>
+		</dict>
+		<key>inputStartY</key>
+		<dict>
+			<key>description</key>
+			<string>Start line position on the Y-axis.</string>
+			<key>name</key>
+			<string>Start Position Y</string>
+		</dict>
+		<key>inputStartZ</key>
+		<dict>
+			<key>description</key>
+			<string>Start line position on the Z-axis.</string>
+			<key>name</key>
+			<string>Start Position Z</string>
+		</dict>
+		<key>inputStartRX</key>
+		<dict>
+			<key>description</key>
+			<string>Start line orientation on the X-axis.</string>
+			<key>name</key>
+			<string>Start Orientation X</string>
+		</dict>
+		<key>inputStartRY</key>
+		<dict>
+			<key>description</key>
+			<string>Start line orientation on the Y-axis.</string>
+			<key>name</key>
+			<string>Start Orientation Y</string>
+		</dict>
+		<key>inputStartRZ</key>
+		<dict>
+			<key>description</key>
+			<string>Start line orientation on the Z-axis.</string>
+			<key>name</key>
+			<string>Start Orientation Z</string>
+		</dict>
+		<key>inputStartLength</key>
+		<dict>
+			<key>description</key>
+			<string>Start line length.</string>
+			<key>name</key>
+			<string>Start Length</string>
+		</dict>
+		<key>inputStartColor</key>
+		<dict>
+			<key>description</key>
+			<string>Start line color.</string>
+			<key>name</key>
+			<string>Start Color</string>
+		</dict>
+		
+		<key>inputAttractionAmount</key>
+		<dict>
+			<key>description</key>
+			<string>Force at the attraction point.</string>
+			<key>name</key>
+			<string>Attraction Force</string>
+		</dict>
+		<key>inputAttractionX</key>
+		<dict>
+			<key>description</key>
+			<string>Position of the attraction point on the X-axis.</string>
+			<key>name</key>
+			<string>Attraction Point X</string>
+		</dict>
+		<key>inputAttractionY</key>
+		<dict>
+			<key>description</key>
+			<string>Position of the attraction point on the X-axis.</string>
+			<key>name</key>
+			<string>Attraction Point Y</string>
+		</dict>
+		<key>inputAttractionZ</key>
+		<dict>
+			<key>description</key>
+			<string>Position of the attraction point on the Z-axis.</string>
+			<key>name</key>
+			<string>Attraction Point Z</string>
+		</dict>
+		
+		<key>inputEndX</key>
+		<dict>
+			<key>description</key>
+			<string>End line position on the X-axis.</string>
+			<key>name</key>
+			<string>End Position X</string>
+		</dict>
+		<key>inputEndY</key>
+		<dict>
+			<key>description</key>
+			<string>End line position on the Y-axis.</string>
+			<key>name</key>
+			<string>End Position Y</string>
+		</dict>
+		<key>inputEndZ</key>
+		<dict>
+			<key>description</key>
+			<string>End line position on the Z-axis.</string>
+			<key>name</key>
+			<string>End Position Z</string>
+		</dict>
+		<key>inputEndRX</key>
+		<dict>
+			<key>description</key>
+			<string>End line orientation on the X-axis.</string>
+			<key>name</key>
+			<string>End Orientation X</string>
+		</dict>
+		<key>inputEndRY</key>
+		<dict>
+			<key>description</key>
+			<string>End line orientation on the Y-axis.</string>
+			<key>name</key>
+			<string>End Orientation Y</string>
+		</dict>
+		<key>inputEndRZ</key>
+		<dict>
+			<key>description</key>
+			<string>End line orientation on the Z-axis.</string>
+			<key>name</key>
+			<string>End Orientation Z</string>
+		</dict>
+		<key>inputEndLength</key>
+		<dict>
+			<key>description</key>
+			<string>End line length.</string>
+			<key>name</key>
+			<string>End Length</string>
+		</dict>
+		<key>inputEndColor</key>
+		<dict>
+			<key>description</key>
+			<string>End line color.</string>
+			<key>name</key>
+			<string>End Color</string>
+		</dict>
+	
+		<key>inputPhase</key>
+		<dict>
+			<key>description</key>
+			<string>Phase on the generated lines expressed in degrees.</string>
+			<key>name</key>
+			<string>Line Phase</string>
+		</dict>
+		<key>inputNumLines</key>
+		<dict>
+			<key>description</key>
+			<string>Number of lines to render.</string>
+			<key>name</key>
+			<string>Line Count</string>
+		</dict>
+
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,9 @@
+{
+    ClassName = IKDeviceBrowserView; 
+    SuperClass = NSView; 
+    Actions = {
+    };
+    Outlets = {
+        delegate = id;
+    };
+}

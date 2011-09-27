@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>¥ Deprecated</string>
+		</array>
+		<key>name</key>
+		<string>Plasma Image</string>
+		<key>description</key>
+		<string>This patch generates a procedural plasma image colorized with a color gradient.
+
+The plasma is computed as a sum of sine and cosin waves on the X and Y axes. The offset inputs combined with the scale input define the spatial transformation along those axes, while the "Amplitude" input defines the waves height.
+If the "Saturate" input is True, pixels brighter that the maximum value are clamped to this maximum - otherwise, their value is rolled-over.
+
+The dimensions of the generated image can be set in the patch's settings. Note however, that the bigger the dimensions the more expensive the computations will be.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputSaturate</key>
+		<dict>
+			<key>description</key>
+			<string>Saturates the plasma.</string>
+			<key>name</key>
+			<string>Saturate</string>
+		</dict>
+		<key>inputX</key>
+		<dict>
+			<key>description</key>
+			<string>Offset on the plasma X-axis.</string>
+			<key>name</key>
+			<string>X Offset</string>
+		</dict>
+		<key>inputY</key>
+		<dict>
+			<key>description</key>
+			<string>Offset on the plasma Y-axis.</string>
+			<key>name</key>
+			<string>Y Offset</string>
+		</dict>
+		<key>inputScale</key>
+		<dict>
+			<key>description</key>
+			<string>Plasma scale.</string>
+			<key>name</key>
+			<string>Scale</string>
+		</dict>
+		<key>inputAmplitude</key>
+		<dict>
+			<key>description</key>
+			<string>Plasma amplitude.</string>
+			<key>name</key>
+			<string>Amplitude</string>
+		</dict>
+		<key>inputColorStart</key>
+		<dict>
+				<key>description</key>
+				<string>The starting color of the gradient.</string>
+				<key>name</key>
+				<string>Start Color</string>
+		</dict>
+		<key>inputColorMiddle</key>
+		<dict>
+				<key>description</key>
+				<string>The intermediate color of the gradient.</string>
+				<key>name</key>
+				<string>Middle Color</string>
+		</dict>
+		<key>inputColorEnd</key>
+		<dict>
+				<key>description</key>
+				<string>The ending color of the gradient.</string>
+				<key>name</key>
+				<string>End Color</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

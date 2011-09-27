@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Grep</string>
+		<key>aliasNames</key>
+		<array>
+			<string>RegEx</string>
+			<string>Find</string>
+			<string>String</string>
+		</array>
+		<key>description</key>
+		<string>Much like the grep command line program provides regular expression matching, the Grep patch matches patterns against strings.
+
+If the Replace input is not an empty string, then any instances of the found string are replaced, and the resulting string is output. Parenthesis grouping and replacement with $1, $2... is supported.
+		</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The source string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+		<key>inputPattern</key>
+		<dict>
+			<key>description</key>
+			<string>Regular expression string.</string>
+			<key>name</key>
+			<string>Search String</string>
+		</dict>
+		<key>inputReplace</key>
+		<dict>
+			<key>description</key>
+			<string>The string to replace found patterns with.</string>
+			<key>name</key>
+			<string>Replace String</string>
+		</dict>
+		<key>inputCaseSensitive</key>
+		<dict>
+			<key>description</key>
+			<string>Indicates if search should be case-sensitive.</string>
+			<key>name</key>
+			<string>Case Sensitive</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The matched string or replaced text.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

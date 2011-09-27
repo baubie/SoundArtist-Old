@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Crop</string>
+		<key>description</key>
+		<string>Crops an image to a given rectangle expressed in pixels.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>		
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image to crop.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>inputRectangle_X</key>
+		<dict>
+			<key>description</key>
+			<string>X coordinate in pixels of the cropping rectangle.</string>
+			<key>name</key>
+			<string>Crop X</string>
+		</dict>
+		<key>inputRectangle_Y</key>
+		<dict>
+			<key>description</key>
+			<string>Y coordinate in pixels of the cropping rectangle.</string>
+			<key>name</key>
+			<string>Crop Y</string>
+		</dict>
+		<key>inputRectangle_Z</key>
+		<dict>
+			<key>description</key>
+			<string>Width in pixels of the cropping rectangle.</string>
+			<key>name</key>
+			<string>Crop Width</string>
+		</dict>
+		<key>inputRectangle_W</key>
+		<dict>
+			<key>description</key>
+			<string>Height in pixels of the cropping rectangle.</string>
+			<key>name</key>
+			<string>Crop Height</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The cropped image.</string>
+			<key>name</key>
+			<string>Cropped Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

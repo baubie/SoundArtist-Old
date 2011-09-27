@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Accumulator</string>
+		<key>description</key>
+		<string>An accumulator enables feedback-based image processing for such things as the iterative painting operations or fluid dynamics simulations. It is typically used in combination with Core Image filters.
+
+The "Image" output represents the current contents of the accumulator as an image. The "Replacing Image" input allows to set the new contents of the accumulator, provided the "Replace Content" input is set to True. If the "Replacing Rectangle" inputs define a valid rectangle, only this area of the accumulator contents is updated.
+
+To use the accumulator, create a feedback loop by connecting its output image through a sequence of Core Image filters and passing the resulting image back to the accumulator's input. You can then display the current contents of the accumulator by using the Billboard patch for example.
+Keep in mind that feedback-based image processing is not deterministic as results depend on the composition's rendering frame rate.
+
+By default, the accumulator is reevaluated only when necessary (i.e. when parameters of the filters in the feedback loop change), but you can change that behavior by setting the "Evaluate Continuously" option.
+
+If the accumulator width and height are set to (0,0), they will automatically match the dimensions of the current rendering destination.
+Note that you can customize the format of the accumulator to use 8, 16 or 32 bits per pixel. A higher setting will improve precision and quality but require more video memory.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Paint.qtz</string>
+            <string>Video Feedback.qtz</string>
+        </array>    
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width in pixels of the accumulator.</string>
+			<key>name</key>
+			<string>Pixels Wide</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height in pixels of the accumulator.</string>
+			<key>name</key>
+			<string>Pixels High</string>
+		</dict>
+		<key>inputAccumulate</key>
+		<dict>
+			<key>description</key>
+			<string>Set to true to have the content image replace the current content of the accumulator.</string>
+			<key>name</key>
+			<string>Replace Content</string>
+		</dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The new image to the set the accumulator contents to.</string>
+			<key>name</key>
+			<string>Replacing Image</string>
+		</dict>
+		<key>inputDirtyOriginX</key>
+		<dict>
+			<key>description</key>
+			<string>The X origin in pixels of the rectangle in the accumulator to replace with the new image.</string>
+			<key>name</key>
+			<string>Replacing Rectangle (Origin X)</string>
+		</dict>
+		<key>inputDirtyOriginY</key>
+		<dict>
+			<key>description</key>
+			<string>The Y origin in pixels of the rectangle in the accumulator to replace with the new image.</string>
+			<key>name</key>
+			<string>Replacing Rectangle (Origin Y)</string>
+		</dict>
+		<key>inputDirtyWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width in pixels of the rectangle in the accumulator to replace with the new image.</string>
+			<key>name</key>
+			<string>Replacing Rectangle (Width)</string>
+		</dict>
+		<key>inputDirtyHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height in pixels of the rectangle in the accumulator to replace with the new image.</string>
+			<key>name</key>
+			<string>Replacing Rectangle (Height)</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image of the current contents of the accumulator.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

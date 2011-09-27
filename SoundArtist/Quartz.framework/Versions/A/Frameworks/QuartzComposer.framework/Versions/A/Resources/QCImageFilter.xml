@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>• Undefined</string>
+		</array>
+		<key>description</key>
+		<string>No description is available for this Core Image filter.</string>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+	<key>_inputVector</key>
+	<array>
+		<string>%@ (X)</string>
+		<string>%@ (Y)</string>
+		<string>%@ (Z)</string>
+		<string>%@ (W)</string>
+	</array>
+	
+	<key>_inputOpaqueColor</key>
+	<array>
+		<string>%@ (Red)</string>
+		<string>%@ (Green)</string>
+		<string>%@ (Blue)</string>
+	</array>
+	
+	<key>_inputRectangle</key>
+	<array>
+		<string>%@ (Origin X)</string>
+		<string>%@ (Origin Y)</string>
+		<string>%@ (Width)</string>
+		<string>%@ (Height)</string>
+	</array>
+	
+	<key>_inputTransform</key>
+	<array>
+		<string>Origin X</string>
+		<string>Origin Y</string>
+		<string>Scaling X</string>
+		<string>Scaling Y</string>
+		<string>Rotation</string>
+		<string>Translation X</string>
+		<string>Translation Y</string>
+	</array>
+	
+	<key>_bypassAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Bypass the filter.</string>
+		<key>name</key>
+		<string>Bypass</string>
+	</dict>
+	
+	<key>_filterCrop</key>
+	<string>
+
+Note that the image produced by this filter may have infinite dimensions. If this is the case, since Quartz Composer doesn't know how to render such images, you will need to convert it to finite dimensions before rendering it - typically using the Image Crop patch.</string>
+	<key>_filterCoordinates</key>
+	<string>
+
+Core Image filters might not produce any image if any of their image inputs are undefined. Be also aware that they expect coordinates expressed in image pixels and not in Quartz Composer units.</string>
+	
+</dict>
+</plist>

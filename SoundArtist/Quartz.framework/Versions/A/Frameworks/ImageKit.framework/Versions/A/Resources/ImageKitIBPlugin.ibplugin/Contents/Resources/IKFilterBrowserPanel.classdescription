@@ -1,0 +1,10 @@
+{
+    ClassName = IKFilterBrowserPanel; 
+    SuperClass = NSPanel; 
+    Actions = {
+        "finish:" = id;
+    };
+    Outlets = {
+        _filterBrowserView = id;
+    };
+}

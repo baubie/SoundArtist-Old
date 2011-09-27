@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>.identifiers</key>
+	<dict>
+		
+		<key>key</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>Structure Key Member</string>
+				<key>aliasNames</key>
+				<array>
+					<string>Name</string>
+					<string>Identifier</string>
+				</array>
+				<key>description</key>
+				<string>This patch returns a member identified by its key from a structure.</string>
+			</dict>
+			
+			<key>_inAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>Key</string>
+				<key>description</key>
+				<string>The key identifying the structure member.</string>
+			</dict>
+		</dict>
+		
+		<key>index</key>
+		<dict>
+			<key>nodeAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>Structure Index Member</string>
+				<key>aliasNames</key>
+				<array>
+					<string>Count</string>
+					<string>Position</string>
+					<string>Identifier</string>
+				</array>
+				<key>description</key>
+				<string>This patch returns a member identified by its index from a structure.</string>
+			</dict>
+			
+			<key>_inAttributes</key>
+			<dict>
+				<key>name</key>
+				<string>Index</string>
+				<key>description</key>
+				<string>The index indentifying the structure member.</string>
+			</dict>
+		</dict>
+		
+	</dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/Structure</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The structure to query.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputMember</key>
+		<dict>
+			<key>description</key>
+			<string>The structure member.</string>
+			<key>name</key>
+			<string>Member</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

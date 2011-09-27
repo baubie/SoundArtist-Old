@@ -1,0 +1,6 @@
+{
+    ClassName = IKPictureTaker; 
+    SuperClass = NSPanel; 
+    Actions = {};
+    Outlets = {};
+}

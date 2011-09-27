@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+		<key>name</key>
+		<string>String Case</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Capitalize</string>
+			<string>Lowercase</string>
+		</array>
+		<key>description</key>
+		<string>This patch changes all the characters of a string to uppercase or lowercase. It can also "capitalize" the string so that the first character from each word is uppercase and all remaining characters are lowercase.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The transformation mode.</string>
+			<key>name</key>
+			<string>Mode</string>
+			<key>menu</key>
+			<array>
+				<string>Capitalized</string>
+				<string>Uppercase</string>
+				<string>Lowercase</string>
+			</array>
+		</dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The source string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputString</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting string.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+		<key>name</key>
+		<string>Flame Image</string>
+		<key>description</key>
+		<string>Generates a procedural flame image colorized with a color gradient.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputColorStart</key>
+		<dict>
+				<key>description</key>
+				<string>The starting color of the gradient.</string>
+				<key>name</key>
+				<string>Start Color</string>
+		</dict>
+		<key>inputColorMiddle</key>
+		<dict>
+				<key>description</key>
+				<string>The intermediate color of the gradient.</string>
+				<key>name</key>
+				<string>Middle Color</string>
+		</dict>
+		<key>inputColorEnd</key>
+		<dict>
+				<key>description</key>
+				<string>The ending color of the gradient.</string>
+				<key>name</key>
+				<string>End Color</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

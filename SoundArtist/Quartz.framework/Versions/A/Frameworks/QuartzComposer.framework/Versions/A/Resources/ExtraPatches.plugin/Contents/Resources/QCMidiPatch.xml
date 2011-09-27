@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>_controllerNames</key>
+	<array>
+		<!-- 0-9 -->
+		<string>Bank Select</string>
+		<string>Modulation Wheel</string>
+		<string>Breath</string>
+		<string></string>
+		<string>Foot</string>
+		<string>Portamento Time</string>
+		<string>Data Entry MSB</string>
+		<string>Main Volume</string>
+		<string>Balance</string>
+		<string></string>
+		
+		<!-- 10-19 -->
+		<string>Pan</string>
+		<string></string>
+		<string>Effect Control 1</string>
+		<string>Effect Control 2</string>
+		<string></string>
+		<string></string>
+		<string>General Purpose 1</string>
+		<string>General Purpose 2</string>
+		<string>General Purpose 3</string>
+		<string>General Purpose 4</string>
+		
+		<!-- 20-29 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+		<!-- 30-39 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+		<!-- 40-49 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+		<!-- 50-59 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+		<!-- 60-69 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string>Sustain Pedal</string>
+		<string>Portamento</string>
+		<string>Sostenuto</string>
+		<string>Soft Pedal</string>
+		<string>Legato Footswitch</string>
+		<string>Hold</string>
+		
+		<!-- 70-79 -->
+		<string>Sound Controller 1 (Variation)</string>
+		<string>Sound Controller 2 (Timbre)</string>
+		<string>Sound Controller 3 (Release)</string>
+		<string>Sound Controller 4 (Attack)</string>
+		<string>Sound Controller 5 (Brightness)</string>
+		<string>Sound Controller 6</string>
+		<string>Sound Controller 7</string>
+		<string>Sound Controller 8</string>
+		<string>Sound Controller 9</string>
+		<string>Sound Controller 10</string>
+		
+		<!-- 80-89 -->
+		<string>General Purpose 6</string>
+		<string>General Purpose 7</string>
+		<string>General Purpose 8</string>
+		<string>Portamento</string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+		<!-- 90-99 -->
+		<string></string>
+		<string>Effect 1 Depth</string>
+		<string>Effect 2 Depth</string>
+		<string>Effect 3 Depth</string>
+		<string>Effect 4 Depth</string>
+		<string>Effect 5 Depth</string>
+		<string>Data Increment</string>
+		<string>Data Decrement</string>
+		<string></string>
+		<string></string>
+		
+		<!-- 100-109 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+		<!-- 110-119 -->
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		
+	</array >
+	
+</dict>
+</plist>

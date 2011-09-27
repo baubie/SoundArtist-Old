@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This macro patch configures an environment fog that affects the rendering of its subpatches.
+
+The way the fog is computed can be fully configured: equation type (linear or exponential), equation parameters (exponential density or linear range), color, quality...</string>
+		<key>name</key>
+		<string>Fog</string>
+		<key>categories</key>
+		<array>
+			<string>Environment</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputType</key>
+		<dict>
+			<key>description</key>
+			<string>Type of the fog.</string>
+			<key>name</key>
+			<string>Type</string>
+			<key>menu</key>
+			<array>
+				<string>Linear</string>
+				<string>Exponential</string>
+				<string>Exponential 2</string>
+			</array>
+		</dict>
+		<key>inputColor</key>
+		<dict>
+			<key>description</key>
+			<string>Color of the fog.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+		<key>inputDensity</key>
+		<dict>
+			<key>description</key>
+			<string>Density factor of the exponential mode.</string>
+			<key>name</key>
+			<string>Exponential Density</string>
+		</dict>
+		<key>inputStart</key>
+		<dict>
+			<key>description</key>
+			<string>Starting position of the linear mode.</string>
+			<key>name</key>
+			<string>Linear Start</string>
+		</dict>
+		<key>inputEnd</key>
+		<dict>
+			<key>description</key>
+			<string>Ending position of the linear mode.</string>
+			<key>name</key>
+			<string>Linear End</string>
+		</dict>
+		<key>inputQuality</key>
+		<dict>
+			<key>description</key>
+			<string>Quality of the fog.</string>
+			<key>name</key>
+			<string>Quality</string>
+			<key>menu</key>
+			<array>
+				<string>Per Vertex Computation</string>
+				<string>Per Pixel Computation</string>
+			</array>
+		</dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>Mode of the fog.</string>
+			<key>name</key>
+			<string>Distance Mode</string>
+			<key>menu</key>
+			<array>
+				<string>Plane Absolute</string>
+				<string>Plane</string>
+				<string>Radial</string>
+			</array>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

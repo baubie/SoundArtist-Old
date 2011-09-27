@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch simply returns the time it receives from Quartz Composer as a number.
+
+This patch is typically used to retrieve the current time at a given place in the composition's patch hierarchy and perform some actions based on it.
+
+Note that Quartz Composer times are guaranteed to be positive or null.</string>
+		<key>name</key>
+		<string>Patch Time</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Local</string>
+			<string>Date</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputTime</key>
+		<dict>
+			<key>description</key>
+			<string>The current time in seconds.</string>
+			<key>name</key>
+			<string>Time</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Creates a mesh from structures.</string>
+		<key>name</key>
+		<string>Mesh Creator</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Mesh Creator</string>
+		</array>		
+		<key>categories</key>
+		<array>
+			<string>Mesh/Utility</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Mouse Ribbon.qtz</string>
+        </array> 
+	</dict>
+
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputMesh</key>
+		<dict>
+			<key>description</key>
+			<string>Resulting mesh.</string>
+			<key>name</key>
+			<string>Mesh</string>
+		</dict>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputVertices</key>
+		<dict>
+			<key>description</key>
+			<string>Vertices.</string>
+			<key>name</key>
+			<string>Vertices</string>
+		</dict>
+		<key>_inputNormals</key>
+		<dict>
+			<key>description</key>
+			<string>Normals.</string>
+			<key>name</key>
+			<string>Normals</string>
+		</dict>
+		<key>_inputColors</key>
+		<dict>
+			<key>description</key>
+			<string>Colors.</string>
+			<key>name</key>
+			<string>Colors</string>
+		</dict>
+		<key>_inputIndices</key>
+		<dict>
+			<key>description</key>
+			<string>Indices.</string>
+			<key>name</key>
+			<string>Indices</string>
+		</dict>
+		<key>_inputTexcoords</key>
+		<dict>
+			<key>description</key>
+			<string>Texture coordinates.</string>
+			<key>name</key>
+			<string>Texture Coordinates</string>
+		</dict>
+		<key>_inputTexture</key>
+		<dict>
+			<key>description</key>
+			<string>Texture.</string>
+			<key>name</key>
+			<string>Texture</string>
+		</dict>
+		<key>_inputPointSize</key>
+		<dict>
+			<key>description</key>
+			<string>Point size.</string>
+			<key>name</key>
+			<string>Point Size</string>
+		</dict>
+		<key>_inputLineWidth</key>
+		<dict>
+			<key>description</key>
+			<string>Line width.</string>
+			<key>name</key>
+			<string>Line Width</string>
+		</dict>
+		<key>_inputSliceWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the volume.</string>
+			<key>name</key>
+			<string>Pixels Width</string>
+		</dict>
+		<key>_inputSliceHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the volume.</string>
+			<key>name</key>
+			<string>Pixels Height</string>
+		</dict>	
+		<key>_inputSliceDepth</key>
+		<dict>
+			<key>description</key>
+			<string>The depth of the volume.</string>
+			<key>name</key>
+			<string>Pixels Deep</string>
+		</dict>	
+		<key>_inputVolume</key>
+		<dict>
+			<key>description</key>
+			<string>The volume data.</string>
+			<key>name</key>
+			<string>Volume</string>
+		</dict>	
+		<key>_inputCubeMap</key>
+		<dict>
+			<key>description</key>
+			<string>The environment map.</string>
+			<key>name</key>
+			<string>Environment</string>
+		</dict>	
+		<key>_inputBackgroundTexture</key>
+		<dict>
+			<key>description</key>
+			<string>The background texture.</string>
+			<key>name</key>
+			<string>Background</string>
+		</dict>							
+	</dict>
+	
+	<key>_sizes</key>
+	<array>
+		<string>64</string>
+		<string>128</string>
+		<string>256</string>
+		<string>512</string>
+	</array>		
+</dict>
+</plist>

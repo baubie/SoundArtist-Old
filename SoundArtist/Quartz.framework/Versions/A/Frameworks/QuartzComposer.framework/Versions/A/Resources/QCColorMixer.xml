@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Color Mixer</string>
+		<key>description</key>
+		<string>Mixes two colors together.</string>
+		<key>categories</key>
+		<array>
+			<string>Utility/Color</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputColor1</key>
+		<dict>
+			<key>description</key>
+			<string>The first color.</string>
+			<key>name</key>
+			<string>First color</string>
+		</dict>
+		<key>inputColor2</key>
+		<dict>
+			<key>description</key>
+			<string>The second color.</string>
+			<key>name</key>
+			<string>Second color</string>
+		</dict>
+		<key>inputMix</key>
+		<dict>
+			<key>description</key>
+			<string>The proportional quantities of the two colors to mix.</string>
+			<key>name</key>
+			<string>Mixing Point</string>
+		</dict>
+		<key>inputInterpolation</key>
+		<dict>
+			<key>description</key>
+			<string>The interpolation to use when mixing the color components.</string>
+			<key>name</key>
+			<string>Interpolation</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputColor</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting color.</string>
+			<key>name</key>
+			<string>Color</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

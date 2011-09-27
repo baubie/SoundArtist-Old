@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Transform</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Scale</string>
+			<string>Rotation</string>
+			<string>Translation</string>
+		</array>
+		<key>description</key>
+		<string>Transforms an image applying scaling, rotation and translation.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image to transform.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>inputTransform_OriginX</key>
+		<dict>
+			<key>description</key>
+			<string>X coordinate in pixels of the origin of the transformation.</string>
+			<key>name</key>
+			<string>Origin X</string>
+		</dict>
+		<key>inputTransform_OriginY</key>
+		<dict>
+			<key>description</key>
+			<string>Y coordinate in pixels of the origin of the transformation.</string>
+			<key>name</key>
+			<string>Origin Y</string>
+		</dict>
+		<key>inputTransform_ScaleX</key>
+		<dict>
+			<key>description</key>
+			<string>X scaling factor of the transformation.</string>
+			<key>name</key>
+			<string>Scaling X</string>
+		</dict>
+		<key>inputTransform_ScaleY</key>
+		<dict>
+			<key>description</key>
+			<string>Y scaling factor of the transformation.</string>
+			<key>name</key>
+			<string>Scaling Y</string>
+		</dict>
+		<key>inputTransform_Rotate</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation angle of the transformation.</string>
+			<key>name</key>
+			<string>Rotation</string>
+		</dict>
+		<key>inputTransform_TranslateX</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount in pixels of the transformation on the X axis.</string>
+			<key>name</key>
+			<string>Translation X</string>
+		</dict>
+		<key>inputTransform_TranslateY</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount in pixels of the transformation on the Y axis.</string>
+			<key>name</key>
+			<string>Translation Y</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The transformed image.</string>
+			<key>name</key>
+			<string>Transformed Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

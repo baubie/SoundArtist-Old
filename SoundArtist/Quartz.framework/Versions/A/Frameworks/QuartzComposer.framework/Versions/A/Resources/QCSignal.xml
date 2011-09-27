@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Generates a pulse signal.</string>
+		<key>name</key>
+		<string>Signal</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Pulse</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>- Private</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The signal generation mode.</string>
+			<key>name</key>
+			<string>Mode</string>
+			<key>menu</key>
+			<array>
+				<string>After [x] Seconds</string>
+				<string>Every [x] Seconds</string>
+				<string>On Start, Then Every [x] Seconds</string>
+				<string>When [x] Changes</string>
+				<string>On Start, Then When [x] Changes</string>
+			</array>
+		</dict>
+		<key>inputParam</key>
+		<dict>
+			<key>description</key>
+			<string>The parameter for the signal generation mode.</string>
+			<key>name</key>
+			<string>Parameter [x]</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The generated signal.</string>
+			<key>name</key>
+			<string>Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

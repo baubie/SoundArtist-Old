@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/Structure</string>
+		</array>
+		<key>name</key>
+		<string>Structure Count</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Number</string>
+			<string>Iterations</string>
+		</array>
+		<key>description</key>
+		<string>This patch returns the number of members in a structure.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The structure to query.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputCount</key>
+		<dict>
+			<key>description</key>
+			<string>The number of members in the structure.</string>
+			<key>name</key>
+			<string>Count</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

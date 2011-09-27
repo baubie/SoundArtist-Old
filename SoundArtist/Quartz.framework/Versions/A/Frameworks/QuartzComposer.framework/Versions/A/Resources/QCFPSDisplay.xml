@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>FPS Display</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Debug</string>
+		</array>
+		<key>description</key>
+		<string>Displays the estimated rendering frame rate in frames per second in the lower-left corner of the rendering destination.
+
+The frame rate can either be calculated as continously averaged, as the average over the last second only, or as the minimum reached during the last second.</string>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The FPS estimation mode.</string>
+			<key>name</key>
+			<string>FPS Mode</string>
+			<key>menu</key>
+			<array>
+				<string>Weighted Average</string>
+				<string>Last Second Average</string>
+				<string>Last Second Minimum</string>
+			</array>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

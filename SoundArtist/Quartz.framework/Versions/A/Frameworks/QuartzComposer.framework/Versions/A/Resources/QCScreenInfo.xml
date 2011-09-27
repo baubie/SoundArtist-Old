@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns the current rendering destination's dimensions, in Quartz Composer coordinates system units or pixels and with its aspect ratio.
+
+The Quartz Composer coordinates system is defined so that (0,0,0) is at the center, the x axis is horizontal and the y axis is vertical. The z axis is orthogonal to the x and y axes, so that it comes out towards the viewer. The width of the rendering destination is always 2 units wide and the left and right borders have coordinates -1.0 and +1.0, respectively. Since the coordinates system is homogenous, the rendering destination's height depends on the aspect ratio: for a 4/3 aspect ratio, the height would be 1.5 while the bottom and top borders would have coordinates -0.75 and +0.75 respectively.</string>
+		<key>name</key>
+		<string>Rendering Destination Dimensions</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Coordinates</string>
+			<string>Pixels</string>
+			<string>Units</string>
+			<string>Aspect Ratio</string>
+			<string>Resolution</string>
+			<string>Width</string>
+			<string>Height</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment/Utility</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Rendering Destination Dimensions.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the rendering destination in units.</string>
+			<key>name</key>
+			<string>Width</string>
+		</dict>
+		<key>outputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the rendering destination in units.</string>
+			<key>name</key>
+			<string>Height</string>
+		</dict>
+		<key>outputPixelsWide</key>
+		<dict>
+			<key>description</key>
+			<string>The width of the rendering destination in pixels.</string>
+			<key>name</key>
+			<string>Pixels Wide</string>
+		</dict>
+		<key>outputPixelsHigh</key>
+		<dict>
+			<key>description</key>
+			<string>The height of the rendering destination in pixels.</string>
+			<key>name</key>
+			<string>Pixels High</string>
+		</dict>
+		<key>outputRatio</key>
+		<dict>
+			<key>description</key>
+			<string>The rendering destination aspect ratio.</string>
+			<key>name</key>
+			<string>Aspect Ratio</string>
+		</dict>
+		<key>outputResolution</key>
+		<dict>
+			<key>description</key>
+			<string>The rendering destination resolution in pixels per unit.</string>
+			<key>name</key>
+			<string>Resolution</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

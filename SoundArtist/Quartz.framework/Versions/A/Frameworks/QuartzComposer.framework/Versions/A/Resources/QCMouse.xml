@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch returns the current state of the mouse pointing device.
+
+The mouse position is expressed in units in the Quartz Composer coordinates system.
+
+Note that this patch does not read the mouse state directly but is dependent on the proper information being passed to the composition. This information may not always be available, depending on the environment in which Quartz Composer is running.</string>
+		<key>name</key>
+		<string>Mouse</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Scroll</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Source/Device</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Mouse Ribbon.qtz</string>
+            <string>Mouse Scroll Reset.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>_inputResetScroll</key>
+	<dict>
+		<key>description</key>
+		<string>When true, this input sets the scroll output to zero in all dimensions.</string>
+		<key>name</key>
+		<string>Reset Scroll</string>
+	</dict>
+	<key>_inputScrollFactor</key>
+	<dict>
+		<key>description</key>
+		<string>A number describing how to scale the raw scroll input received from the mouse.</string>
+		<key>name</key>
+		<string>Scroll Factor</string>
+	</dict>
+	<key>_inputResetRotation</key>
+	<dict>
+		<key>description</key>
+		<string>When true, this input sets the rotation output to zero.</string>
+		<key>name</key>
+		<string>Reset Rotation</string>
+	</dict>
+	<key>_inputResetMagnification</key>
+	<dict>
+		<key>description</key>
+		<string>When true, this input sets the magnification output to zero.</string>
+		<key>name</key>
+		<string>Reset Magnification</string>
+	</dict>	
+	<key>_outputRotation</key>
+	<dict>
+		<key>description</key>
+		<string>Rotation angle.</string>
+		<key>name</key>
+		<string>Rotation Angle</string>
+	</dict>
+	<key>_outputMagnification</key>
+	<dict>
+		<key>description</key>
+		<string>Magnification value.</string>
+		<key>name</key>
+		<string>Magnify Value</string>
+	</dict>		
+	<key>_outputSwipeX</key>
+	<dict>
+		<key>description</key>
+		<string>Horizontal swipe value.</string>
+		<key>name</key>
+		<string>X Swipe</string>
+	</dict>	
+	<key>_outputSwipeY</key>
+	<dict>
+		<key>description</key>
+		<string>Vertical swipe value</string>
+		<key>name</key>
+		<string>Y Swipe</string>
+	</dict>			
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputX</key>
+		<dict>
+			<key>description</key>
+			<string>The horizontal position of the mouse in units.</string>
+			<key>name</key>
+			<string>X Position</string>
+		</dict>
+		<key>outputY</key>
+		<dict>
+			<key>description</key>
+			<string>The vertical position of the mouse in units.</string>
+			<key>name</key>
+			<string>Y Position</string>
+		</dict>
+		<key>outputButton1</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the mouse primary button.</string>
+			<key>name</key>
+			<string>Left Button</string>
+		</dict>
+		<key>outputButton2</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the mouse secondary button.</string>
+			<key>name</key>
+			<string>Right Button</string>
+		</dict>
+		<key>outputButton3</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the mouse third button.</string>
+			<key>name</key>
+			<string>Other Button</string>
+		</dict>
+		<key>outputScrollX</key>
+		<dict>
+			<key>description</key>
+			<string>The change in the scroll device in the X direction.</string>
+			<key>name</key>
+			<string>X Scroll</string>
+		</dict>
+		<key>outputScrollY</key>
+		<dict>
+			<key>description</key>
+			<string>The change in the scroll device in the Y direction.</string>
+			<key>name</key>
+			<string>Y Scroll</string>
+		</dict>
+		<key>outputScrollZ</key>
+		<dict>
+			<key>description</key>
+			<string>Typically zero.</string>
+			<key>name</key>
+			<string>Z Scroll</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

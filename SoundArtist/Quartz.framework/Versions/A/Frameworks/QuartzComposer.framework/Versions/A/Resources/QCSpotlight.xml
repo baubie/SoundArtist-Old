@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>¥ Deprecated</string>
+		</array>
+		<key>name</key>
+		<string>Spotlight Images</string>
+		<key>description</key>
+		<string>This patch uses Spotlight to return a list of image files on the computer that match a given query.
+
+The query is specified on the "Query" string input, using the same format as for the Spotlight menubar's search field.
+
+The search starts when the "Search Signal" input is set to True. When the search is finished, the "Done Signal" output is temporarily set to True and the list of image files found is available as a structure on the "File List" output. Each member of this structure is a structure itself describing a single file: the file name, its path and URL are available.
+
+The URLs of those image files can be passed to the Image Downloader patch to load the images dynamically in Quartz Composer.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputQuery</key>
+		<dict>
+			<key>description</key>
+			<string>The query to pass to Spotlight.</string>
+			<key>name</key>
+			<string>Query</string>
+		</dict>
+		<key>inputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The searching signal.</string>
+			<key>name</key>
+			<string>Search Signal</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputFiles</key>
+		<dict>
+			<key>description</key>
+			<string>The list of image files.</string>
+			<key>name</key>
+			<string>File List</string>
+		</dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The search-done signal.</string>
+			<key>name</key>
+			<string>Done Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

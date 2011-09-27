@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/Logic</string>
+		</array>
+		<key>description</key>
+		<string>Generates a pulse for a duration of a single frame whenever the input signal changes according to detection mode.</string>
+		<key>name</key>
+		<string>Pulse</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Signal</string>
+			<string>Leading Edge</string>
+			<string>Trailing Edge</string>
+		</array>
+		<key>examples</key>
+        <array>
+			<string>Pulse.qtz</string>
+            <string>Mouse Scroll Reset.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The detection mode for the input signal.</string>
+			<key>name</key>
+			<string>Detection Mode</string>
+			<key>menu</key>
+			<array>
+				<string>Leading Edge</string>
+				<string>Trailing Edge</string>
+				<string>Both</string>
+			</array>
+		</dict>
+		<key>inputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The input signal.</string>
+			<key>name</key>
+			<string>Input Signal</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>Generated pulse.</string>
+			<key>name</key>
+			<string>Pulse</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

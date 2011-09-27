@@ -15,15 +15,15 @@
 @synthesize mainView;
 @synthesize powerView;
 
-@synthesize commonPropertiesPanel;
-@synthesize waveformPropertiesPanel;
-@synthesize spectrogramPropertiesPanel;
+@synthesize optionsPanel;
 @synthesize commonPropertiesMenuItem;
 @synthesize waveformPropertiesMenuItem;
 @synthesize spectrogramPropertiesMenuItem;
 @synthesize exportWaveform;
 @synthesize exportSpectrogram;
 @synthesize exportPower;
+
+@synthesize optionsTabView;
 
 @synthesize tempDirectory;
 
@@ -33,6 +33,12 @@
 
 @synthesize refreshWaveformButton;
 @synthesize refreshSpectrogramButton;
+@synthesize refreshPowerButton;
+
+@synthesize optionsGeneral;
+@synthesize optionsPower;
+@synthesize optionsWaveform;
+@synthesize optionsSpectrogram;
 
 @synthesize waveformView;
 @synthesize spectrogramView;
@@ -78,6 +84,9 @@
 
 - (void)windowDidBecomeMain:(NSNotification *)notification
 {
+
+    if (waveformView != nil) return; // Only do this the first time.
+    
     int width = [mainView frame].size.width;
     int height = [mainView frame].size.height/3;
     NSRect waveformRect;
@@ -91,6 +100,7 @@
     spectrogramRect.origin.y += height;
     waveformRect = spectrogramRect;
     waveformRect.origin.y += height;
+    
     waveformView = [[NSImageView alloc] initWithFrame:waveformRect];
     spectrogramView =[[NSImageView alloc] initWithFrame:spectrogramRect];
     powerView = [[NSImageView alloc] initWithFrame:powerRect];
@@ -107,18 +117,15 @@
 - (void) windowDidResize:(NSNotification *)notification {
     
     NSRect viewSize = [mainView bounds];
-    
     [waveformView setFrame:NSMakeRect(0, viewSize.size.height*2*0.3333+1, viewSize.size.width, viewSize.size.height*0.333)];
     [spectrogramView setFrame:NSMakeRect(0, viewSize.size.height*0.3333+1, viewSize.size.width, viewSize.size.height*0.333)];
     [powerView setFrame:NSMakeRect(0, 0, viewSize.size.width, viewSize.size.height*0.333)];
-    
 }
 
 - (IBAction)refreshWaveform: (id) pId {
 
     [refreshWaveformButton setEnabled:NO];
-    [waveformView setImage:nil];      
-    [waveformView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
+    [waveformView setImage:nil]; 
     imagesReloading++;
     
     struct WR_WFINFO wfinfo;
@@ -196,8 +203,7 @@
 - (IBAction)refreshPower: (id) pId {
     
     [refreshPowerButton setEnabled:NO];
-    [powerView setImage:nil];          
-    [powerView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
+    [powerView setImage:nil];   
     imagesReloading++;
     
     struct WR_SPECINFO specinfo;
@@ -317,8 +323,7 @@
     
     
     [refreshSpectrogramButton setEnabled:NO];
-    [spectrogramView setImage:nil];          
-    [spectrogramView setImage:[NSImage imageNamed:@"NSRefreshTemplate"]];
+    [spectrogramView setImage:nil];       
     imagesReloading++;
     
     struct WR_SPECINFO specinfo;
@@ -474,9 +479,7 @@
         
         [[self window] setTitle:[NSString stringWithFormat:@"Sound Artist - %@", [[NSFileManager defaultManager] displayNameAtPath:filename]]];
 
-        [[self commonPropertiesPanel] makeKeyAndOrderFront:self];
-        [[self waveformPropertiesPanel] makeKeyAndOrderFront:self];
-        [[self spectrogramPropertiesPanel] makeKeyAndOrderFront:self];
+        [[self optionsPanel] makeKeyAndOrderFront:self];
 
         [self showWindow:self];
 
@@ -496,50 +499,20 @@
     return false;
 }
 
-- (IBAction)toggleProperties:(id) pId {
+- (IBAction)changeOptionsTab: (id)pId {
 
-    NSPanel *panel = nil;
-    
-    if (pId  == commonPropertiesMenuItem)
-    {
-        panel = commonPropertiesPanel;
+    if (pId == optionsGeneral) {
+        [optionsTabView selectTabViewItemAtIndex:0];
     }
-    if (pId  == waveformPropertiesMenuItem)
-    {
-        panel = waveformPropertiesPanel;
+    if (pId == optionsWaveform) {
+        [optionsTabView selectTabViewItemAtIndex:1];
     }
-    if (pId == spectrogramPropertiesMenuItem)
-    {
-        panel = spectrogramPropertiesPanel;
+    if (pId == optionsSpectrogram) {
+        [optionsTabView selectTabViewItemAtIndex:2];
     }
-    
-    if (panel != nil)
-    {
-        if([panel isVisible]) {
-            [pId setState:NSOffState];
-            [panel close];
-        } else {
-            [pId setState:NSOnState];
-            [panel makeKeyAndOrderFront:self];
-        }  
+    if (pId == optionsPower ) {
+        [optionsTabView selectTabViewItemAtIndex:3];
     }
 }
-
-- (void) windowWillClose: (NSNotification *) notification {
-    
-    if ([notification object] == commonPropertiesPanel)
-    {
-        [commonPropertiesMenuItem setState:NSOffState];
-    } else 
-    if ([notification object] == waveformPropertiesPanel)
-    {
-        [waveformPropertiesMenuItem setState:NSOffState];
-    } else 
-    if ([notification object] == spectrogramPropertiesPanel)
-    {
-        [spectrogramPropertiesMenuItem setState:NSOffState];
-    }
-}
-
 
 @end

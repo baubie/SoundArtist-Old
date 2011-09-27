@@ -1,0 +1,11 @@
+{
+    ClassName = IKImageBrowserView; 
+    SuperClass = NSView; 
+    Actions = {
+    };
+    Outlets = {
+        delegate = id;
+        dataSource = id;
+        dragDestinationDelegate = id;
+    };
+}

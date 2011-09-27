@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Importer</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Image Downloader</string>
+		</array>
+		<key>description</key>
+		<string>This patch downloads an image from a URL or file path. Most common image file formats are supported: JPEG, TIFF, PNG, GIF, BMP, TGA, OpenEXR, JPEG 2000, PDF...
+
+The file path is considered absolute if starting with '/', relative to the current user directory if starting with '~', or otherwise relative to the location of the Quartz composition file if available.
+The URL must use one of the allowed protocols: file, http or ftp.
+
+The download starts when the "Update Signal" input is set to True. When the download is finished, the "Done Signal" output is temporarily set to True and the image is made available on the "Image" output.
+
+The downloaded image data can be kept in a cache if that option is specifically enabled in the patch's settings. In that case, the "Update Signal" input will not be available.</string>
+		<key>categories</key>
+		<array>
+			<string>Source</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputURL</key>
+		<dict>
+			<key>description</key>
+		<string>The URL or file path to the image file.</string>
+		<key>name</key>
+		<string>Image Location</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>outputProgress</key>
+		<dict>
+			<key>description</key>
+			<string>The download progress in the [0,1] range if available.</string>
+			<key>name</key>
+			<string>Download Progress</string>
+		</dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The download-finished signal.</string>
+			<key>name</key>
+			<string>Done Signal</string>
+		</dict>
+	</dict>
+	
+	<key>_signalAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>The update signal.</string>
+		<key>name</key>
+		<string>Update Signal</string>
+	</dict>
+	
+</dict>
+</plist>

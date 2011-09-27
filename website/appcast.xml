@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <channel>
+      <title>Sound Arist Updates</title>
+      <link>http://aubie.ca/soundartist/appcast.xml</link>
+      <description>Most recent changes with links to updates.</description>
+      <language>en</language>
+         <item>
+            <title>Version 1.5</title>
+			<description><![CDATA[
+				<h2>New Features</h2>
+				<ul>
+					<li>Tool windows are now condensed into a single window.</li>
+					<li>Power spectrum now respects the start and stop time in general options.</li>
+				</ul>
+				<h2>Bug Fixes</h2>
+				<ul>
+					<li>In some situations, graphs will be drawn over existing graphs.</li>
+				</ul>
+				]]>
+			</description>
+            <pubDate>Fri, 16 Sep 2011 17:00:11 +0000</pubDate>
+
+			<enclosure url="http://aubie.ca/soundartist/releases/SoundArtist.1.5.zip" sparkle:version="1.5" length="" type="application/octet-stream" sparkle:dsaSignature="" />
+         </item>
+         <item>
+            <title>Version 1.4</title>
+			<description><![CDATA[
+				<h2>New Features</h2>
+				<ul>
+					<li>Power Spectrum</li>
+				</ul>
+				]]>
+			</description>
+            <pubDate>Fri, 16 Sep 2011 17:00:11 +0000</pubDate>
+
+			<enclosure url="http://aubie.ca/soundartist/releases/SoundArtist.1.4.zip" sparkle:version="1.4" length="1312955" type="application/octet-stream" sparkle:dsaSignature="MCwCFAZAthLTnRvxzoayhrb+w4cc7j5wAhRtYCSpY1rnXoPu9IPR4zgfxZtKjg==" />
+         </item>
+         <item>
+            <title>Version 1.3</title>
+			<description><![CDATA[
+				<h2>Bug Fixes</h2>
+				<ul>
+					<li>Waveform YLabels Export Bug.</li>
+					<li>Ensure 100% overlap will not freeze.</li>
+				</ul>
+				]]>
+			</description>
+            <pubDate>Wed, 27 Jul 2011 18:00:11 +0000</pubDate>
+
+			<enclosure url="http://aubie.ca/soundartist/releases/SoundArtist.1.3.zip" sparkle:version="1.3" length="1348373" type="application/octet-stream" sparkle:dsaSignature="MCwCFCeBLVd3tayvvls494CeaPto5O4WAhQh8owu4pFRyZHVpsO58g4r79XMqw==" />
+         </item>
+         <item>
+            <title>Version 1.2</title>
+			<description><![CDATA[
+				<h2>New Features</h2>
+				<ul>
+					<li>Added numerical value for data floor setting.</li>
+				</ul>
+				<h2>Bug Fixes</h2>
+				<ul>
+					<li>Fixed relative data path in exported GLE files.</li>
+				</ul>
+				]]>
+			</description>
+            <pubDate>Tue, 26 Jul 2011 18:30:11 +0000</pubDate>
+
+			<enclosure url="http://aubie.ca/soundartist/releases/SoundArtist.1.2.zip" sparkle:version="1.2" length="1309504" type="application/octet-stream" sparkle:dsaSignature="MCwCFGsl3e/mJZ9u20hU7vxhmXrOOZNFAhQEx6a9FqQC3PRkg5MB0vYvDpI0oQ==" />
+         </item>
+         <item>
+            <title>Version 1.1</title>
+			<description><![CDATA[
+				<h2>New Features</h2>
+				<ul>
+					<li>Application can automatically download updates from the web.</li>
+				</ul>
+				]]>
+			</description>
+            <pubDate>Sun, 24 Jul 2011 19:30:11 +0000</pubDate>
+
+			<enclosure url="http://aubie.ca/soundartist/releases/SoundArtist.1.1.zip" sparkle:version="1.1" length="1309668" type="application/octet-stream" sparkle:dsaSignature="MCwCFH6AQUpz376i0C/br8ppkXIPimPSAhQ2gc2M3WS8f5wkuplrsVaYzl6rVA==" />
+         </item>
+
+         <item>
+            <title>Version 1.0</title>
+            <pubDate>Sun, 24 Jul 2011 19:20:11 +0000</pubDate>
+
+			<enclosure url="http://aubie.ca/soundartist/releases/SoundArtist.1.0.zip" sparkle:version="1.0" length="1309530" type="application/octet-stream" sparkle:dsaSignature="MEUCIHk+sYDpV3IPbmKzegePvWwsr0vybTPp3BACDarwevINAiEAyNVDDoMd1QdlPwDeCQHiU7fBEvZGkSEiSVWrsyrUnZQ=" />
+         </item>
+   </channel>
+</rss>

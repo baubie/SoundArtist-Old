@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch implements a Nx1 multiplexer that forwards the current value of a given input to its unique output.
+
+Multiplexer is typically used to select dynamically one value among a set of values. All the values are available on the source inputs, each of them having an index. The value transmitted to the patch's output is the one from the input whose index matches the "Source Index" input.
+
+Note that by default the Multiplexer inputs and output are virtual, meaning they can transmit any kind of values. For best performances, you should change whenever possible their type in the patch's settings to the type of the input to which the Multiplexer output is connected.</string>
+		<key>name</key>
+		<string>Multiplexer</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Switch</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Utility/Logic</string>
+		</array>
+		<key>examples</key>
+        <array>
+			<string>Pulse.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputIndex</key>
+		<dict>
+			<key>description</key>
+			<string>The index of the selected source.</string>
+			<key>name</key>
+			<string>Source Index</string>
+		</dict>
+	</dict>
+	
+	<key>_portAttributes</key>
+	<dict>
+		<key>inName</key>
+		<string>Source #%i</string>
+		<key>inDescription</key>
+		<string>A generic input port.</string>
+		<key>outName</key>
+		<string>Output</string>
+		<key>outDescription</key>
+		<string>The output port.</string>
+	</dict>
+	
+	<key>_nameFormat</key>
+	<string>%@ Multiplexer</string>
+	
+</dict>
+</plist>

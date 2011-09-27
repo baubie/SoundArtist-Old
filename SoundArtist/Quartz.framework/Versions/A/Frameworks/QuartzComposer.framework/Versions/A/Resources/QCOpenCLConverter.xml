@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>Converts objects using OpenCL.</string>
+		<key>name</key>
+		<string>OpenCL Converter</string>
+		<key>aliasNames</key>
+		<array>
+			<string>OpenCL Converter</string>
+		</array>		
+		<key>categories</key>
+		<array>
+			<string>Program</string>
+		</array>
+		<key>examples</key>
+        <array>
+            <string>Mouse Ribbon.qtz</string>
+        </array> 
+	</dict>
+
+	<key>outputAttributes</key>
+	<dict>
+		<key>_outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>Resulting image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>_outputImage3D</key>
+		<dict>
+			<key>description</key>
+			<string>Resulting 3D image.</string>
+			<key>name</key>
+			<string>3D Image</string>
+		</dict>
+		<key>_outputStream</key>
+		<dict>
+			<key>description</key>
+			<string>Resulting structure.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>		
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>_outputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>The width in pixels.</string>
+			<key>name</key>
+			<string>Pixel Wide</string>
+		</dict>
+		<key>_outputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>The height in pixels.</string>
+			<key>name</key>
+			<string>Pixel High</string>
+		</dict>
+		<key>_outputDepth</key>
+		<dict>
+			<key>description</key>
+			<string>The depth in pixels.</string>
+			<key>name</key>
+			<string>Pixels Deep</string>
+		</dict>
+		<key>_inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>Input image.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>_inputImage3D</key>
+		<dict>
+			<key>description</key>
+			<string>Input 3D image.</string>
+			<key>name</key>
+			<string>3D Image</string>
+		</dict>
+		<key>_inputStream</key>
+		<dict>
+			<key>description</key>
+			<string>Input structure.</string>
+			<key>name</key>
+			<string>Structure</string>
+		</dict>								
+	</dict>
+</dict>
+</plist>

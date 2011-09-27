@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Image Resize</string>
+		<key>description</key>
+		<string>Resizes an image to given dimensions expressed in pixels.
+
+This resizing patch should be used instead of the "Affine Transform" filter of Core Image as it is more efficient.</string>
+		<key>categories</key>
+		<array>
+			<string>Image/Utility</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Image Resize.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The image to resize.</string>
+			<key>name</key>
+			<string>Image</string>
+		</dict>
+		<key>inputMode</key>
+		<dict>
+			<key>description</key>
+			<string>The resizing mode.</string>
+			<key>name</key>
+			<string>Resize Mode</string>
+			<key>menu</key>
+			<array>
+				<string>Stretch</string>
+				<string>Fit</string>
+				<string>Fill</string>
+			</array>
+		</dict>
+		<key>inputCondition</key>
+		<dict>
+			<key>description</key>
+			<string>The resizing condition.</string>
+			<key>name</key>
+			<string>Resize Condition</string>
+			<key>menu</key>
+			<array>
+				<string>Always</string>
+				<string>Only If Image Is Smaller</string>
+				<string>Only If Image Is Bigger</string>
+			</array>
+		</dict>
+		<key>inputWidth</key>
+		<dict>
+			<key>description</key>
+			<string>Resize width in pixels.</string>
+			<key>name</key>
+			<string>Resize Pixels Wide</string>
+		</dict>
+		<key>inputHeight</key>
+		<dict>
+			<key>description</key>
+			<string>Resize height in pixels.</string>
+			<key>name</key>
+			<string>Resize Pixels High</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputImage</key>
+		<dict>
+			<key>description</key>
+			<string>The resized image.</string>
+			<key>name</key>
+			<string>Resized Image</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

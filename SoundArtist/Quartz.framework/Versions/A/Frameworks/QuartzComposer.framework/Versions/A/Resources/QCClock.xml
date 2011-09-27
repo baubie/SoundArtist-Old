@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Stop Watch</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Event</string>
+			<string>Time</string>
+			<string>Trigger</string>
+		</array>
+		<key>description</key>
+		<string>A stop watch which is controlled through 3 boolean inputs: "Start", "Stop" and "Reset". When one of these inputs is set to True, the stop watch performs the corresponding action.
+
+Stop Watch is useful to generate a time base that starts in response to an event. That time base can then be used to drive other patches.
+
+Note that this patch uses the time passed by Quartz Composer to compute the stop watch time and not a real-time clock.</string>
+		<key>categories</key>
+		<array>
+			<string>Animation</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Stop Watch.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputStartSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The start signal.</string>
+			<key>name</key>
+			<string>Start Signal</string>
+		</dict>
+		<key>inputStopSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The stop signal.</string>
+			<key>name</key>
+			<string>Stop Signal</string>
+		</dict>
+		<key>inputResetSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The reset signal.</string>
+			<key>name</key>
+			<string>Reset Signal</string>
+		</dict>
+	</dict>
+		
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputTime</key>
+		<dict>
+			<key>description</key>
+			<string>The timer time in seconds.</string>
+			<key>name</key>
+			<string>Time</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

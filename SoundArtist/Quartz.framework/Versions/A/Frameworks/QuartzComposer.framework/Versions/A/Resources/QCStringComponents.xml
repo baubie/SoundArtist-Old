@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/String</string>
+		</array>
+		<key>name</key>
+		<string>String Components</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Parse</string>
+			<string>Split</string>
+			<string>Pattern</string>
+		</array>
+		<key>description</key>
+		<string>This patch explodes a string into substrings according to a specified separator.
+
+The list of substrings is returned as a structure whose members correspond to the substrings.
+
+Note that if the string to explode begins or ends with the separator, the first or last substring, respectively, is empty. If the separator is the empty string, Strings Components will return a structure listing all characters individually.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputString</key>
+		<dict>
+			<key>description</key>
+			<string>The string to break in components.</string>
+			<key>name</key>
+			<string>String</string>
+		</dict>
+		<key>inputSeparator</key>
+		<dict>
+			<key>description</key>
+			<string>The separator between components.</string>
+			<key>name</key>
+			<string>Separator</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputComponents</key>
+		<dict>
+			<key>description</key>
+			<string>The list of components in the string.</string>
+			<key>name</key>
+			<string>Component List</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

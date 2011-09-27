@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch interpolates between two numerical values over time.
+
+The curve used for the interpolation can be chosen among presets (linear, quadratic, exponential...) or defined manually through a cubic spline using up to 16 control points.
+The duration of the interpolation and its looping mode can also be specified.</string>
+		<key>name</key>
+		<string>Interpolation</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Time</string>
+			<string>Curve</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Animation</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Interpolation.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputValue1</key>
+		<dict>
+			<key>description</key>
+			<string>The starting value.</string>
+			<key>name</key>
+			<string>Start Value</string>
+		</dict>
+		<key>inputValue2</key>
+		<dict>
+			<key>description</key>
+			<string>The final value.</string>
+			<key>name</key>
+			<string>End Value</string>
+		</dict>
+		<key>inputDuration</key>
+		<dict>
+			<key>description</key>
+			<string>The interpolation duration in seconds.</string>
+			<key>name</key>
+			<string>Duration</string>
+		</dict>
+		<key>inputTension</key>
+		<dict>
+			<key>description</key>
+			<string>The relative tension of the interpolated curve.</string>
+			<key>name</key>
+			<string>Tension</string>
+		</dict>
+		<key>inputRepeat</key>
+		<dict>
+			<key>description</key>
+			<string>The repeat mode.</string>
+			<key>name</key>
+			<string>Repeat Mode</string>
+			<key>menu</key>
+			<array>
+				<string>None</string>
+				<string>Loop</string>
+				<string>Mirrored Loop</string>
+				<string>Mirrored Loop Once</string>
+			</array>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputValue</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting value.</string>
+			<key>name</key>
+			<string>Result</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

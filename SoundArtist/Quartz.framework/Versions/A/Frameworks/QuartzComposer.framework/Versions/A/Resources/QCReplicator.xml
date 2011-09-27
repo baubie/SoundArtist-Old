@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This macro patch renders the specified number of copies of the subpatches, applying a 3D transformation to each copy.
+
+Each copy's transformation allows, in that order, to scale the copy (scale), rotate it (orientation), translate it to a new origin (origin), rotate it again (rotation) and finally translate it again (translation).
+The parameters to use for each transformation are determined by interpolation, except the ones for the origin which remain constants. Interpolation is made so that the first copy is not affected and the last one has the scale, orientation, translation and rotation as specified by the values on the corresponding patch inputs. The type of interpolation (linear, quadratic, exponential...) can be set by the "Interpolation" input.
+
+Note that arbitrarily complex copies can be achieved by using the Iterator macro patch instead of Replicate in Space.</string>
+		<key>name</key>
+		<string>Replicate in Space</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Iterator</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputCopies</key>
+		<dict>
+			<key>description</key>
+			<string>Number of copies.</string>
+			<key>name</key>
+			<string>Copies</string>
+		</dict>
+		<key>inputOriginX</key>
+		<dict>
+			<key>description</key>
+			<string>Transformation origin on the X-axis.</string>
+			<key>name</key>
+			<string>Origin X</string>
+		</dict>
+		<key>inputOriginY</key>
+		<dict>
+			<key>description</key>
+			<string>Transformation origin on the Y-axis.</string>
+			<key>name</key>
+			<string>Origin Y</string>
+		</dict>
+		<key>inputOriginZ</key>
+		<dict>
+			<key>description</key>
+			<string>Transformation origin on the Z-axis.</string>
+			<key>name</key>
+			<string>Origin Z</string>
+		</dict>
+		<key>inputRotationX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation angle on the X-axis.</string>
+			<key>name</key>
+			<string>Final Rotation X</string>
+		</dict>
+		<key>inputRotationY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation angle on the Y-axis.</string>
+			<key>name</key>
+			<string>Final Rotation Y</string>
+		</dict>
+		<key>inputRotationZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation angle on the Z-axis.</string>
+			<key>name</key>
+			<string>Final Rotation Z</string>
+		</dict>
+		<key>inputTranslationX</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the X-axis.</string>
+			<key>name</key>
+			<string>Final Translation X</string>
+		</dict>
+		<key>inputTranslationY</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the Y-axis.</string>
+			<key>name</key>
+			<string>Final Translation Y</string>
+		</dict>
+		<key>inputTranslationZ</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the Z-axis.</string>
+			<key>name</key>
+			<string>Final Translation Z</string>
+		</dict>
+		<key>inputOrientationX</key>
+		<dict>
+			<key>description</key>
+			<string>Orientation angle on the X-axis.</string>
+			<key>name</key>
+			<string>Final Orientation X</string>
+		</dict>
+		<key>inputOrientationY</key>
+		<dict>
+			<key>description</key>
+			<string>Orientation angle on the Y-axis.</string>
+			<key>name</key>
+			<string>Final Orientation Y</string>
+		</dict>
+		<key>inputOrientationZ</key>
+		<dict>
+			<key>description</key>
+			<string>Orientation angle on the Z-axis.</string>
+			<key>name</key>
+			<string>Final Orientation Z</string>
+		</dict>
+		<key>inputScale</key>
+		<dict>
+			<key>description</key>
+			<string>Final uniform scale.</string>
+			<key>name</key>
+			<string>Final Scale</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

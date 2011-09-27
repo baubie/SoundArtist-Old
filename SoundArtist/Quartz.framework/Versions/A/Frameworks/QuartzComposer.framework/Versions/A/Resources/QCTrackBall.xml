@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This macro patch encloses its subpatches in a virtual trackball that the user can roll with the mouse.
+
+The center of rotation of the trackball can be specified with the rotation origin X/Y/Z inputs. The trackball is rolled according to the mouse movement when the mouse primary button is down. The mouse tracking sensibility and the optional autorotation of the trackball can be set in the patch's settings.
+
+Note that this patch does not read the mouse state directly but is dependent on the proper information being passed to the composition. This information may not always be available, depending on the environment in which Quartz Composer is running.</string>
+		<key>name</key>
+		<string>TrackBall</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Mouse</string>
+			<string>Rotate</string>
+			<string>Spin</string>
+			<string>Roll</string>
+			<string>Interaction</string>
+			<string>3D</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Environment</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Trackball.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputTrack</key>
+		<dict>
+			<key>description</key>
+			<string>Enables tracking of the mouse.</string>
+			<key>name</key>
+			<string>Track Mouse</string>
+		</dict>
+		<key>inputResetSignal</key>
+		<dict>
+			<key>description</key>
+			<string>Resets the trackball.</string>
+			<key>name</key>
+			<string>Reset Signal</string>
+		</dict>
+		<key>inputOriginX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation origin on the X-axis.</string>
+			<key>name</key>
+			<string>Rotation Origin X</string>
+		</dict>
+		<key>inputOriginY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation origin on the Y-axis.</string>
+			<key>name</key>
+			<string>Rotation Origin Y</string>
+		</dict>
+		<key>inputOriginZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation origin on the Z-axis.</string>
+			<key>name</key>
+			<string>Rotation Origin Z</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

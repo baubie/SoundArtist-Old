@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Utility/Numeric</string>
+		</array>
+		<key>name</key>
+		<string>Queue</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Structure</string>
+			<string>History</string>
+			<string>FIFO</string>
+		</array>
+		<key>description</key>
+		<string>This patch implements a queue of an arbitrary size and which accepts any kind of values.
+
+Note that only non-null values can be put in the queue.</string>
+        <key>examples</key>
+        <array>
+            <string>CPU Meters.qtz</string>
+            <string>Mouse Trails.qtz</string>
+			<string>Image Stack.qtz</string>
+        </array>  
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputValue</key>
+		<dict>
+			<key>description</key>
+			<string>The value to queue.</string>
+			<key>name</key>
+			<string>Value</string>
+		</dict>
+		<key>inputSize</key>
+		<dict>
+			<key>description</key>
+			<string>The size of the queue.</string>
+			<key>name</key>
+			<string>Queue Size</string>
+		</dict>
+		<key>inputFilling</key>
+		<dict>
+			<key>description</key>
+			<string>Controls the filling of the queue.</string>
+			<key>name</key>
+			<string>Filling</string>
+		</dict>
+		<key>inputResetSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The reset signal.</string>
+			<key>name</key>
+			<string>Reset Signal</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputQueue</key>
+		<dict>
+			<key>description</key>
+			<string>The queue of values.</string>
+			<key>name</key>
+			<string>Queue</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

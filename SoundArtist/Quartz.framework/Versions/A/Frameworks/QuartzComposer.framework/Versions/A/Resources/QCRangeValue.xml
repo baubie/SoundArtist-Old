@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch restricts a numerical value to the specified range by clamping it or rolling it over.</string>
+		<key>name</key>
+		<string>Range</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Clamp</string>
+			<string>Clip</string>
+			<string>Modulo</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Utility/Numeric</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputValue</key>
+		<dict>
+			<key>description</key>
+			<string>The initial value.</string>
+			<key>name</key>
+			<string>Value</string>
+		</dict>
+		<key>inputMin</key>
+		<dict>
+			<key>description</key>
+			<string>The range minimum value.</string>
+			<key>name</key>
+			<string>Range Min</string>
+		</dict>
+		<key>inputMax</key>
+		<dict>
+			<key>description</key>
+			<string>The range maximum value.</string>
+			<key>name</key>
+			<string>Range Max</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputClip</key>
+		<dict>
+			<key>description</key>
+			<string>The value clipped in the range.</string>
+			<key>name</key>
+			<string>Clipped Value</string>
+		</dict>
+		<key>outputRoll</key>
+		<dict>
+			<key>description</key>
+			<string>The value rolled over in the range.</string>
+			<key>name</key>
+			<string>Rolled-Over Value</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

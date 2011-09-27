@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>3D Transformation</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Translate</string>
+			<string>Rotate</string>
+			<string>Scale</string>
+			<string>Shift</string>
+		</array>
+		<key>description</key>
+		<string>This macro patch applies a 3D transformation to its subpatches: rotation around an origin point, followed by translation, followed by scale around an origin point.</string>
+		<key>categories</key>
+		<array>
+			<string>Environment</string>
+		</array>
+        <key>examples</key>
+        <array>
+            <string>Timeline.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputOriginX</key>
+		<dict>
+			<key>description</key>
+			<string>Origin on the X-axis.</string>
+			<key>name</key>
+			<string>Origin X</string>
+		</dict>
+		<key>inputOriginY</key>
+		<dict>
+			<key>description</key>
+			<string>Origin on the Y-axis.</string>
+			<key>name</key>
+			<string>Origin Y</string>
+		</dict>
+		<key>inputOriginZ</key>
+		<dict>
+			<key>description</key>
+			<string>Origin on the Z-axis.</string>
+			<key>name</key>
+			<string>Origin Z</string>
+		</dict>
+		<key>inputRotateX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the X-axis.</string>
+			<key>name</key>
+			<string>Rotation X</string>
+		</dict>
+		<key>inputRotateY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Rotation Y</string>
+		</dict>
+		<key>inputRotateZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Z-axis.</string>
+			<key>name</key>
+			<string>Rotation Z</string>
+		</dict>
+		<key>inputTranslateX</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the X-axis.</string>
+			<key>name</key>
+			<string>Translation X</string>
+		</dict>
+		<key>inputTranslateY</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the Y-axis.</string>
+			<key>name</key>
+			<string>Translation Y</string>
+		</dict>
+		<key>inputTranslateZ</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount on the Z-axis.</string>
+			<key>name</key>
+			<string>Translation Z</string>
+		</dict>
+		<key>inputScaleX</key>
+		<dict>
+			<key>description</key>
+			<string>Scale amount on the X-axis.</string>
+			<key>name</key>
+			<string>Scale X</string>
+		</dict>
+		<key>inputScaleY</key>
+		<dict>
+			<key>description</key>
+			<string>Scale amount on the Y-axis.</string>
+			<key>name</key>
+			<string>Scale Y</string>
+		</dict>
+		<key>inputScaleZ</key>
+		<dict>
+			<key>description</key>
+			<string>Scale amount on the Z-axis.</string>
+			<key>name</key>
+			<string>Scale Z</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

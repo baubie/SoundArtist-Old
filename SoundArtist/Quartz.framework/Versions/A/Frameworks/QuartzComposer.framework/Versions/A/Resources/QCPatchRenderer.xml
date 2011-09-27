@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Source</string>
+		</array>
+		<key>name</key>
+		<string>Composition Importer</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Composition Loader</string>
+			<string>Virtual</string>
+			<string>Composition Repository</string>
+		</array>
+		<key>description</key>
+		<string>This patch loads a Quartz composition from a Composition Repository identifier, a URL or file path, and allows to communicate with its inputs and outputs, if any.
+
+The composition file path is considered absolute if starting with '/', relative to the current user directory if starting with '~', or otherwise relative to the location of the parent Quartz composition file if available.
+
+A template of keys and types for input and output ports can be defined and those ports will automatically be connected to the corresponding ones of the loaded composition (assuming there is an exact match).
+
+The loaded composition plays according to the time Quartz Composer passes to the patch. By default this time is the same as the one passed to the parent macro patch, which is likely the global composition time. The composition play time can be set manually by setting the timebase of the patch to "External" (this is done through the patch's contextual menu) and passing a time value to the "Time" input.
+
+Note that only compositions whose root patch execution mode equals the execution mode defined on this patch will be able to load.</string>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputPath</key>
+		<dict>
+			<key>description</key>
+			<string>The URL or file path to the Quartz composition file to load.</string>
+			<key>name</key>
+			<string>Composition Location</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

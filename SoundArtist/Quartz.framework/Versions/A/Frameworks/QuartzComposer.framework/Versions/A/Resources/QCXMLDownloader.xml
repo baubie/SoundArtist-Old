@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Source</string>
+		</array>
+		<key>name</key>
+		<string>XML Importer</string>
+		<key>aliasNames</key>
+		<array>
+			<string>HTML</string>
+			<string>XHTML</string>
+			<string>File</string>
+			<string>Disk</string>
+			<string>Read</string>
+			<string>Parse</string>
+			<string>Structure</string>
+			<string>XML Downloader</string>
+		</array>
+		<key>description</key>
+		<string>Downloads and parses XML from a specified URL or file path.
+
+The file path is considered absolute if starting with '/', relative to the current user directory if starting with '~', or otherwise relative to the location of the Quartz composition file if available.
+The URL must use one of the allowed protocols: file, http or ftp.
+
+The download starts when the "Update Signal" input is set to True. When the download and parsing are finished, the "Done Signal" output is temporarily set to True and the XML is made available as a structure on the "Parsed XML" output.</string>
+		<key>examples</key>
+        <array>
+            <string>Basic XML Loading.qtz</string>
+			<string>Chart.qtz</string>
+			<string>The Twitterverse/The Twitterverse.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputURL</key>
+		<dict>
+			<key>description</key>
+			<string>The URL or file path to the XML.</string>
+			<key>name</key>
+			<string>XML Location</string>
+		</dict>
+		<key>inputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The update signal.</string>
+			<key>name</key>
+			<string>Update Signal</string>
+		</dict>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputStructure</key>
+		<dict>
+			<key>description</key>
+			<string>The resulting XML.</string>
+			<key>name</key>
+			<string>Parsed XML</string>
+		</dict>
+		<key>outputProgress</key>
+		<dict>
+			<key>description</key>
+			<string>The download progress in the [0,1] range if available.</string>
+			<key>name</key>
+			<string>Download Progress</string>
+		</dict>
+		<key>outputSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The download-finished signal.</string>
+			<key>name</key>
+			<string>Done Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

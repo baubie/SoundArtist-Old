@@ -1,0 +1,9 @@
+{
+    ClassName = QCCompositionPickerView; 
+    SuperClass = NSView; 
+    Actions = {
+    };
+    Outlets = {
+		delegate = id;
+    };
+}

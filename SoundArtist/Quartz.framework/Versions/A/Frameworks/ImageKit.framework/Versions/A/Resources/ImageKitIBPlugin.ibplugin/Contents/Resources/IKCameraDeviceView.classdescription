@@ -1,0 +1,9 @@
+{
+    ClassName = IKCameraDeviceView; 
+    SuperClass = NSView; 
+    Actions = {
+    };
+    Outlets = {
+        delegate = id;
+    };
+}

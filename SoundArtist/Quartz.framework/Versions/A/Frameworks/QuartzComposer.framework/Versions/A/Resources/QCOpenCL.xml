@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>nodeAttributes</key>
+	<dict>
+		<key>categories</key>
+		<array>
+			<string>Program</string>
+		</array>
+		<key>name</key>
+		<string>OpenCL Kernel</string>
+		<key>description</key>
+		<string>The OpenCL Kernel patch allows for general purpose parallel programming across CPUs and GPUs.  With this patch you can create and modify OpenCL kernels in realtime using a subset of C with parallel extensions.  The OpenCL Kernel patch will automatically create input and output ports based on arguments provided to the OpenCL kernel.  For information on writing OpenCL kernels please refer to the OpenCL Specification available at http://www.khronos.org/opencl.
+
+By default, the OpenCL Kernel patch will automatically determine the Local Work Size, Global Work Size and Output Dimensions for the kernel based on the size of input data. These parameters, along with the Compute Device, Image Pixel Format and Color Space, can be set manually by enabling the “Show Advanced Kernel Settings” within the patch settings.  Manually setting the work sizes or output dimensions is required when input arrays differ from one another in size or differ from the size of output arrays. The Advanced Settings also allow for Performance Sampling using the “Sample Now” button to get an average execution time for a given kernel.</string>
+		<key>examples</key>
+        <array>
+            <string>Quad.qtz</string>
+			<string>Grid.qtz</string>
+			<string>N-Body.qtz</string>
+        </array> 
+	</dict>
+	
+	<key>_sourceTemplates</key>
+	<dict>
+		<key>sourceCode</key>
+		<string>/* 
+The following table illustrates how to declare inputs and outputs to the kernel:
+
+Inputs: 
+Scalar	: &lt;type&gt; &lt;name&gt;				: e.g. float myInputValue
+Array	: __global const &lt;type&gt; *&lt;name&gt;	: e.g. __global const float4 *myInputValues
+2D Image	: __rd image2d_t &lt;name&gt;			: e.g. __rd image2d_t srcimg
+3D Image	: __rd image3d_t &lt;name&gt;			: e.g. __rd image3d_t srcimg
+
+Outputs: 
+Scalar	: not supported
+Array	: __global &lt;type&gt; *&lt;name&gt;		: e.g. __global float4 *myOutputValues
+2D Image	: __wr image2d_t &lt;name&gt;			: e.g. __wr image2d_t dstimg
+3D Image	: not supported
+
+Declaring a local thread group array will result in an input of the form "&lt;name&gt; Size X" which is used to set the size of the array.
+Local	: __local &lt;type&gt; *&lt;name&gt;		: e.g. __local float4 *sharedValues
+*/
+
+/* A simple OpenCL Kernel that returns an input float4 array multiplied by a constant. */
+__kernel void main(__global const float4 *src, float x, __global float4 *dst)
+{
+	int  tid = get_global_id(0);
+	dst[tid] = src[tid] * (float4)(x, x, x, 1.);
+}
+
+/* The OpenCL kernel below does the same constant multiplication on an image. */
+/*
+__kernel void test_rgbaFFFF(__rd image2d_t srcimg, float x, __wr image2d_t dstimg)
+{
+	int2	pos = (int2)(get_global_id(0), get_global_id(1));
+	float4	color = read_imagef(srcimg, CLK_ADDRESS_CLAMP_TO_EDGE | CLK_FILTER_NEAREST, pos);
+	write_imagef(dstimg, pos, color*x);
+}
+*/
+	
+	</string>
+	</dict>
+
+	<key>_deviceName</key>
+	<string>Device</string>
+
+	<key>_dimensionName</key>
+	<string>%@ (Size %@)</string>
+
+	<key>_globalDimensionName</key>
+	<string>%@ Global Work Size</string>
+
+	<key>_localDimensionName</key>
+	<string>%@ Local Work Size</string>
+
+	<key>_pixelFormatName</key>
+	<string>%@ (Format)</string>
+
+	<key>_pixelFormatMenu</key>
+	<array>
+		<string>Default</string>
+		<string>8 Bits Per Pixel</string>
+		<string>16 Bits Per Pixel</string>
+		<string>32 Bits Per Pixel</string>
+	</array>
+
+	<key>_colorSpaceName</key>
+	<string>%@ (Color Space)</string>
+	
+	<key>_colorSpaceMenu</key>
+	<array>
+		<string>Image Native</string>
+		<string>Absolute Linear</string>
+		<string>Rendering Destination</string>
+	</array>	
+
+	<key>_resultColorSpaceMenu</key>
+	<array>
+		<string>First Image Input Native</string>
+		<string>Absolute Linear</string>
+		<string>Rendering Destination</string>
+	</array>
+	
+	<key>_sourceKeywords</key>
+	<dict>
+		<key>sourceCode</key>
+		<array>
+			<dict>
+				<key>color</key>
+				<string>R=0.77 G=0.10 B=0.09</string>
+				<key>list</key>
+				<string>__kernel __global __local __private __constant __rd __wr __inline</string>
+			</dict>
+			<dict>
+				<key>color</key>
+				<string>R=0.36 G=0.15 B=0.6</string>
+				<key>list</key>
+				<string>
+					image2d_t image3d_t sampler_t
+					void bool int uint
+					float float2 float3 float4 float8 float16
+					short short2 short3 short4 short8 short16
+					ushort ushort2 ushort3 ushort4 ushort8 ushort16
+					int int2 int3 int4 int8 int16
+					uint uint2 uint3 uint4 uint8 uint16
+					unsigned size_t
+				</string>
+			</dict>
+			<dict>
+				<key>color</key>
+				<string>R=0.66 G=0.05 B=0.57</string>
+				<key>list</key>
+				<string>
+					const
+					do for while if else case
+					return
+				</string>
+			</dict>
+			<dict>
+				<key>color</key>
+				<string>R=0.18 G=0.05 B=0.43</string>
+				<key>list</key>
+				<string>
+					read_imagef write_imagef
+					read_imagei write_imagei
+					read_imageui write_imageui
+					get_image_width
+					get_image_height
+					get_image_depth
+					get_work_dim
+					get_global_id
+					get_global_size
+					get_local_id
+					get_local_size
+					get_group_id
+					get_group_size
+					radians degrees
+					barrier mem_fence read_mem_fence write_mem_fence
+					sin cos tan asin acos atan
+					pow powf exp log exp2 log2 sqrt sqrtf inversesqrt
+					abs sign
+					floor cell fract mod
+					min max mix
+					length dot atom_add
+					vstore2 vload2
+					vstore4 vload4
+					vstore8 vload8
+					vstore16 vload16
+					convert_float convert_float2 convert_float3 convert_float4 convert_float8 convert_float16
+					convert_short convert_short2 convert_short3 convert_short4 convert_short8 convert_short16
+					convert_ushort convert_ushort2 convert_ushort3 convert_ushort4 convert_ushort8 convert_ushort16
+					convert_int convert_int2 convert_int3 convert_int4 convert_int8 convert_int16
+					convert_uint convert_uint2 convert_uint3 convert_uint4 convert_uint8 convert_uint16
+				</string>
+			</dict>
+			<dict>
+				<key>color</key>
+				<string>R=0.18 G=0.05 B=0.43</string>
+				<key>list</key>
+				<string>
+					CLK_TRUE CLK_FALSE
+					CLK_FILTER_LINEAR CLK_FILTER_NEAREST
+					CLK_ADDRESS_REPEAT CLK_ADDRESS_CLAMP_TO_EDGE CLK_ADDRESS_CLAMP
+					CLK_LOCAL_MEM_FENCE CLK_GLOBAL_MEM_FENCE
+				</string>
+			</dict>
+		</array>	
+	</dict>
+</dict>
+</plist>

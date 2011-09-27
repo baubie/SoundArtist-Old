@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>description</key>
+		<string>This patch implements a configurable input port whose value can be replicated to input ports on other patches.
+
+Input Splitter is typically used to set a constant or forward the same value to several inputs of various patches at once. The value to set is passed to the Input Splitter input, which simply forwards it unchanged to its output. From there, the value is transmitted to all of the inputs the output is connected to.
+
+Note, that by default, the Splitter input and output types are virtual, meaning they can transmit any data type. For best performance, you should set the type in the patch's settings to the type of the inputs to which the Splitter output is connected.</string>
+		<key>name</key>
+		<string>Input Splitter</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Null</string>
+			<string>Type</string>
+			<string>Label</string>
+			<string>Publish</string>
+		</array>
+		<key>categories</key>
+		<array>
+			<string>Utility</string>
+		</array>
+	</dict>
+	
+	<key>_inAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Input</string>
+		<key>description</key>
+		<string>The input port.</string>
+	</dict>
+	
+	<key>_outAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Output</string>
+		<key>description</key>
+		<string>The output port.</string>
+	</dict>
+	
+	<key>_defaultLabel</key>
+	<string>Unlabeled (%i)</string>
+	
+	<key>_nameFormat</key>
+	<string>%@ Splitter</string>
+	
+</dict>
+</plist>

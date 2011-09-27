@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Apple Remote</string>
+		<key>description</key>
+		<string>This patch returns the current state of the Apple Remote.
+
+Note that even if the host computer is compatible with the Apple Remote, the remote might not necessarily be accessible.</string>
+		<key>categories</key>
+		<array>
+			<string>Source/Device</string>
+		</array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputAvailable</key>
+		<dict>
+			<key>description</key>
+			<string>Indicates if the Apple Remote is available.</string>
+			<key>name</key>
+			<string>Remote Available</string>
+		</dict>
+		<key>outputUpSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the Volume Up button.</string>
+			<key>name</key>
+			<string>Volume Up Signal</string>
+		</dict>
+		<key>outputDownSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the Volume Down button.</string>
+			<key>name</key>
+			<string>Volume Down Signal</string>
+		</dict>
+		<key>outputPreviousSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the Previous button.</string>
+			<key>name</key>
+			<string>Previous Signal</string>
+		</dict>
+		<key>outputNextSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the Next button.</string>
+			<key>name</key>
+			<string>Next Signal</string>
+		</dict>
+		<key>outputPlaySignal</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the Play / Pause button.</string>
+			<key>name</key>
+			<string>Play Signal</string>
+		</dict>
+		<key>outputMenuSignal</key>
+		<dict>
+			<key>description</key>
+			<string>The state of the Menu button.</string>
+			<key>name</key>
+			<string>Menu Signal</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>

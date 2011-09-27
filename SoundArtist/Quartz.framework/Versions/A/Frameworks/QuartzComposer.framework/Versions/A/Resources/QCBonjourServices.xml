@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Bonjour Services</string>
+		<key>description</key>
+		<string>Given a Bonjour service type (like "_daap._tcp." for iTunes Music Sharing, "_dpap._tcp." for iPhoto Photo Sharing, or "_presence._tcp." for iChat AV), this patch outputs a structure containing the names of the available services of this type on the local network.</string>
+		<key>categories</key>
+		<array>
+			<string>Network</string>
+		</array>
+	</dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputServices</key>
+		<dict>
+			<key>description</key>
+			<string>The list of the service names.</string>
+			<key>name</key>
+			<string>Service List</string>
+		</dict>
+	</dict>
+	
+	<key>_nameFormat</key>
+	<string>Bonjour '%@' Services</string>
+	
+</dict>
+</plist>

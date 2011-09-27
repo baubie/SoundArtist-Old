@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+	<key>nodeAttributes</key>
+	<dict>
+		<key>name</key>
+		<string>Mesh Transform</string>
+		<key>aliasNames</key>
+		<array>
+			<string>Scale</string>
+			<string>Rotation</string>
+			<string>Translation</string>
+		</array>
+		<key>description</key>
+		<string>Transforms a mesh applying scaling, rotation and translation.</string>
+		<key>categories</key>
+		<array>
+			<string>Mesh/Utility</string>
+		</array>
+	</dict>
+	
+	<key>inputAttributes</key>
+	<dict>
+		<key>inputMesh</key>
+		<dict>
+			<key>description</key>
+			<string>The mesh to transform.</string>
+			<key>name</key>
+			<string>Mesh</string>
+		</dict>
+		<key>inputTransform_OriginX</key>
+		<dict>
+			<key>description</key>
+			<string>X coordinate in world coordinate of the origin of the transformation.</string>
+			<key>name</key>
+			<string>Origin X</string>
+		</dict>
+		<key>inputTransform_OriginY</key>
+		<dict>
+			<key>description</key>
+			<string>Y coordinate in world coordinate of the origin of the transformation.</string>
+			<key>name</key>
+			<string>Origin Y</string>
+		</dict>
+		<key>inputTransform_OriginZ</key>
+		<dict>
+			<key>description</key>
+			<string>Z coordinate in world coordinate of the origin of the transformation.</string>
+			<key>name</key>
+			<string>Origin Z</string>
+		</dict>		
+		<key>inputTransform_ScaleX</key>
+		<dict>
+			<key>description</key>
+			<string>X scaling factor of the transformation.</string>
+			<key>name</key>
+			<string>Scaling X</string>
+		</dict>
+		<key>inputTransform_ScaleY</key>
+		<dict>
+			<key>description</key>
+			<string>Y scaling factor of the transformation.</string>
+			<key>name</key>
+			<string>Scaling Y</string>
+		</dict>
+		<key>inputTransform_ScaleZ</key>
+		<dict>
+			<key>description</key>
+			<string>Z scaling factor of the transformation.</string>
+			<key>name</key>
+			<string>Scaling Z</string>
+		</dict>
+		<key>inputTransform_RotateX</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the X-axis.</string>
+			<key>name</key>
+			<string>Rotation X</string>
+		</dict>
+		<key>inputTransform_RotateY</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Rotation Y</string>
+		</dict>
+		<key>inputTransform_RotateZ</key>
+		<dict>
+			<key>description</key>
+			<string>Rotation on the Y-axis.</string>
+			<key>name</key>
+			<string>Rotation Z</string>
+		</dict>				
+		<key>inputTransform_TranslateX</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount in world coordinate of the transformation on the X axis.</string>
+			<key>name</key>
+			<string>Translation X</string>
+		</dict>
+		<key>inputTransform_TranslateY</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount in world coordinate of the transformation on the Y axis.</string>
+			<key>name</key>
+			<string>Translation Y</string>
+		</dict>
+		<key>inputTransform_TranslateZ</key>
+		<dict>
+			<key>description</key>
+			<string>Translation amount in world coordinate of the transformation on the Z axis.</string>
+			<key>name</key>
+			<string>Translation Z</string>
+		</dict>
+    </dict>
+	
+	<key>outputAttributes</key>
+	<dict>
+		<key>outputMesh</key>
+		<dict>
+			<key>description</key>
+			<string>The transformed mesh.</string>
+			<key>name</key>
+			<string>Transformed Mesh</string>
+		</dict>
+	</dict>
+	
+</dict>
+</plist>
